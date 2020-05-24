@@ -47,7 +47,6 @@ namespace PhotoSift
 		private Rectangle NormalWindowStateFormRect;
 
 		private bool bMenuInUse = false;
-		private bool bEscIsPassed = false;
 
 		private bool bCursorVisible = true;
 		private int FullScreenCursorLastMouseX = -1;

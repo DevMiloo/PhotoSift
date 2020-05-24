@@ -620,6 +620,18 @@ namespace PhotoSift
 
 		private KeyEventArgs curHoldKey = null;
 		private bool timerHoldKeyTriggered = false;
+
+		private void frmMain_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if ((Keys)e.KeyChar == Keys.Escape)       // exit
+			{
+				if (bFullScreen)
+					ToggleFullscreen();
+				else if (settings.CloseOnEscape)
+					this.Close();
+				e.Handled = true;
+			}
+		}
 		private void frmMain_KeyUp( object sender, KeyEventArgs e )
 		{
 			if (sender.ToString() != "timerHoldKey_Tick") // if user action
@@ -729,16 +741,7 @@ namespace PhotoSift
 
 
 			// Process all other keys
-			if( e.KeyCode == Keys.Escape && bEscIsPassed)		// exit
-			{
-				bEscIsPassed = false;
-				if( bFullScreen )
-					ToggleFullscreen();
-				else if( settings.CloseOnEscape )
-					this.Close();
-				e.Handled = true;
-			}
-			else if( e.KeyCode == Keys.Pause )		// toggle Auto Advance
+			if( e.KeyCode == Keys.Pause )		// toggle Auto Advance
 			{
 				SwitchAutoAdvance(!bAutoAdvanceEnabled);
 				e.Handled = true;
@@ -989,10 +992,6 @@ namespace PhotoSift
 			{
 				SetScaleMode( ScaleMode.NormalFitWindow );
 				e.Handled = true;
-			}
-			else if (e.KeyCode == Keys.Escape)
-			{
-				bEscIsPassed = true;
 			}
 			else
 			{
