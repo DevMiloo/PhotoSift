@@ -459,7 +459,7 @@ namespace PhotoSift
 			defaultSettings.Add("ColorGradientBackgroundOne", Color.Gray);
 			defaultSettings.Add("ColorGradientBackgroundTwo", Color.Black);
 			defaultSettings.Add("ColorGradientBackgroundGammaCorrection", false);
-			defaultSettings.Add("ColorLabelFront", Color.Gray);
+			defaultSettings.Add("ColorLabelFront", Color.FromArgb(192, 64, 0));
 			defaultSettings.Add("ColorLabelBack", Color.Black);
 			defaultSettings.Add("ColorTransparentLabels", true);
 			defaultSettings.Add("LabelFont", new Font("Arial", 10, FontStyle.Regular));
