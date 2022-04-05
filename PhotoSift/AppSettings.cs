@@ -235,6 +235,8 @@ namespace PhotoSift
 		public bool ZoomLimitMaxToWindowSize { get; set; }
 		[Category("Controls"), DisplayName("Player intercept keys"), DescriptionAttribute("If enabled, the video player will intercept some keyboard keys to perform actions.")]
 		public VideoPlayerHookKeysOptions VideoPlayerHookKeysControl { get; set; }
+		[Category("Controls"), DisplayName("Ignore video beginnings"), DescriptionAttribute("If the value is greater than 0, the videos will be seek to the location (in seconds) to ignore the beginning. If the video length is less than this value, it plays from scratch. Seeking is not supported for some video formats.")]
+        public int SkipVideoBeginSeconds { get; set; }
 
 		// Display Group
 		[Category( "Display" ), DisplayName( "Info label" ), DescriptionAttribute( "Info label is the one in the top left corner. It shows information about the currently loaded image. In windowed mode, this information is also shown in the window title." )]
@@ -489,6 +491,7 @@ namespace PhotoSift
 			defaultSettings.Add("ZoomSteps", "5,10,25,50,75,100,125,150,175,200");
 			defaultSettings.Add("ZoomLimitMaxToWindowSize", false);
 			defaultSettings.Add("VideoPlayerHookKeysControl", VideoPlayerHookKeysOptions.Basic);
+			defaultSettings.Add("SkipVideoBeginSeconds", 0);
 
 			// Display Group
 			defaultSettings.Add("ShowInfoLabel", ShowModes.FullscreenOnly);

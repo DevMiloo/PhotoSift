@@ -51,6 +51,7 @@ namespace PhotoSift
 		private bool bCursorVisible = true;
 		private int FullScreenCursorLastMouseX = -1;
 		private bool bPreventAutoHideCursor = false;
+		private bool bNewVideoPlaying = false;
 
 		private string[] allowsMIME;
 
@@ -377,7 +378,7 @@ namespace PhotoSift
 				sb.Replace("%f", System.IO.Path.GetFileName(pics[iCurrentPic]));
 				sb.Replace("%p", System.IO.Path.GetDirectoryName(pics[iCurrentPic]));
 				sb.Replace("%d", System.IO.Directory.GetParent(pics[iCurrentPic]).Name);
-				sb.Replace("%w", wmpCurrent.currentMedia.imageSourceWidth.ToString());
+				sb.Replace("%w", wmpCurrent.currentMedia.imageSourceWidth.ToString()); // need wmppsPlaying, not work for 'wmppsReady'
 				sb.Replace("%h", wmpCurrent.currentMedia.imageSourceHeight.ToString());
 				sb.Replace("%n", "\n");
 				sb.Replace("%c", (iCurrentPic + 1).ToString());
@@ -492,6 +493,7 @@ namespace PhotoSift
 				}
 				else
 				{
+					bNewVideoPlaying = true;
 					wmpCurrent.URL = URI;
 				}
 
@@ -1502,6 +1504,17 @@ namespace PhotoSift
 			{
 				this.Text = getMetaInfo(true, true);
 				lblInfoLabel.Text = this.Text;
+				if (bNewVideoPlaying) {
+					if (settings.SkipVideoBeginSeconds > 0 &&
+						wmpCurrent.Ctlcontrols.currentPosition < settings.SkipVideoBeginSeconds &&
+						wmpCurrent.currentMedia.duration > settings.SkipVideoBeginSeconds)
+                    {
+						wmpCurrent.Ctlcontrols.pause();
+						wmpCurrent.Ctlcontrols.currentPosition = settings.SkipVideoBeginSeconds;
+						wmpCurrent.Ctlcontrols.play();
+					}
+					bNewVideoPlaying = false;
+				}
 			}
 		}
 
