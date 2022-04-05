@@ -743,14 +743,32 @@ namespace PhotoSift
 			// Process all other keys
 			if( e.KeyCode == Keys.Pause )		// toggle Auto Advance
 			{
-				SwitchAutoAdvance(!bAutoAdvanceEnabled);
+				if (sender == wmpCurrent)
+					wmpCurrent.Ctlcontrols.pause();
+				else
+					SwitchAutoAdvance(!bAutoAdvanceEnabled);
 				e.Handled = true;
 			}
 
 			else if( e.KeyCode == Keys.Space )	// Show next
 			{
-				ShowPicByOffset( 1, ShowPicMode.UserPaging);
-				e.Handled = true;
+				var origin = sender;
+				if (sender == this && this.wmpCurrent.Visible) // unfocused
+					origin = wmpCurrent;
+
+				if (origin == wmpCurrent)
+                {
+					if (wmpCurrent.playState == WMPLib.WMPPlayState.wmppsPlaying)
+                    {
+						wmpCurrent.Ctlcontrols.pause();
+					} else {
+						wmpCurrent.Ctlcontrols.play();
+					}
+					e.Handled = true;
+				} else {
+					ShowPicByOffset(1, ShowPicMode.UserPaging);
+					e.Handled = true;
+				}
 			}
 			else if( e.KeyCode == Keys.Home )	// Goto first image
 			{
