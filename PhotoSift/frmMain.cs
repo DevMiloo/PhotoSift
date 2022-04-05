@@ -101,29 +101,21 @@ namespace PhotoSift
 				this.wmpCurrent.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.wmpCurrent_PlayStateChange);
 				this.wmpCurrent.KeyDownEvent += new AxWMPLib._WMPOCXEvents_KeyDownEventHandler(this.wmpCurrent_KeyDownEvent);
 				this.wmpCurrent.KeyUpEvent += new AxWMPLib._WMPOCXEvents_KeyUpEventHandler(this.wmpCurrent_KeyUpEvent);
+
+				this.wmpCurrent.Dock = DockStyle.Fill;
+				this.wmpCurrent.Location = new System.Drawing.Point(50, 50); // Initialize the fill position
 				this.Controls.Add(wmpCurrent);
-				((System.ComponentModel.ISupportInitialize)(this.wmpCurrent)).EndInit();
+				((System.ComponentModel.ISupportInitialize)(wmpCurrent)).EndInit();
+				wmpCurrent.uiMode = "full";
+				wmpCurrent.stretchToFit = true;
+				wmpCurrent.BringToFront();
+				wmpCurrent.settings.autoStart = true;
 			}
 			catch (Exception)
 			{
 				wmpCurrent = null;
 			}
 		}
-		private void initWmpLayout()
-		{
-			if (wmpCurrent != null)
-			{
-				wmpCurrent.uiMode = "full";
-				wmpCurrent.BringToFront();
-				wmpCurrent.Dock = DockStyle.Fill;
-				wmpCurrent.Location = new System.Drawing.Point(50, 50); // Initialize the fill position
-				wmpCurrent.settings.autoStart = true;
-
-				//wmpCurrent.Show();
-				//wmpCurrent.URL = @"";
-			}
-		}
-
 		private void frmMain_Load( object sender, EventArgs e )
 		{
 			fileManagement = new FileManagement( this );
@@ -259,13 +251,10 @@ namespace PhotoSift
 		{
 			SetScaleMode( CurrentScaleMode, false );
 			Util.CenterControl( lblHeader, picLogo.Image.Height / 2 + 20 );
-
 		}
 
 		private void frmMain_Shown( object sender, EventArgs e )
 		{
-			initWmpLayout();
-
 			if ( settings.FirstTimeUsing )
 			{
 				settings.FirstTimeUsing = false;
