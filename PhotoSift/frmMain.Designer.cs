@@ -105,6 +105,7 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.timerMouseHider = new System.Windows.Forms.Timer(this.components);
             this.timerHoldKey = new System.Windows.Forms.Timer(this.components);
+            this.timerAutoSaveSetting = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picCurrent)).BeginInit();
             this.menuStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -754,6 +755,11 @@
             this.timerHoldKey.Interval = 1000;
             this.timerHoldKey.Tick += new System.EventHandler(this.timerHoldKey_Tick);
             // 
+            // timerAutoSaveSetting
+            // 
+            this.timerAutoSaveSetting.Interval = 120;
+            this.timerAutoSaveSetting.Tick += new System.EventHandler(this.timerAutoSaveSetting_Tick);
+            // 
             // frmMain
             // 
             this.AllowDrop = true;
@@ -870,6 +876,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuReverseOrder;
         private System.Windows.Forms.ToolStripMenuItem mnuOpenContainingFolder;
         private System.Windows.Forms.ToolStripMenuItem mnuGoToIndex;
+        private System.Windows.Forms.Timer timerAutoSaveSetting;
     }
 }
 

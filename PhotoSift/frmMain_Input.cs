@@ -220,6 +220,7 @@ namespace PhotoSift
 		{
 			HaltAutoAdvance();
 			ForceShowFullscreenCursor();
+			disableAutoSaveAppSettings();
 
 			frmSettings frm = new frmSettings( settings );
 			frm.applyColorSettings = ApplyColorSettings;
@@ -228,6 +229,7 @@ namespace PhotoSift
 			ApplySettings();
 			HideFullscreenForcedCursor();
 			ShowPicByOffset( 0 );	// reload picture
+			enableAutoSaveAppSettings();
 		}
 
 		private void mnuFullscreen_Click( object sender, EventArgs e )

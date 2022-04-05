@@ -244,6 +244,7 @@ namespace PhotoSift
 				settings.FormRect_Main = new Rectangle( NormalWindowStateFormRect.Left, NormalWindowStateFormRect.Top, NormalWindowStateFormRect.Width, NormalWindowStateFormRect.Height );
 			else
 				settings.FormRect_Main = new Rectangle( this.Left, this.Top, this.Width, this.Height );
+			disableAutoSaveAppSettings();
 			SettingsHandler.SaveAppSettings( settings );
 		}
 
@@ -259,6 +260,7 @@ namespace PhotoSift
 			{
 				settings.FirstTimeUsing = false;
 			}
+			enableAutoSaveAppSettings();
 		}
 
 		// Drag Drop
@@ -1511,6 +1513,14 @@ namespace PhotoSift
 			linearGradientBrush.GammaCorrection = settings.ColorGradientBackgroundGammaCorrection;
 			e.Graphics.FillRectangle(linearGradientBrush, this.ClientRectangle);
 		}
+
+        private void timerAutoSaveSetting_Tick(object sender, EventArgs e)
+        {
+			// note: the window size and status are ignored.
+			SettingsHandler.SaveAppSettings(settings);
+		}
+		private void enableAutoSaveAppSettings() => timerAutoSaveSetting.Enabled = true;
+		private void disableAutoSaveAppSettings() => timerAutoSaveSetting.Enabled = false;
 
 		// --------------------------------------------------------------------
 
