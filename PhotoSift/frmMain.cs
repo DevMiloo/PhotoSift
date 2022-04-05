@@ -360,6 +360,8 @@ namespace PhotoSift
 
 		private string getMetaInfo(bool isVideo, bool mediaLoaded)
 		{
+			if (iCurrentPic >= pics.Count) return ""; // workaround for wmp event is late
+
 			StringBuilder sb = new StringBuilder(isVideo ? settings.InfoLabelFormatVideo : settings.InfoLabelFormat);
 			if (isVideo && !mediaLoaded) // these info is unavailable
 			{
@@ -418,11 +420,7 @@ namespace PhotoSift
 				lblHeader.Visible = true;
 				picCurrent.Image = null;
 				picCurrent.Visible = false;
-				if (wmpCurrent != null)
-				{
-					wmpCurrent.URL = null;
-					wmpCurrent.Hide();
-				}
+				HaltWmpPlayer();
 				picLogo.Visible = true;
 				lblInfoLabel.Text = this.Text;
 				Util.CenterControl( lblHeader, picLogo.Image.Height / 2 + 20 );
@@ -452,6 +450,7 @@ namespace PhotoSift
 				}
 				else
 				{
+					HaltWmpPlayer();
 					this.Text = "End of Image Pool";
 					lblHeader.Visible = true;
 					lblHeader.Text = "End of Image Pool\nGo back or add more images";
@@ -506,11 +505,7 @@ namespace PhotoSift
 			else
 			{
 				picCurrent.Show();
-				if (wmpCurrent != null)
-				{
-					wmpCurrent.Hide();
-					wmpCurrent.URL = null;
-				}
+				HaltWmpPlayer();
 			}
 
 			try
@@ -649,6 +644,14 @@ namespace PhotoSift
 		private void timerAutoAdvance_Tick( object sender, EventArgs e )
 		{
 			ShowPicByOffset( 1 );
+		}
+		private void HaltWmpPlayer()
+        {
+			if (wmpCurrent != null)
+			{
+				wmpCurrent.Hide();
+				wmpCurrent.URL = null;
+			}
 		}
 		// --
 
