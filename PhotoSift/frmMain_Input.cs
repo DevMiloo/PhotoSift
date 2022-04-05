@@ -743,7 +743,7 @@ namespace PhotoSift
 			// Process all other keys
 			if( e.KeyCode == Keys.Pause )		// toggle Auto Advance
 			{
-				if (sender == wmpCurrent)
+				if ((int)settings.VideoPlayerHookKeysControl > 0 && sender == wmpCurrent)
 					wmpCurrent.Ctlcontrols.pause();
 				else
 					SwitchAutoAdvance(!bAutoAdvanceEnabled);
@@ -756,7 +756,7 @@ namespace PhotoSift
 				if (sender == this && this.wmpCurrent.Visible) // unfocused
 					origin = wmpCurrent;
 
-				if (origin == wmpCurrent)
+				if ((int)settings.VideoPlayerHookKeysControl > 0 && origin == wmpCurrent)
                 {
 					if (wmpCurrent.playState == WMPLib.WMPPlayState.wmppsPlaying)
                     {

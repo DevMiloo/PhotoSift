@@ -233,6 +233,8 @@ namespace PhotoSift
 
 		[Category( "Controls" ), DisplayName( "Limit zoom to windows size" ), DescriptionAttribute( "If enabled, zooming maxes out when the image size is equal to the window size. In other words, you can not zoom images larger that the current window size." )]
 		public bool ZoomLimitMaxToWindowSize { get; set; }
+		[Category("Controls"), DisplayName("Player intercept keys"), DescriptionAttribute("If enabled, the video player will intercept some keyboard keys to perform actions.")]
+		public VideoPlayerHookKeysOptions VideoPlayerHookKeysControl { get; set; }
 
 		// Display Group
 		[Category( "Display" ), DisplayName( "Info label" ), DescriptionAttribute( "Info label is the one in the top left corner. It shows information about the currently loaded image. In windowed mode, this information is also shown in the window title." )]
@@ -486,6 +488,7 @@ namespace PhotoSift
 			defaultSettings.Add("FreeZoomSnap", 0);
 			defaultSettings.Add("ZoomSteps", "5,10,25,50,75,100,125,150,175,200");
 			defaultSettings.Add("ZoomLimitMaxToWindowSize", false);
+			defaultSettings.Add("VideoPlayerHookKeysControl", VideoPlayerHookKeysOptions.Basic);
 
 			// Display Group
 			defaultSettings.Add("ShowInfoLabel", ShowModes.FullscreenOnly);
@@ -603,6 +606,16 @@ namespace PhotoSift
 		[Description("File Path")]
 		FilePath,
 	}
+	public enum VideoPlayerHookKeysOptions
+	{
+		[Description("Disabled")]
+		Disabled = 0,
+		[Description("Basic")]
+		Basic = 1,
+		//[Description("Enhance")]
+		//Enhance = 2,
+	}
+	
 	public enum FeatureSwitch
 	{
 		[Description("Disabled")]
