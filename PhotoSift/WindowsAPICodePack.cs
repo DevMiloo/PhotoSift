@@ -1,6 +1,6 @@
 ﻿/*
  *  PhotoSift Ex
- *  Copyright (C) 2020  YFdyh000
+ *  Copyright (C) 2020-2022  YFdyh000
  *  
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

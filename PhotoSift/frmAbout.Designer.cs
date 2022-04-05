@@ -78,7 +78,7 @@
             // 
             this.labelLicense.AutoSize = true;
             this.labelLicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLicense.Location = new System.Drawing.Point(149, 81);
+            this.labelLicense.Location = new System.Drawing.Point(149, 97);
             this.labelLicense.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelLicense.Name = "labelLicense";
             this.labelLicense.Size = new System.Drawing.Size(55, 16);
@@ -102,7 +102,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(149, 52);
+            this.linkLabel1.Location = new System.Drawing.Point(149, 68);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(138, 16);
             this.linkLabel1.TabIndex = 30;
@@ -114,7 +114,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(149, 107);
+            this.label1.Location = new System.Drawing.Point(149, 123);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 16);
@@ -126,7 +126,7 @@
             // 
             this.labelStats.AutoSize = true;
             this.labelStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStats.Location = new System.Drawing.Point(232, 107);
+            this.labelStats.Location = new System.Drawing.Point(232, 123);
             this.labelStats.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelStats.Name = "labelStats";
             this.labelStats.Size = new System.Drawing.Size(38, 16);

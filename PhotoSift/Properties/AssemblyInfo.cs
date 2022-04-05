@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RL Vision; YFdyh000 forked")]
 [assembly: AssemblyProduct("PhotoSift Ex")]
-[assembly: AssemblyCopyright("Copyright © 2013-2020 RL Vision, YFdyh000")]
+[assembly: AssemblyCopyright("Copyright © 2013-2020 RL Vision\nCopyright © 2020-2022 YFdyh000")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
