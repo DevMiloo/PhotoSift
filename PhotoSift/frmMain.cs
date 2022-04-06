@@ -466,7 +466,14 @@ namespace PhotoSift
 				else
 				{
 					HaltWmpPlayer();
-					this.Text = "End of Image Pool";
+                    string remainingTipText = "";
+					if (pics.Count > 0)
+                    {
+						remainingTipText = string.Format(" (remaining {0} items)", pics.Count);
+						if (pics.Count == 1)
+							remainingTipText = remainingTipText.Replace("items", "item"); // todo i18n
+					}
+					this.Text = "End of Image Pool" + remainingTipText;
 					lblHeader.Visible = true;
 					lblHeader.Text = "End of Image Pool\nGo back or add more images";
 					picCurrent.Image = null;
