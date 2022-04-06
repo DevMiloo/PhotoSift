@@ -101,7 +101,7 @@ namespace PhotoSift
 				this.wmpCurrent.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.wmpCurrent_PlayStateChange);
 				this.wmpCurrent.KeyDownEvent += new AxWMPLib._WMPOCXEvents_KeyDownEventHandler(this.wmpCurrent_KeyDownEvent);
 				this.wmpCurrent.KeyUpEvent += new AxWMPLib._WMPOCXEvents_KeyUpEventHandler(this.wmpCurrent_KeyUpEvent);
-
+				this.wmpCurrent.GotFocus += (sender, e) => this.wmpCurrent_GotFocusEvent(sender, e);
 				this.wmpCurrent.Dock = DockStyle.Fill;
 				this.wmpCurrent.Location = new System.Drawing.Point(50, 50); // Initialize the fill position
 				this.Controls.Add(wmpCurrent);
@@ -1489,6 +1489,13 @@ namespace PhotoSift
 			public override Color MenuItemSelectedGradientEnd { get { return settings.CustomMenuColorHightlight; } }
 		}
 
+		private void wmpCurrent_GotFocusEvent(object sender, EventArgs e)
+		{
+			// Reject focus to avoid key clashes and ugly dotted focus box from FocusVisualStyle.
+			// Of course, this will prevent the keyboard interacting with the WMP controls.
+			// It does not seem to affect functionality for mouse operation and new windows from the WMP control.
+			this.Focus();
+		}
 		private void wmpCurrent_KeyUpEvent(object sender, AxWMPLib._WMPOCXEvents_KeyUpEvent e)
 		{
 			frmMain_KeyUp(sender, new KeyEventArgs((Keys)e.nKeyCode));
