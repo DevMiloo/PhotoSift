@@ -269,7 +269,7 @@ namespace PhotoSift
 
 		private void mnuHideMenu_Click( object sender, EventArgs e )
 		{
-			frmMain_KeyUp( this, new KeyEventArgs( Keys.Tab ) );
+			frmMain_KeyDown( this, new KeyEventArgs( Keys.Tab ) );
 		}
 
 		private void mnuRenameFile_Click( object sender, EventArgs e )
