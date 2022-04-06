@@ -88,7 +88,6 @@ namespace PhotoSift
 			Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH") + ";" + assemblyPath);
 
 			InitializeComponent();
-			initWmpPlayer();
 		}
 		[STAThread]
 		private void initWmpPlayer()
@@ -147,6 +146,8 @@ namespace PhotoSift
 			lblStatus.Text = lblInfoLabel.Text = "";
 			ShowHideLabels();
 			UpdateMenuEnabledDisabled();
+
+			initWmpPlayer();
 
 			// Attempt to load files or folders passed via command line
 			string[] args = Environment.GetCommandLineArgs();
