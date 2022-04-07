@@ -26,6 +26,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Linq;
 using System.Drawing.Drawing2D;
+using System.Diagnostics;
 
 namespace PhotoSift
 {
@@ -115,6 +116,7 @@ namespace PhotoSift
 			}
 			catch (Exception)
 			{
+				Debug.Assert(false);
 				wmpCurrent = null;
 			}
 		}
