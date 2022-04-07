@@ -452,7 +452,7 @@ namespace PhotoSift
 			defaultSettings.Add("FileMode", FileOperations.Move);
 			defaultSettings.Add("ExistingFiles", ExistingFileOptions.AppendNumber);
 			defaultSettings.Add("DeleteMode", DeleteOptions.RecycleBin);
-			defaultSettings.Add("TargetFolderPath", System.Windows.Forms.Application.StartupPath);
+			defaultSettings.Add("TargetFolderPath", "%PhotoSift%");
 
 			// Appearance Group
 #if RLVISION
