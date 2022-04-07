@@ -475,7 +475,9 @@ namespace PhotoSift
 							remainingTipText = remainingTipText.Replace("items", "item"); // todo i18n
 					}
 					updateTitleStr("End of Image Pool" + remainingTipText);
-					showAndUpdateHeader("End of Image Pool\nGo back or add more images");
+					showAndUpdateHeader(string.Format("End of Image Pool{0}\nGo back or add more images", 
+						remainingTipText.Length > 0 ? "\n"+ remainingTipText:""));
+					updateInfoLabel("End of Image Pool");
 					picCurrent.Image = null;
 					Util.CenterControl(lblHeader);
 					return;
