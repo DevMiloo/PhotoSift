@@ -1084,6 +1084,11 @@ namespace PhotoSift
 				newIndex = 0;
 			PicGoto(newIndex);
 		}
-
+		private void mnuVideoLoop_Click(object sender, EventArgs e)
+		{
+			var cur = mnuVideoLoop.Checked;
+			wmpCurrent.settings.playCount = cur ? 1 : 1000000;
+			mnuVideoLoop.Checked = !cur;
+		}
 	}
 }

@@ -54,6 +54,7 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAutoAdvanceEnabled = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuResetViewMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVideoLoop = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuTransform = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFlipX = new System.Windows.Forms.ToolStripMenuItem();
@@ -307,6 +308,7 @@
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAutoAdvanceEnabled,
             this.mnuResetViewMode,
+            this.mnuVideoLoop,
             this.toolStripMenuItem6,
             this.mnuTransform,
             this.mnuZoom,
@@ -332,6 +334,15 @@
             this.mnuResetViewMode.Size = new System.Drawing.Size(253, 22);
             this.mnuResetViewMode.Text = "Reset Scale Mode Each Pic";
             this.mnuResetViewMode.Click += new System.EventHandler(this.mnuResetViewMode_Click);
+            // 
+            // mnuVideoLoop
+            // 
+            this.mnuVideoLoop.Checked = true;
+            this.mnuVideoLoop.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnuVideoLoop.Name = "mnuVideoLoop";
+            this.mnuVideoLoop.Size = new System.Drawing.Size(253, 22);
+            this.mnuVideoLoop.Text = "Enable Auto Repeat";
+            this.mnuVideoLoop.Click += new System.EventHandler(this.mnuVideoLoop_Click);
             // 
             // toolStripMenuItem6
             // 
@@ -884,6 +895,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuGoToIndex;
         private System.Windows.Forms.Timer timerAutoSaveSetting;
         private System.Windows.Forms.Timer timerMetaInfoUpdate;
+        private System.Windows.Forms.ToolStripMenuItem mnuVideoLoop;
     }
 }
 

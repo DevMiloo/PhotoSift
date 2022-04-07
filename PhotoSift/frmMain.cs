@@ -111,6 +111,7 @@ namespace PhotoSift
 				wmpCurrent.uiMode = "full";
 				wmpCurrent.stretchToFit = true;
 				wmpCurrent.settings.autoStart = true;
+				wmpCurrent.settings.playCount = 1000000;
 				initzIndex(this);
 			}
 			catch (Exception)
