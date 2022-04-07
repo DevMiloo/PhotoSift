@@ -110,6 +110,7 @@ namespace PhotoSift
 				wmpCurrent.uiMode = "full";
 				wmpCurrent.stretchToFit = true;
 				wmpCurrent.BringToFront();
+				lblInfoLabel.BringToFront();
 				wmpCurrent.settings.autoStart = true;
 			}
 			catch (Exception)
@@ -314,7 +315,8 @@ namespace PhotoSift
 			if( items.Length == 0 ) return 0;
 
 			HaltAutoAdvance();
-			this.Text = lblHeader.Text = "Loading...";
+			lblHeader.Text = "Loading...";
+			updateTitleStr("Loading...");
 			Util.CenterControl( lblHeader, picLogo.Image.Height / 2 + 20 );
 			this.Refresh();
 
@@ -430,14 +432,14 @@ namespace PhotoSift
 		{
 			if( pics.Count == 0 )
 			{
-				this.Text = Util.GetAppName();
+				updateTitleStr(Util.GetAppName());
 				lblHeader.Text = "Add or Drop Images to Start";
 				lblHeader.Visible = true;
 				picCurrent.Image = null;
 				picCurrent.Visible = false;
 				HaltWmpPlayer();
 				picLogo.Visible = true;
-				lblInfoLabel.Text = this.Text;
+				updateInfoLabel(this.Text);
 				Util.CenterControl( lblHeader, picLogo.Image.Height / 2 + 20 );
 				UpdateMenuEnabledDisabled();
 				return;
@@ -473,7 +475,7 @@ namespace PhotoSift
 						if (pics.Count == 1)
 							remainingTipText = remainingTipText.Replace("items", "item"); // todo i18n
 					}
-					this.Text = "End of Image Pool" + remainingTipText;
+					updateTitleStr("End of Image Pool" + remainingTipText);
 					lblHeader.Visible = true;
 					lblHeader.Text = "End of Image Pool\nGo back or add more images";
 					picCurrent.Image = null;
@@ -488,8 +490,8 @@ namespace PhotoSift
 
 
 			// load image
-			this.Text = "Loading...";
-			lblInfoLabel.Text = this.Text;
+			updateTitleStr("Loading...");
+			updateInfoLabel(this.Text);
 			lblHeader.Visible = false;
 			Application.DoEvents();
 
@@ -516,7 +518,7 @@ namespace PhotoSift
 					wmpCurrent.URL = URI;
 				}
 
-				this.Text = "Video playback";
+				updateTitleStr("Video playback");
 				curMetaInfoCache = getMetaInfo(true, false);
 				updateMetaInfo(true);
 
@@ -549,10 +551,10 @@ namespace PhotoSift
 			catch( Exception ex )
 			{
 				// show error message
-				lblInfoLabel.Text = "(" + ( iCurrentPic + 1 ) + "/" + pics.Count + ") " + pics[iCurrentPic];
+				updateInfoLabel("(" + (iCurrentPic + 1) + "/" + pics.Count + ") " + pics[iCurrentPic]);
 				lblHeader.Visible = true;
 				lblHeader.Text = "Error loading image:\n" + ex.Message;
-				this.Text = "Error loading image: " + pics[iCurrentPic];
+				updateTitleStr("Error loading image: " + pics[iCurrentPic]);
 				picCurrent.Image = null;
 				Util.CenterControl( lblHeader );
 				UpdateMenuEnabledDisabled();
@@ -682,6 +684,7 @@ namespace PhotoSift
 				lblInfoLabel.Visible = ( settings.ShowInfoLabel == ShowModes.AlwaysShow || settings.ShowInfoLabel == ShowModes.FullscreenOnly );
 			else
 				lblInfoLabel.Visible = ( settings.ShowInfoLabel == ShowModes.AlwaysShow || settings.ShowInfoLabel == ShowModes.WindowedOnly );
+			//lblInfoLabel.BringToFront(); // Make sure to cover the WMP
 		}
 		private void ToggleMenuVisibility()
 		{
@@ -1559,17 +1562,28 @@ namespace PhotoSift
 		private void enableAutoSaveAppSettings() => timerAutoSaveSetting.Enabled = true;
 		private void disableAutoSaveAppSettings() => timerAutoSaveSetting.Enabled = false;
 
-		private void updateMetaInfo(bool autoUpdate) {
-			timerMetaInfoUpdate_Tick(null,null);
+		private void updateTitleStr(string str)
+		{
+			timerMetaInfoUpdate.Enabled = false; // avoid being overwritten by playback status
+			this.Text = str;
+		}
+		private void updateMetaInfo(bool autoUpdate)
+		{
+			timerMetaInfoUpdate_Tick(null, null);
 			timerMetaInfoUpdate.Enabled = autoUpdate;
 		}
-        private void timerMetaInfoUpdate_Tick(object sender, EventArgs e)
+		private void updateInfoLabel(string str)
+		{
+			lblInfoLabel.Text = str;
+			lblInfoLabel.BringToFront();
+		}
+
+		private void timerMetaInfoUpdate_Tick(object sender, EventArgs e)
         {
 			var cur = wmpCurrent.Ctlcontrols.currentPositionString;
 			var str= curMetaInfoCache.Replace("%!curpos", cur);
 			this.Text = str;
-			lblInfoLabel.Text = str;
-			lblInfoLabel.BringToFront();
+			updateInfoLabel(str);
 		}
 
         // --------------------------------------------------------------------
