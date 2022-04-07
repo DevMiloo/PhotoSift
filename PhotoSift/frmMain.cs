@@ -54,6 +54,7 @@ namespace PhotoSift
 		private bool bPreventAutoHideCursor = false;
 		private bool bNewVideoPlaying = false;
 		private string curMetaInfoCache = "";
+		private frmKeyFolders KeyFolders = null;
 
 		private string[] allowsMIME;
 
@@ -1603,10 +1604,9 @@ namespace PhotoSift
 			this.Text = str;
 			updateInfoLabel(str);
 		}
-
         // --------------------------------------------------------------------
 
 
-	}
+    }
 
 }

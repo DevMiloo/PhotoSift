@@ -218,6 +218,10 @@ namespace PhotoSift
 
 		private void mnuOpenSettings_Click( object sender, EventArgs e )
 		{
+			if (KeyFolders != null)
+				if (!KeyFolders.IsDisposed)
+					KeyFolders.Close();
+
 			HaltAutoAdvance();
 			ForceShowFullscreenCursor();
 			disableAutoSaveAppSettings();
@@ -1090,5 +1094,16 @@ namespace PhotoSift
 			wmpCurrent.settings.playCount = cur ? 1 : 1000000;
 			mnuVideoLoop.Checked = !cur;
 		}
+
+		private void mnuKeyFolders_Click(object sender, EventArgs e)
+		{
+			if (KeyFolders == null)
+				KeyFolders = new frmKeyFolders(settings);
+			else if (KeyFolders.IsDisposed)
+				KeyFolders = new frmKeyFolders(settings);
+
+			KeyFolders.Show();
+		}
+
 	}
 }
