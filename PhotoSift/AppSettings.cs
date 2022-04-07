@@ -247,10 +247,10 @@ namespace PhotoSift
 		[TypeConverter( typeof( EnumTypeConverter ) )]
 		public ShowModes ShowModeLabel { get; set; }
 
-		[Category( "Display" ), DisplayName( "Info label format" ), DescriptionAttribute( "Here you can decide what to show in the info label. Available format tags: Filename: %f, Parent folder: %d, Full path: %p, Image width: %w, Image height: %h, Filesize: %s, New line: %n, Image pool total count: %t, Image pool current number: %c" )]
+		[Category("Display"), DisplayName("Info label format"), DescriptionAttribute("Here you can decide what to show in the info label. Available format tags: Filename=%f, Parent folder=%d, Full path=%p, Image width=%w, Image height=%h, Filesize=%s, New line=%n, Image pool total count=%t, Image pool current number=%c")]
 		public string InfoLabelFormat { get; set; }
-		[Category("Display"), DisplayName("Info label format for videos"), DescriptionAttribute("Here you can decide what to show in the info label. Available format tags: Filename: %f, Parent folder: %d, Full path: %p, width: %w, height: %h, Filesize: %s, New line: %n, pool total count: %t, pool current number: %c, %time: media duration")]
-		public string InfoLabelFormatVideo { get; set; }
+		[Category("Display"), DisplayName("Info label format for videos"), DescriptionAttribute("Here you can decide what to show in the info label. Available format tags: Filename=%f, Parent folder=%d, Full path=%p, width x height=%wb, width=%w, height=%h, Filesize=%s, New line=%n, pool total count=%t, pool current number=%c, current playback position=%curpos, media duration=%duration")]
+		public string InfoLabelFormatVideov2 { get; set; }
 
 		[Category( "Display" ), DisplayName( "Hide cursor in fullscreen" ), DescriptionAttribute( "If enabled, the cursor will automatically be hidden on inactivity." )]
 		public bool FullscreenHideCursor { get; set; }
@@ -497,7 +497,8 @@ namespace PhotoSift
 			defaultSettings.Add("ShowInfoLabel", ShowModes.FullscreenOnly);
 			defaultSettings.Add("ShowModeLabel", ShowModes.AlwaysShow);
 			defaultSettings.Add("InfoLabelFormat", "(%c / %t) %f");
-			defaultSettings.Add("InfoLabelFormatVideo", "(%c / %t) %f  %time  %w x %h");
+			defaultSettings.Add("InfoLabelFormatVideov2", "(%c / %t) %f  %curpos / %duration  %wh");
+			
 			defaultSettings.Add("FullscreenHideCursor", true);
 			defaultSettings.Add("EnlargeSmallImages", false);
 #if RLVISION

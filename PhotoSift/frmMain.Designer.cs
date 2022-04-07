@@ -106,6 +106,7 @@
             this.timerMouseHider = new System.Windows.Forms.Timer(this.components);
             this.timerHoldKey = new System.Windows.Forms.Timer(this.components);
             this.timerAutoSaveSetting = new System.Windows.Forms.Timer(this.components);
+            this.timerMetaInfoUpdate = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picCurrent)).BeginInit();
             this.menuStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -131,7 +132,7 @@
             this.lblStatus.ForeColor = System.Drawing.Color.Gray;
             this.lblStatus.Location = new System.Drawing.Point(2, 250);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(53, 16);
+            this.lblStatus.Size = new System.Drawing.Size(52, 16);
             this.lblStatus.TabIndex = 8;
             this.lblStatus.Text = "lblMode";
             this.lblStatus.Visible = false;
@@ -144,7 +145,7 @@
             this.lblInfoLabel.ForeColor = System.Drawing.Color.Gray;
             this.lblInfoLabel.Location = new System.Drawing.Point(2, 2);
             this.lblInfoLabel.Name = "lblInfoLabel";
-            this.lblInfoLabel.Size = new System.Drawing.Size(222, 16);
+            this.lblInfoLabel.Size = new System.Drawing.Size(221, 16);
             this.lblInfoLabel.TabIndex = 7;
             this.lblInfoLabel.Text = "lblInfoLabel (only shows in fullscreen)";
             // 
@@ -760,6 +761,11 @@
             this.timerAutoSaveSetting.Interval = 120;
             this.timerAutoSaveSetting.Tick += new System.EventHandler(this.timerAutoSaveSetting_Tick);
             // 
+            // timerMetaInfoUpdate
+            // 
+            this.timerMetaInfoUpdate.Interval = 500;
+            this.timerMetaInfoUpdate.Tick += new System.EventHandler(this.timerMetaInfoUpdate_Tick);
+            // 
             // frmMain
             // 
             this.AllowDrop = true;
@@ -877,6 +883,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuOpenContainingFolder;
         private System.Windows.Forms.ToolStripMenuItem mnuGoToIndex;
         private System.Windows.Forms.Timer timerAutoSaveSetting;
+        private System.Windows.Forms.Timer timerMetaInfoUpdate;
     }
 }
 

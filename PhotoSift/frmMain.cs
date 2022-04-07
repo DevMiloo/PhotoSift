@@ -52,6 +52,7 @@ namespace PhotoSift
 		private int FullScreenCursorLastMouseX = -1;
 		private bool bPreventAutoHideCursor = false;
 		private bool bNewVideoPlaying = false;
+		private string curMetaInfoCache = "";
 
 		private string[] allowsMIME;
 
@@ -366,24 +367,34 @@ namespace PhotoSift
 		{
 			if (iCurrentPic >= pics.Count) return ""; // workaround for wmp event is late
 
-			StringBuilder sb = new StringBuilder(isVideo ? settings.InfoLabelFormatVideo : settings.InfoLabelFormat);
+			StringBuilder sb = new StringBuilder(isVideo ? settings.InfoLabelFormatVideov2 : settings.InfoLabelFormat);
 			if (isVideo && !mediaLoaded) // these info is unavailable
 			{
-				sb.Replace("%w", "");
-				sb.Replace("%h", "");
-				sb.Replace("%time", "");
+				//sb.Replace("%wh", "");
+				//sb.Replace("%curpos", "");
 			}
 
 			if (isVideo) // note: including audio
 			{
+				var whstr = "";
+				int intw = wmpCurrent.currentMedia.imageSourceWidth; // need wmppsPlaying, not work for 'wmppsReady'
+				int inth = wmpCurrent.currentMedia.imageSourceHeight;
+				if (intw+ inth > 0) // exclude audio
+					whstr=string.Format("{0} x {1}", intw, inth);
+				sb.Replace("%wh", whstr);
+				//sb.Replace("%curpos", wmpCurrent.Ctlcontrols.currentPositionString);
+				sb.Replace("%curpos", "%!curpos"); // temporary escape avert %c
+				sb.Replace("%duration", wmpCurrent.currentMedia.durationString);
+
+				// Multi-character variables must be replaced first
+
 				sb.Replace("%f", System.IO.Path.GetFileName(pics[iCurrentPic]));
 				sb.Replace("%p", System.IO.Path.GetDirectoryName(pics[iCurrentPic]));
 				sb.Replace("%d", System.IO.Directory.GetParent(pics[iCurrentPic]).Name);
-				sb.Replace("%w", wmpCurrent.currentMedia.imageSourceWidth.ToString()); // need wmppsPlaying, not work for 'wmppsReady'
-				sb.Replace("%h", wmpCurrent.currentMedia.imageSourceHeight.ToString());
+				sb.Replace("%w", intw.ToString());
+				sb.Replace("%h", inth.ToString());
 				sb.Replace("%n", "\n");
 				sb.Replace("%c", (iCurrentPic + 1).ToString());
-				sb.Replace("%time", wmpCurrent.currentMedia.durationString);
 				sb.Replace("%t", pics.Count.ToString());
 				sb.Replace("%s", Util.TidyFileSize(new FileInfo(pics[iCurrentPic]).Length));
 				return sb.ToString();
@@ -499,9 +510,8 @@ namespace PhotoSift
 				}
 
 				this.Text = "Video playback";
-				this.Text = getMetaInfo(true, false);
-				lblInfoLabel.Text = this.Text;
-				lblInfoLabel.BringToFront();
+				curMetaInfoCache = getMetaInfo(true, false);
+				updateMetaInfo(true);
 
 				UpdateMenuEnabledDisabled();
 				ResumeAutoAdvance();
@@ -558,9 +568,8 @@ namespace PhotoSift
 					imageCache.DropImage( pics[n] );
 			}
 			//
-
-			this.Text = getMetaInfo(false, true);
-			lblInfoLabel.Text = this.Text;
+			curMetaInfoCache = getMetaInfo(false, false);
+			updateMetaInfo(false);
 
 #if RLVISION
 			if( settings.AutoMoveToScreen && bFullScreen )
@@ -1510,8 +1519,8 @@ namespace PhotoSift
 		{
 			if (e.newState == (int)WMPLib.WMPPlayState.wmppsPlaying)
 			{
-				this.Text = getMetaInfo(true, true);
-				lblInfoLabel.Text = this.Text;
+				curMetaInfoCache = getMetaInfo(true, false);
+				updateMetaInfo(true);
 				if (bNewVideoPlaying) {
 					if (settings.SkipVideoBeginSeconds > 0 &&
 						wmpCurrent.Ctlcontrols.currentPosition < settings.SkipVideoBeginSeconds &&
@@ -1543,7 +1552,20 @@ namespace PhotoSift
 		private void enableAutoSaveAppSettings() => timerAutoSaveSetting.Enabled = true;
 		private void disableAutoSaveAppSettings() => timerAutoSaveSetting.Enabled = false;
 
-		// --------------------------------------------------------------------
+		private void updateMetaInfo(bool autoUpdate) {
+			timerMetaInfoUpdate_Tick(null,null);
+			timerMetaInfoUpdate.Enabled = autoUpdate;
+		}
+        private void timerMetaInfoUpdate_Tick(object sender, EventArgs e)
+        {
+			var cur = wmpCurrent.Ctlcontrols.currentPositionString;
+			var str= curMetaInfoCache.Replace("%!curpos", cur);
+			this.Text = str;
+			lblInfoLabel.Text = str;
+			lblInfoLabel.BringToFront();
+		}
+
+        // --------------------------------------------------------------------
 
 
 	}
