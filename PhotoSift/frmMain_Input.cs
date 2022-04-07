@@ -737,6 +737,7 @@ namespace PhotoSift
 			}
 #endif
 
+			if (e.Modifiers == (Keys.Alt) && e.KeyCode == Keys.F4) mnuExit_Click(sender, e); // Workaround for WMP control
 
 			// Control/Shift/Alt are not used below so skip the rest
 			if ( e.Alt || e.Control || e.Shift ) return;
