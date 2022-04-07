@@ -433,8 +433,7 @@ namespace PhotoSift
 			if( pics.Count == 0 )
 			{
 				updateTitleStr(Util.GetAppName());
-				lblHeader.Text = "Add or Drop Images to Start";
-				lblHeader.Visible = true;
+				showAndUpdateHeader("Add or Drop Images to Start");
 				picCurrent.Image = null;
 				picCurrent.Visible = false;
 				HaltWmpPlayer();
@@ -476,8 +475,7 @@ namespace PhotoSift
 							remainingTipText = remainingTipText.Replace("items", "item"); // todo i18n
 					}
 					updateTitleStr("End of Image Pool" + remainingTipText);
-					lblHeader.Visible = true;
-					lblHeader.Text = "End of Image Pool\nGo back or add more images";
+					showAndUpdateHeader("End of Image Pool\nGo back or add more images");
 					picCurrent.Image = null;
 					Util.CenterControl(lblHeader);
 					return;
@@ -552,8 +550,7 @@ namespace PhotoSift
 			{
 				// show error message
 				updateInfoLabel("(" + (iCurrentPic + 1) + "/" + pics.Count + ") " + pics[iCurrentPic]);
-				lblHeader.Visible = true;
-				lblHeader.Text = "Error loading image:\n" + ex.Message;
+				showAndUpdateHeader("Error loading image:\n" + ex.Message);
 				updateTitleStr("Error loading image: " + pics[iCurrentPic]);
 				picCurrent.Image = null;
 				Util.CenterControl( lblHeader );
@@ -1566,6 +1563,11 @@ namespace PhotoSift
 		{
 			timerMetaInfoUpdate.Enabled = false; // avoid being overwritten by playback status
 			this.Text = str;
+		}
+		private void showAndUpdateHeader(string str)
+		{
+			lblHeader.Visible = true;
+			lblHeader.Text = str;
 		}
 		private void updateMetaInfo(bool autoUpdate)
 		{
