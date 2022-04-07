@@ -438,19 +438,19 @@ namespace PhotoSift
 		private void ShowPicByOffset( int picsToSkip, ShowPicMode specialMode = ShowPicMode.None)
 		{
 			if( pics.Count == 0 )
-			{
-				updateTitleStr(Util.GetAppName());
-				showAndUpdateHeader("Add or Drop Images to Start");
-				picCurrent.Image = null;
-				picCurrent.Visible = false;
-				HaltWmpPlayer();
-				picLogo.Visible = true;
-				updateInfoLabel(this.Text);
-				Util.CenterControl( lblHeader, picLogo.Image.Height / 2 + 20 );
-				UpdateMenuEnabledDisabled();
-				return;
-			}
-			else if( picLogo.Visible )
+            {
+                updateTitleWithEmptyqueue();
+                showAndUpdateHeader("Add or Drop Images to Start");
+                picCurrent.Image = null;
+                picCurrent.Visible = false;
+                HaltWmpPlayer();
+                picLogo.Visible = true;
+                updateInfoLabel(this.Text);
+                Util.CenterControl(lblHeader, picLogo.Image.Height / 2 + 20);
+                UpdateMenuEnabledDisabled();
+                return;
+            }
+            else if( picLogo.Visible )
 			{
 				picLogo.Visible = false;
 				picCurrent.Visible = true;
@@ -626,9 +626,16 @@ namespace PhotoSift
 			ResumeAutoAdvance();
 		}
 
+        private void updateTitleWithEmptyqueue()
+        {
+            string titleSuffix = "";
+            if (settings.TargetPathInTitlebar) titleSuffix = string.Format(" - Target dir: {0}", settings.TargetFolder);
+            updateTitleStr(Util.GetAppName() + titleSuffix);
+        }
 
-		// Update when a picture changes path, for example after a rename
-		private void UpdatePic( string currentPicturePath, string newPicturePath, int pictureIndex = -1 )
+
+        // Update when a picture changes path, for example after a rename
+        private void UpdatePic( string currentPicturePath, string newPicturePath, int pictureIndex = -1 )
 		{
 			if( pictureIndex == -1 )
 			{

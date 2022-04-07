@@ -187,7 +187,8 @@ namespace PhotoSift
 		}
 		[Browsable( false )]
 		public SerializableColor CustomMenuColorSelected_Serializable { get; set; }
-
+		[Category("Appearance"), DisplayName("Target path in title bar"), DescriptionAttribute("Display the target path in the title bar while no files are in the queue.")]
+		public bool TargetPathInTitlebar { get; set; }
 
 		// Controls Group
 		[Category("Controls"), DisplayName("Repeat interval (ms)"), DescriptionAttribute("Interval (ms) for press and hold a key to repeat actions. The value < 100 ms will disalbe this feature. The first trigger will double the time.")]
@@ -472,6 +473,7 @@ namespace PhotoSift
 			defaultSettings.Add("CustomMenuColorText", Color.FromArgb(255, 255, 255, 255));
 			defaultSettings.Add("CustomMenuColorBorder", Color.FromArgb(255, 128, 128, 128));
 			defaultSettings.Add("CustomMenuColorHightlight", Color.FromArgb(255, 65, 65, 65));
+			defaultSettings.Add("TargetPathInTitlebar", true);
 
 			// Controls Group
 			defaultSettings.Add("HoldKeyInterval", 300);

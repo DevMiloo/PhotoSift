@@ -265,6 +265,7 @@ namespace PhotoSift
 				string path = dialog.FileName;
 				settings.TargetFolder = path;
 			}
+			if (pics.Count == 0) updateTitleWithEmptyqueue();
 		}
 
 		private void mnuHideMenu_Click( object sender, EventArgs e )
