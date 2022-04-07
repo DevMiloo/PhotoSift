@@ -13,17 +13,26 @@ namespace PhotoSift
 {
     public partial class frmKeyFolders : Form
     {
-		Dictionary<string, string> keyFolderPaths = null;
-		public frmKeyFolders(AppSettings settings)
+		public frmKeyFolders(Dictionary<string, string> keyFolderPaths)
 		{
 			InitializeComponent();
-			keyFolderPaths = DictionaryFromType(settings);
-			AddComponents();
+			AddComponents(keyFolderPaths);
 		}
 
-		private void AddComponents()
+		private void AddComponents(Dictionary<string, string> keyFolderPaths)
         {
-			
+            var sizes = new Dictionary<string, Size>
+            {
+                { "Min", new Size(40, 16) }
+            };
+            var curFont = new TextBox().Font;
+			foreach (string key in keyFolderPaths.Keys)
+            {
+				sizes.Add(key, TextRenderer.MeasureText(keyFolderPaths[key], curFont));
+			}
+			int maxH = sizes.OrderByDescending(s => s.Value.Height).First().Value.Height;
+			int maxW = sizes.OrderByDescending(s => s.Value.Width).First().Value.Width + 20;
+
 			foreach (string key in keyFolderPaths.Keys)
 			{
 				int y_loc = (this.Controls.Count / 2 ) * 22;
@@ -39,11 +48,20 @@ namespace PhotoSift
 				txt.Name = "txt" + key;
 				txt.Text = Path.GetFileName(keyFolderPaths[key]);
 				txt.ReadOnly = true;
-				txt.Size = new Size(237, 22);
+				txt.Size = new Size(maxW, maxH);
 				txt.Location = new Point(37, y_loc + 6);
 				this.Controls.Add(txt);
-
 			}
+			Label lblm = new Label
+            {
+                Name = "lblMargins",
+                Text = "",
+                AutoSize = false,
+                Size = new Size(17, 4),
+                Location = new Point(12, (this.Controls.Count / 2) * 22 + 9)
+            };
+            this.Controls.Add(lblm);
+
 			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
@@ -70,5 +88,6 @@ namespace PhotoSift
 			}
 			return dict;
 		}
+
     }
 }

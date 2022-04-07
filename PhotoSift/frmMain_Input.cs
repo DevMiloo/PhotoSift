@@ -218,9 +218,7 @@ namespace PhotoSift
 
 		private void mnuOpenSettings_Click( object sender, EventArgs e )
 		{
-			if (KeyFolders != null)
-				if (!KeyFolders.IsDisposed)
-					KeyFolders.Close();
+			KeyFolders = null;
 
 			HaltAutoAdvance();
 			ForceShowFullscreenCursor();
@@ -234,6 +232,12 @@ namespace PhotoSift
 			HideFullscreenForcedCursor();
 			ShowPicByOffset( 0 );	// reload picture
 			enableAutoSaveAppSettings();
+
+			if (KeyFoldersWindow != null)
+            {
+				KeyFoldersWindow.Close();
+				mnuKeyFolders_Click(sender, e);
+			}
 		}
 
 		private void mnuFullscreen_Click( object sender, EventArgs e )
@@ -1095,14 +1099,24 @@ namespace PhotoSift
 			mnuVideoLoop.Checked = !cur;
 		}
 
+		private Dictionary<string, string> KeyFolders = null;
+		private Form KeyFoldersWindow = null;
 		private void mnuKeyFolders_Click(object sender, EventArgs e)
 		{
 			if (KeyFolders == null)
-				KeyFolders = new frmKeyFolders(settings);
-			else if (KeyFolders.IsDisposed)
-				KeyFolders = new frmKeyFolders(settings);
+                KeyFolders = frmKeyFolders.DictionaryFromType(settings);
 
-			KeyFolders.Show();
+            if (KeyFolders.Count > 0)
+			{
+				KeyFoldersWindow = new frmKeyFolders(KeyFolders);
+				KeyFoldersWindow.Show();
+			}
+			else if (sender == mnuKeyFolders)
+			{
+				MessageBox.Show("You haven't configured a custom key to a specific directory.",
+					"No configured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+
 		}
 
 	}
