@@ -236,7 +236,7 @@ namespace PhotoSift
 		public bool ZoomLimitMaxToWindowSize { get; set; }
 		[Category("Controls"), DisplayName("Player intercept keys"), DescriptionAttribute("If enabled, the video player will intercept some keyboard keys to perform actions.")]
 		public VideoPlayerHookKeysOptions VideoPlayerHookKeysControl { get; set; }
-		[Category("Controls"), DisplayName("Ignore video beginnings"), DescriptionAttribute("If the value is greater than 0, the videos will be seek to the location (in seconds) to ignore the beginning. If the video length is less than this value, it plays from scratch. Seeking is not supported for some video formats.")]
+		[Category("Controls"), DisplayName("Ignore video beginnings (s)"), DescriptionAttribute("If the value is greater than 0, the videos will be seek to the location (in seconds) to ignore the beginning. If the video length is less than this value, it plays from scratch. Seeking is not supported for some video formats.")]
         public int SkipVideoBeginSeconds { get; set; }
 
 		// Display Group
