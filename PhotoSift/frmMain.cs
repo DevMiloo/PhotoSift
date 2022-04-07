@@ -96,29 +96,34 @@ namespace PhotoSift
 		{
 			try
 			{
-				this.wmpCurrent = new AxWMPLib.AxWindowsMediaPlayer();
-				((System.ComponentModel.ISupportInitialize)(this.wmpCurrent)).BeginInit();
-				this.wmpCurrent.Enabled = true;
-				this.wmpCurrent.Name = "wmpCurrent";
-				this.wmpCurrent.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.wmpCurrent_PlayStateChange);
-				this.wmpCurrent.KeyDownEvent += new AxWMPLib._WMPOCXEvents_KeyDownEventHandler(this.wmpCurrent_KeyDownEvent);
-				this.wmpCurrent.KeyUpEvent += new AxWMPLib._WMPOCXEvents_KeyUpEventHandler(this.wmpCurrent_KeyUpEvent);
-				this.wmpCurrent.GotFocus += (sender, e) => this.wmpCurrent_GotFocusEvent(sender, e);
-				this.wmpCurrent.Dock = DockStyle.Fill;
-				this.wmpCurrent.Location = new System.Drawing.Point(50, 50); // Initialize the fill position
-				this.Controls.Add(wmpCurrent);
+				wmpCurrent = new AxWMPLib.AxWindowsMediaPlayer();
+				((System.ComponentModel.ISupportInitialize)(wmpCurrent)).BeginInit();
+				wmpCurrent.Enabled = true;
+				wmpCurrent.Name = "wmpCurrent";
+				wmpCurrent.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(wmpCurrent_PlayStateChange);
+				wmpCurrent.KeyDownEvent += new AxWMPLib._WMPOCXEvents_KeyDownEventHandler(wmpCurrent_KeyDownEvent);
+				wmpCurrent.KeyUpEvent += new AxWMPLib._WMPOCXEvents_KeyUpEventHandler(wmpCurrent_KeyUpEvent);
+				wmpCurrent.GotFocus += (sender, e) => wmpCurrent_GotFocusEvent(sender, e);
+				wmpCurrent.Dock = DockStyle.Fill;
+				wmpCurrent.Location = new System.Drawing.Point(50, 50); // Initialize the fill position
+				this.panelMain.Controls.Add(wmpCurrent);
 				((System.ComponentModel.ISupportInitialize)(wmpCurrent)).EndInit();
 				wmpCurrent.uiMode = "full";
 				wmpCurrent.stretchToFit = true;
-				wmpCurrent.BringToFront();
-				lblInfoLabel.BringToFront();
 				wmpCurrent.settings.autoStart = true;
+				initzIndex(this);
 			}
 			catch (Exception)
 			{
 				Debug.Assert(false);
 				wmpCurrent = null;
 			}
+		}
+		private void initzIndex(frmMain that)
+        {
+			that.lblInfoLabel.Parent.Controls.SetChildIndex(that.lblInfoLabel, 0);
+			that.wmpCurrent.Parent.Controls.SetChildIndex(that.wmpCurrent, 1);
+			that.picCurrent.Parent.Controls.SetChildIndex(that.picCurrent, 2);
 		}
 		private void frmMain_Load( object sender, EventArgs e )
 		{
@@ -685,7 +690,6 @@ namespace PhotoSift
 				lblInfoLabel.Visible = ( settings.ShowInfoLabel == ShowModes.AlwaysShow || settings.ShowInfoLabel == ShowModes.FullscreenOnly );
 			else
 				lblInfoLabel.Visible = ( settings.ShowInfoLabel == ShowModes.AlwaysShow || settings.ShowInfoLabel == ShowModes.WindowedOnly );
-			//lblInfoLabel.BringToFront(); // Make sure to cover the WMP
 		}
 		private void ToggleMenuVisibility()
 		{
@@ -1580,8 +1584,8 @@ namespace PhotoSift
 		}
 		private void updateInfoLabel(string str)
 		{
+			if (lblInfoLabel.Text == str) return;
 			lblInfoLabel.Text = str;
-			lblInfoLabel.BringToFront();
 		}
 
 		private void timerMetaInfoUpdate_Tick(object sender, EventArgs e)
