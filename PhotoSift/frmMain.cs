@@ -308,17 +308,24 @@ namespace PhotoSift
 					if (settings.expandFolderLnks || newPics.Count < 1)
                     {
 						var files = System.IO.Directory.EnumerateFiles(targetPath, "*", System.IO.SearchOption.AllDirectories).ToArray();
+                        foreach (var file in files)
+                        {
+							_addFiles_AddingByMIME(file, ref newPics, allowsExts);
+						}
 					}
-					return;
 				}
                 else
                 {
 					filePath = targetPath;
 					if (pics.Exists(i => i == filePath)) return;
-					ext = Path.GetExtension(filePath);
+					_addFiles_AddingByMIME(filePath, ref newPics, allowsExts);
 				}
+				return;
 			}
-			
+			_addFiles_AddingByMIME(filePath, ref newPics, allowsExts);
+		}
+		private void _addFiles_AddingByMIME(string filePath, ref List<string> newPics, List<string> allowsExts) {
+			string ext = Path.GetExtension(filePath);
 			if (settings.FileMIMEChecker == FeatureSwitch.Enabled && allowsMIME.Length > 0)
 			{
 				string mime = MimeTypes.MimeTypeMap.GetMimeType(ext);
