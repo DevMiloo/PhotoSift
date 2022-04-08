@@ -36,6 +36,7 @@ namespace PhotoSift
     /// </summary>
     public partial class frmMain : Form
 	{
+		private static bool isAltF4Down;
 
 		// -- Handle Menu Items -------------------------------------------------------------------------------------
 
@@ -746,7 +747,8 @@ namespace PhotoSift
 			}
 #endif
 
-			if (e.Modifiers == (Keys.Alt) && e.KeyCode == Keys.F4) mnuExit_Click(sender, e); // Workaround for WMP control
+			if (e.Modifiers == (Keys.Alt) && e.KeyCode == Keys.F4 && isAltF4Down) mnuExit_Click(sender, e); // Workaround for WMP control
+			isAltF4Down = false;
 
 			// Control/Shift/Alt are not used below so skip the rest
 			if ( e.Alt || e.Control || e.Shift ) return;
@@ -956,6 +958,8 @@ namespace PhotoSift
 				ToggleMenuVisibility();
 				e.Handled = true;
 			}
+
+			if (e.Modifiers == (Keys.Alt) && e.KeyCode == Keys.F4) isAltF4Down = true;
 
 			// keyboard zoom (handled in keydown event to allow for key repeats)
 			else if( e.KeyCode == Keys.Add || e.KeyCode == Keys.Subtract || e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.OemMinus )
