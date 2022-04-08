@@ -297,16 +297,23 @@ namespace PhotoSift
 		private void _addFile(string file, ref List<string> newPics, List<string> allowsExts)
 		{
 			if (pics.Exists(i => i == file)) return;
+			string ext = Path.GetExtension(file);
+
+			if (ext.ToLower() == ".lnk")
+            {
+				file = GetLnkFileTarget(file);
+				ext = Path.GetExtension(file);
+			}
 
 			if (settings.FileMIMEChecker == FeatureSwitch.Enabled && allowsMIME.Length > 0)
 			{
-				string mime = GetFileMIME(file);
+				string mime = MimeTypes.MimeTypeMap.GetMimeType(ext);
 
 				int match = allowsMIME.Where(rule => mime.Contains(rule)).ToArray().Length;
 				if (match > 0)
 					newPics.Add(file);
 			}
-			else if (allowsExts.Contains(Path.GetExtension(file), StringComparer.OrdinalIgnoreCase))
+			else if (allowsExts.Contains(ext, StringComparer.OrdinalIgnoreCase))
 				newPics.Add(file);
 		}
 		private int AddFiles( string[] items )
@@ -1598,11 +1605,18 @@ namespace PhotoSift
 			updateInfoLabel(str);
 		}
 
-		public static string GetFileMIME(string filePath)
-		{
-			var ext = Path.GetExtension(filePath);
-			return MimeTypes.MimeTypeMap.GetMimeType(ext);
+		public static string GetLnkFileTarget(string filePath)
+        {
+            try
+            {
+				IWshRuntimeLibrary.IWshShell wsh = new IWshRuntimeLibrary.WshShellClass();
+				IWshRuntimeLibrary.IWshShortcut link = (IWshRuntimeLibrary.IWshShortcut)wsh.CreateShortcut(filePath);
+				return link.TargetPath;
+			}
+			catch (Exception)
+            {
+				return "";
+            }
 		}
 	}
-
 }
