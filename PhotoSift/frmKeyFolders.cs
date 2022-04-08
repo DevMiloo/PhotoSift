@@ -61,8 +61,6 @@ namespace PhotoSift
                 Location = new Point(12, (this.Controls.Count / 2) * 22 + 9)
             };
             this.Controls.Add(lblm);
-
-			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 

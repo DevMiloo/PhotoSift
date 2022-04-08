@@ -37,13 +37,11 @@ namespace PhotoSift
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(164, 0);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmKeyFolders";
             this.ShowIcon = false;
             this.Text = "KeyFolder Shortcuts";
             this.ResumeLayout(false);
-
         }
 
         #endregion
