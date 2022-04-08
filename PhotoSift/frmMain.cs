@@ -507,9 +507,12 @@ namespace PhotoSift
 				wmpCurrent.Show();
 				if (wmpCurrent.URL == URI)
 				{
+					// Stop blinking slowly
+					/*
 					var pos = wmpCurrent.Ctlcontrols.currentPosition;
 					wmpCurrent.URL = URI; // flash UI effect.
 					wmpCurrent.Ctlcontrols.currentPosition = pos;
+					*/
 				}
 				else
 				{
