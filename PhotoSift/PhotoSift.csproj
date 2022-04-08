@@ -164,7 +164,6 @@
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageCache.cs" />
-    <Compile Include="WindowsAPICodePack.cs" />
     <Compile Include="WebPWrapper.cs" />
     <Compile Include="WinApi.cs" />
     <Compile Include="Program.cs" />
@@ -250,11 +249,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="WindowsAPICodePack-Core">
-      <Version>1.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="WindowsAPICodePack-Shell">
-      <Version>1.1.1</Version>
+    <PackageReference Include="MimeTypeMapOfficial">
+      <Version>1.0.17</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

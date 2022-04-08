@@ -628,7 +628,7 @@ namespace PhotoSift
 		Disabled = 0,
 		[Description("Enabled")]
 		Enabled = 1,
-		[Description("Unavailable")]
+		[Description("Unavailable")] // Deprecated
 		Unavailable = -1,
 	}
 	public enum LineGradientMode

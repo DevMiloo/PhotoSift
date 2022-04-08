@@ -191,19 +191,9 @@ namespace PhotoSift
 				timerHoldKey.Interval = 1; // will not work. avoid make an exception.
 
 			allowsMIME = settings.allowsMIME.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-			// Util.GetFileMIME(?); // TODO: sanity test, lacks reliable target file.
 
-			try
-			{
-				WindowsAPICodePack.GetFileMIME(""); // Usability test
-				if (settings.FileMIMEChecker == FeatureSwitch.Unavailable)
-					settings.FileMIMEChecker = FeatureSwitch.Disabled;
-			}
-			catch
-			{
-				allowsMIME = new string[0];
-				settings.FileMIMEChecker = FeatureSwitch.Unavailable;
-			}
+			if (settings.FileMIMEChecker == FeatureSwitch.Unavailable)
+				settings.FileMIMEChecker = FeatureSwitch.Disabled;
 
 			mnuAddInRandomOrder.Checked = settings.AddInRandomOrder;
 			mnuResetViewMode.Checked = settings.ResetViewModeOnPictureChange;
@@ -310,7 +300,7 @@ namespace PhotoSift
 
 			if (settings.FileMIMEChecker == FeatureSwitch.Enabled && allowsMIME.Length > 0)
 			{
-				string mime = WindowsAPICodePack.GetFileMIME(file);
+				string mime = GetFileMIME(file);
 
 				int match = allowsMIME.Where(rule => mime.Contains(rule)).ToArray().Length;
 				if (match > 0)
@@ -1604,9 +1594,12 @@ namespace PhotoSift
 			this.Text = str;
 			updateInfoLabel(str);
 		}
-        // --------------------------------------------------------------------
 
-
-    }
+		public static string GetFileMIME(string filePath)
+		{
+			var ext = Path.GetExtension(filePath);
+			return MimeTypes.MimeTypeMap.GetMimeType(ext);
+		}
+	}
 
 }
