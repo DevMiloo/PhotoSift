@@ -305,10 +305,9 @@ namespace PhotoSift
 				if (System.IO.Directory.Exists(targetPath))
                 {
 					// refuse to expand multiple lnks at once
-					if (newPics.Count < 1)
+					if (settings.expandFolderLnks || newPics.Count < 1)
                     {
 						var files = System.IO.Directory.EnumerateFiles(targetPath, "*", System.IO.SearchOption.AllDirectories).ToArray();
-						newPics = _addFiles_validate(files);
 					}
 					return;
 				}
@@ -319,7 +318,7 @@ namespace PhotoSift
 					ext = Path.GetExtension(filePath);
 				}
 			}
-
+			
 			if (settings.FileMIMEChecker == FeatureSwitch.Enabled && allowsMIME.Length > 0)
 			{
 				string mime = MimeTypes.MimeTypeMap.GetMimeType(ext);
