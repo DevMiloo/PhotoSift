@@ -80,7 +80,7 @@ namespace PhotoSift
 		private Point LastMouseHoldPoint = new Point( -1, -1 );
 		//
 		private AxWMPLib.AxWindowsMediaPlayer wmpCurrent;
-
+		public static frmMain frmThis; // this should be rewrite, for example through delegate?
 
 		// Constructor
 		public frmMain()
@@ -90,6 +90,7 @@ namespace PhotoSift
 			Environment.SetEnvironmentVariable("PATH", Environment.GetEnvironmentVariable("PATH") + ";" + assemblyPath);
 
 			InitializeComponent();
+			frmThis = this;
 		}
 		[STAThread]
 		private void initWmpPlayer()

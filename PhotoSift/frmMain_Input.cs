@@ -216,7 +216,7 @@ namespace PhotoSift
 			frmMain_KeyUp( this, new KeyEventArgs( Keys.Pause ) );
 		}
 
-		private void mnuOpenSettings_Click( object sender, EventArgs e )
+		public void mnuOpenSettings_Click( object sender, EventArgs e )
 		{
 			KeyFolders = null;
 

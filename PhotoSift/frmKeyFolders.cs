@@ -62,6 +62,14 @@ namespace PhotoSift
 			};
 			topchk.CheckedChanged += new System.EventHandler(this.topchk_CheckedChanged);
 			this.Controls.Add(topchk);
+			var openSettings = new Button
+			{
+				Text = "Settings...",
+				AutoSize = true,
+				Location = new Point(10 + topchk.Size.Width, (this.Controls.Count / 2) * 22 + 6)
+			};
+			openSettings.Click += new System.EventHandler(this.openSettings_Click);
+			this.Controls.Add(openSettings);
 			Label lblm = new Label
             {
                 Name = "lblMargins",
@@ -73,7 +81,12 @@ namespace PhotoSift
             this.Controls.Add(lblm);
 		}
 
-        private void topchk_CheckedChanged(object sender, EventArgs e)
+        private void openSettings_Click(object sender, EventArgs e)
+        {
+			frmMain.frmThis.mnuOpenSettings_Click(sender, e);
+		}
+
+		private void topchk_CheckedChanged(object sender, EventArgs e)
         {
 			CheckBox c = (CheckBox)sender;
 			this.TopMost = c.Checked;
