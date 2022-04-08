@@ -52,6 +52,16 @@ namespace PhotoSift
 				txt.Location = new Point(37, y_loc + 6);
 				this.Controls.Add(txt);
 			}
+			var topchk = new CheckBox
+			{
+				Name = "chkTop",
+				Text = "Top",
+				Checked = false,
+				AutoSize = true,
+				Location = new Point(8, (this.Controls.Count / 2) * 22 + 9)
+			};
+			topchk.CheckedChanged += new System.EventHandler(this.topchk_CheckedChanged);
+			this.Controls.Add(topchk);
 			Label lblm = new Label
             {
                 Name = "lblMargins",
@@ -63,6 +73,11 @@ namespace PhotoSift
             this.Controls.Add(lblm);
 		}
 
+        private void topchk_CheckedChanged(object sender, EventArgs e)
+        {
+			CheckBox c = (CheckBox)sender;
+			this.TopMost = c.Checked;
+		}
 
 		public static Dictionary<string, string> DictionaryFromType(object atype)
 		{
