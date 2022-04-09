@@ -394,6 +394,8 @@ namespace PhotoSift
 		public FeatureSwitch FileMIMEChecker { get; set; }
 		[Category("File Type"), DisplayName("Allowed MIME"), DescriptionAttribute("File MIME types allowed to be added to the pool. Work only while the Check MIME option be turn on. Semicolon separated. Spaces on edge are ignored. Default: 'image/;video/;audio/'.")]
 		public string allowsMIME { get; set; }
+		[Category("File Type"), DisplayName("Expand folder shortcuts"), DescriptionAttribute("When adding files, the program will only parse one folder shortcut (if it is the first) to avoid flooding. If enabled, it attempts to recursively resolve all folder shortcuts.")]
+		public bool expandFolderLnks { get; set; }
 
 		// Misc settings
 		[Category("Misc"), DisplayName("Copy action"), DescriptionAttribute("Sets the action type when you press Ctrl+C or click the \"Copy to clipboard\" menu in this software.")]
@@ -518,7 +520,8 @@ namespace PhotoSift
 			defaultSettings.Add("allowsVidExts", Util.Def_allowsVideoExts);
 			defaultSettings.Add("FileMIMEChecker", FeatureSwitch.Disabled);
 			defaultSettings.Add("allowsMIME", "image/);video/);audio/");
-
+			defaultSettings.Add("expandFolderLnks", false);
+			
 			// Misc
 			defaultSettings.Add("SaveRelativePaths", true);
 			defaultSettings.Add("CopyActionType", CopytoClipboardOptions.Bitmap);

@@ -294,37 +294,57 @@ namespace PhotoSift
 		}
 
 		// Add file to the image pool
-		private void _addFile(string file, ref List<string> newPics, List<string> allowsExts)
+		private void _addFile(string filePath, ref List<string> newPics, List<string> allowsExts)
 		{
-			if (pics.Exists(i => i == file)) return;
+			if (pics.Exists(i => i == filePath)) return;
+			string ext = Path.GetExtension(filePath);
 
+			if (ext.ToLower() == ".lnk")
+            {
+				string targetPath = GetLnkFileTarget(filePath);
+				if (System.IO.Directory.Exists(targetPath))
+                {
+					// refuse to expand multiple lnks at once
+					if (settings.expandFolderLnks || newPics.Count < 1)
+                    {
+						var files = System.IO.Directory.EnumerateFiles(targetPath, "*", System.IO.SearchOption.AllDirectories).ToArray();
+                        foreach (var file in files)
+                        {
+							_addFiles_AddingByMIME(file, ref newPics, allowsExts);
+						}
+					}
+				}
+                else
+                {
+					filePath = targetPath;
+					if (pics.Exists(i => i == filePath)) return;
+					_addFiles_AddingByMIME(filePath, ref newPics, allowsExts);
+				}
+				return;
+			}
+			_addFiles_AddingByMIME(filePath, ref newPics, allowsExts);
+		}
+		private void _addFiles_AddingByMIME(string filePath, ref List<string> newPics, List<string> allowsExts) {
+			string ext = Path.GetExtension(filePath);
 			if (settings.FileMIMEChecker == FeatureSwitch.Enabled && allowsMIME.Length > 0)
 			{
-				string mime = GetFileMIME(file);
+				string mime = MimeTypes.MimeTypeMap.GetMimeType(ext);
 
 				int match = allowsMIME.Where(rule => mime.Contains(rule)).ToArray().Length;
 				if (match > 0)
-					newPics.Add(file);
+					newPics.Add(filePath);
 			}
-			else if (allowsExts.Contains(Path.GetExtension(file), StringComparer.OrdinalIgnoreCase))
-				newPics.Add(file);
+			else if (allowsExts.Contains(ext, StringComparer.OrdinalIgnoreCase))
+				newPics.Add(filePath);
 		}
-		private int AddFiles( string[] items )
+		private List<string> _addFiles_validate(string[] items)
 		{
-			if( items.Length == 0 ) return 0;
-
-			HaltAutoAdvance();
-			lblHeader.Text = "Loading...";
-			updateTitleStr("Loading...");
-			Util.CenterControl( lblHeader, picLogo.Image.Height / 2 + 20 );
-			this.Refresh();
-
 			// validate files to add
 			List<string> newPics = new List<string>();
 			List<string> allowsExts = settings.allowsPicExts.Union(settings.allowsVidExts).ToList();
-			foreach ( string item in items )
+			foreach (string item in items)
 			{
-				if( System.IO.Directory.Exists( item ) ) // is Directory
+				if (System.IO.Directory.Exists(item)) // is Directory
 				{
 					try
 					{
@@ -336,16 +356,33 @@ namespace PhotoSift
 					catch (Exception ex)
 					{
 						MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // lising dir error, e.g. "C:\".
-						return -1;
+						return null;
 					}
 				}
-				else if( System.IO.File.Exists( item ) ) // is File
+				else if (System.IO.File.Exists(item)) // is File
 				{
 					_addFile(item, ref newPics, allowsExts);
 				}
-
 			}
-			if( newPics.Count == 0 )
+			return newPics;
+		}
+		private int AddFiles( string[] items )
+		{
+			if( items.Length == 0 ) return 0;
+
+			HaltAutoAdvance();
+			lblHeader.Text = "Loading...";
+			updateTitleStr("Loading...");
+			Util.CenterControl( lblHeader, picLogo.Image.Height / 2 + 20 );
+			this.Refresh();
+
+			var newPics = _addFiles_validate(items);
+
+			if (newPics == null)
+            {
+				return 0;
+            }
+			else if ( newPics.Count == 0 )
 			{
 				ShowPicByOffset( 0 );
 				return 0;
@@ -1598,11 +1635,18 @@ namespace PhotoSift
 			updateInfoLabel(str);
 		}
 
-		public static string GetFileMIME(string filePath)
-		{
-			var ext = Path.GetExtension(filePath);
-			return MimeTypes.MimeTypeMap.GetMimeType(ext);
+		public static string GetLnkFileTarget(string filePath)
+        {
+            try
+            {
+				IWshRuntimeLibrary.IWshShell wsh = new IWshRuntimeLibrary.WshShellClass();
+				IWshRuntimeLibrary.IWshShortcut link = (IWshRuntimeLibrary.IWshShortcut)wsh.CreateShortcut(filePath);
+				return link.TargetPath;
+			}
+			catch (Exception)
+            {
+				return "";
+            }
 		}
 	}
-
 }
