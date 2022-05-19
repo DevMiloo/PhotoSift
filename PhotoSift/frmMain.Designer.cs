@@ -771,7 +771,7 @@
             // 
             // timerAutoSaveSetting
             // 
-            this.timerAutoSaveSetting.Interval = 120;
+            this.timerAutoSaveSetting.Interval = 120 * 1000; // 120s
             this.timerAutoSaveSetting.Tick += new System.EventHandler(this.timerAutoSaveSetting_Tick);
             // 
             // timerMetaInfoUpdate
