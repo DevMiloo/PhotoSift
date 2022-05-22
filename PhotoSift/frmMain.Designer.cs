@@ -71,6 +71,7 @@
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuHideMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFullscreen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuKeyFolders = new System.Windows.Forms.ToolStripMenuItem();
             this.imagePoolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNavigate = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNavigateNext = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,7 +109,6 @@
             this.timerHoldKey = new System.Windows.Forms.Timer(this.components);
             this.timerAutoSaveSetting = new System.Windows.Forms.Timer(this.components);
             this.timerMetaInfoUpdate = new System.Windows.Forms.Timer(this.components);
-            this.mnuKeyFolders = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picCurrent)).BeginInit();
             this.menuStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
@@ -479,6 +479,14 @@
             this.mnuFullscreen.Text = "Fullscreen";
             this.mnuFullscreen.Click += new System.EventHandler(this.mnuFullscreen_Click);
             // 
+            // mnuKeyFolders
+            // 
+            this.mnuKeyFolders.Name = "mnuKeyFolders";
+            this.mnuKeyFolders.ShortcutKeys = System.Windows.Forms.Keys.F10;
+            this.mnuKeyFolders.Size = new System.Drawing.Size(253, 22);
+            this.mnuKeyFolders.Text = "View KeyFolders table";
+            this.mnuKeyFolders.Click += new System.EventHandler(this.mnuKeyFolders_Click);
+            // 
             // imagePoolToolStripMenuItem
             // 
             this.imagePoolToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -771,21 +779,13 @@
             // 
             // timerAutoSaveSetting
             // 
-            this.timerAutoSaveSetting.Interval = 120 * 1000; // 120s
+            this.timerAutoSaveSetting.Interval = 120000;
             this.timerAutoSaveSetting.Tick += new System.EventHandler(this.timerAutoSaveSetting_Tick);
             // 
             // timerMetaInfoUpdate
             // 
             this.timerMetaInfoUpdate.Interval = 500;
             this.timerMetaInfoUpdate.Tick += new System.EventHandler(this.timerMetaInfoUpdate_Tick);
-            // 
-            // mnuKeyFolders
-            // 
-            this.mnuKeyFolders.Name = "mnuKeyFolders";
-            this.mnuKeyFolders.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.mnuKeyFolders.Size = new System.Drawing.Size(253, 22);
-            this.mnuKeyFolders.Text = "View KeyFolders table";
-            this.mnuKeyFolders.Click += new System.EventHandler(this.mnuKeyFolders_Click);
             // 
             // frmMain
             // 

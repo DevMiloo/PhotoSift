@@ -165,6 +165,7 @@ namespace PhotoSift
 			args = args.Skip(1).ToArray(); // slice
 			if( args.Length > 0 ) AddFiles( args ); else ShowPicByOffset( 0 );
 
+			this.timerAutoSaveSetting.Interval = 120 * 1000; // 120s
 #if DEBUG && RLVISION
 			// Development settings
 			settings.FileMode = FileOperations.Copy;
