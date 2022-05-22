@@ -798,6 +798,7 @@
             this.Controls.Add(this.menuStripMain);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStripMain;
             this.MinimumSize = new System.Drawing.Size(160, 188);
