@@ -164,6 +164,7 @@
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageCache.cs" />
+    <Compile Include="MimeTypeMap.cs" />
     <Compile Include="WebPWrapper.cs" />
     <Compile Include="WinApi.cs" />
     <Compile Include="Program.cs" />
@@ -256,11 +257,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="MimeTypeMapOfficial">
-      <Version>1.0.17</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
