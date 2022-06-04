@@ -16,8 +16,25 @@ namespace PhotoSift
 {
 	internal static class NGettextShortSyntax
 	{
-		private static readonly ICatalog _Catalog = new Catalog("PhotoSift", "locale");
+		private static ICatalog _Catalog = new Catalog("PhotoSift", "locale");
 		//private static readonly ICatalog _Catalog = new Catalog("PhotoSift", "locale", new CultureInfo("zh-CN"));
+
+		public static void setUICultureInfo(CultureInfo locale)
+		{
+			_Catalog = new Catalog("PhotoSift", "locale", locale);
+		}
+		public static void setUICultureLCID(int LCID)
+		{
+			if (LCID > 0)
+            {
+				var locale = new CultureInfo(LCID);
+				_Catalog = new Catalog("PhotoSift", "locale", locale);
+			}
+			else
+            {
+				_Catalog = new Catalog("PhotoSift", "locale");
+			}
+		}
 
 		public static string _(string text)
 		{
@@ -57,6 +74,13 @@ namespace PhotoSift
 		public static string _pn(string context, string text, string pluralText, long n, params object[] args)
 		{
 			return _Catalog.GetParticularPluralString(context, text, pluralText, n, args);
+		}
+	}
+	public class GlNGettext {
+		private static ICatalog _Catalog = new Catalog("PhotoSift", "locale");
+
+		public GlNGettext(CultureInfo locale) {
+			_Catalog = new Catalog("PhotoSift", "locale", locale);
 		}
 	}
 }

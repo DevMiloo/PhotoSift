@@ -77,6 +77,14 @@ namespace PhotoSift
 
 			if (e.ChangedItem.PropertyDescriptor.Name == "TargetFolderPath") // workaround, the displayed item is storage.
 				this.settings.TargetFolder = (string)e.ChangedItem.Value;
+			if (e.ChangedItem.PropertyDescriptor.Name == "UILanguage")
+            {
+				NGettextShortSyntax.setUICultureLCID((int)settings.UILanguage);
+				propertyGrid.Refresh();
+				this.Text = _("Settings");
+                frmMain.MenusLabelL10n();
+
+            }
 		}
 
 		private void resetToolStripMenuItem_Click(object sender, EventArgs e)

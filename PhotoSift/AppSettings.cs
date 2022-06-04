@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.IO;
 using static PhotoSift.WinApi;
 using GlobalizedPropertyGrid;
+using System.Windows.Forms;
 
 namespace PhotoSift
 {
@@ -61,14 +62,14 @@ namespace PhotoSift
 		{
 			get
 			{
-				string nPath = this.TargetFolderPath.Replace("%PhotoSift%", System.Windows.Forms.Application.StartupPath);
-				if (!Path.IsPathRooted(nPath)) nPath = Path.Combine(System.Windows.Forms.Application.StartupPath, nPath); // For filled in the properties panel
+				string nPath = this.TargetFolderPath.Replace("%PhotoSift%", Application.StartupPath);
+				if (!Path.IsPathRooted(nPath)) nPath = Path.Combine(Application.StartupPath, nPath); // For filled in the properties panel
 				return nPath;
 			}
 			set
 			{
 				if (SaveRelativePaths)
-					this.TargetFolderPath = value.Replace(System.Windows.Forms.Application.StartupPath, "%PhotoSift%");
+					this.TargetFolderPath = value.Replace(Application.StartupPath, "%PhotoSift%");
 				else
 					this.TargetFolderPath = value;
 			}
@@ -80,7 +81,7 @@ namespace PhotoSift
 		[TypeConverter( typeof( EnumTypeConverter ) )]
 		public GrayColors ColorBackground { get; set; }
 #else
-		[XmlIgnore]
+        [XmlIgnore]
 		[Category( "Appearance" ), LocalizedDisplayName( "Background color" ), LocalizedDescription( "Sets the window background color." )]
 		public Color ColorBackground
 		{
@@ -189,6 +190,9 @@ namespace PhotoSift
 		public SerializableColor CustomMenuColorSelected_Serializable { get; set; }
 		[Category("Appearance"), LocalizedDisplayName("Target path in title bar"), LocalizedDescription("Display the target path in the title bar while no files are in the queue.")]
 		public bool TargetPathInTitlebar { get; set; }
+		[Category("Appearance"), LocalizedDisplayName("UI Language"), LocalizedDescription("Choose the language you want to use. Program restart may be needs for full effect.")]
+		[TypeConverter(typeof(EnumTypeConverter))]
+		public UILanguages UILanguage { get; set; }
 
 		// Controls Group
 		[Category("Controls"), LocalizedDisplayName("Repeat interval (ms)"), LocalizedDescription("Interval (ms) for press and hold a key to repeat actions. The value < 100 ms will disalbe this feature. The first trigger will double the time.")]
@@ -544,7 +548,17 @@ namespace PhotoSift
 			defaultSettings.Add("Stats_CopiedPics", 0);
 			defaultSettings.Add("Stats_DeletedPics", 0);
 
-			foreach( System.Reflection.PropertyInfo Prop in typeof( AppSettings ).GetProperties() )
+			/*var LanguageFiles = new List<string>();
+            foreach (var file in Directory.GetFiles(Application.StartupPath, @"PhotoSift.mo", SearchOption.AllDirectories))
+            {
+                var match = Regex.Match(file, @"locale\\([^\\]+?)\\LC_MESSAGES\\PhotoSift.mo");
+                if (match.Success)
+                    LanguageFiles.Add(match.Groups[1].Value);
+            }*/
+
+			defaultSettings.Add("UILanguage", 0);
+
+			foreach ( System.Reflection.PropertyInfo Prop in typeof( AppSettings ).GetProperties() )
 			{
 				if (Prop.Name.StartsWith("KeyFolder_"))
 					defaultSettings.Add(Prop.Name, "");
@@ -557,6 +571,16 @@ namespace PhotoSift
 	}
 
 	// Setting values
+
+	// LCID ref: https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a
+	public enum UILanguages {
+		[LocalizedDescription("Auto")]
+		Auto = 0,
+		[LocalizedDescription("English")]
+		English = 1033,
+		[LocalizedDescription("Chinese (Simplified)")]
+		SimplifiedChinese = 2052,
+	}
 
 	public enum ShowModes
 	{

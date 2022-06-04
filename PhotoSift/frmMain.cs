@@ -28,6 +28,8 @@ using System.Linq;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
 using static PhotoSift.NGettextShortSyntax;
+using System.Globalization;
+using System.Threading;
 
 namespace PhotoSift
 {
@@ -131,7 +133,8 @@ namespace PhotoSift
 		}
 		private void frmMain_Load( object sender, EventArgs e )
 		{
-			MenusLabelL10n(); // earlier than this.WindowState to avoid unlocalized window being displayed
+			//MenusLabelL10n(); // earlier than this.WindowState to avoid unlocalized window being displayed
+
 			fileManagement = new FileManagement( this );
 
 			winApi.HookMouse();
@@ -149,6 +152,9 @@ namespace PhotoSift
 				this.Height = settings.FormRect_Main.Height;
 			}
 			this.WindowState = settings.WindowState;
+
+			NGettextShortSyntax.setUICultureLCID((int)settings.UILanguage);
+			MenusLabelL10n();
 
 			settings.Stats_StartupCount++;
 
@@ -181,7 +187,7 @@ namespace PhotoSift
 		}
 
 		// https://stackoverflow.com/a/39129576
-		private ToolStripItem[] GetAllChildren(ToolStripItem item)
+		private static ToolStripItem[] GetAllChildren(ToolStripItem item)
 		{
 			List<ToolStripItem> Items = new List<ToolStripItem> { item };
 			if (item is ToolStripMenuItem)
@@ -195,14 +201,24 @@ namespace PhotoSift
 					Items.AddRange(GetAllChildren(i));
 			return Items.ToArray();
 		}
-		private void MenusLabelL10n()
+		public static void MenusLabelL10n()
         {
-			foreach (ToolStripMenuItem mainMenu in menuStripMain.Items)
+			//NGettextShortSyntax.setUICulture(new CultureInfo((int)settings.UILanguage));
+
+			foreach (ToolStripMenuItem mainMenu in frmThis.menuStripMain.Items)
 			{
 				var subMenus = GetAllChildren(mainMenu);
                 foreach (var subMenu in subMenus)
                 {
-					subMenu.Text = _p("menu", subMenu.Text);
+					if (subMenu.Tag == null)
+                    {
+						subMenu.Tag = subMenu.Text;
+						subMenu.Text = _p("menu", subMenu.Text);
+					}
+					else
+                    {
+						subMenu.Text = _p("menu", subMenu.Tag.ToString()); // avoid runtime conversions use translation
+					}
 				}
 			}
         }
@@ -235,6 +251,10 @@ namespace PhotoSift
 				winApi.PreventSleep(settings.PreventSleep);
                 bPreventSleep = settings.PreventSleep;
             }
+
+			//Thread.CurrentThread.CurrentUICulture = new CultureInfo((int)settings.UILanguage); // it lags behind using
+			NGettextShortSyntax.setUICultureLCID((int)settings.UILanguage);
+			MenusLabelL10n();
 
 			ShowHideLabels();
 			ApplyColorSettings();
