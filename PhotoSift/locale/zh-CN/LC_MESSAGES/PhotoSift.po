@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-06-04 19:25+0800\n"
-"PO-Revision-Date: 2022-06-04 19:25+0800\n"
+"POT-Creation-Date: 2022-06-04 19:40+0800\n"
+"PO-Revision-Date: 2022-06-04 19:40+0800\n"
 "Last-Translator: YFdyh000 <yfdyh000@gmail.com>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -67,15 +67,15 @@ msgstr ""
 "目标文件夹（基础）。框中的 %PhotoSift% 或相对路径（无需 \\ 作前缀）将自动替换"
 "为软件所在路径。"
 
-#: AppSettings.cs:80 AppSettings.cs:85 AppSettings.cs:95 AppSettings.cs:99
-#: AppSettings.cs:108 AppSettings.cs:116 AppSettings.cs:121 AppSettings.cs:131
-#: AppSettings.cs:143 AppSettings.cs:150 AppSettings.cs:153 AppSettings.cs:156
-#: AppSettings.cs:165 AppSettings.cs:174 AppSettings.cs:183 AppSettings.cs:191
-#: AppSettings.cs:193
+#: AppSettings.cs:80 AppSettings.cs:85 AppSettings.cs:95 AppSettings.cs:100
+#: AppSettings.cs:109 AppSettings.cs:117 AppSettings.cs:122 AppSettings.cs:132
+#: AppSettings.cs:144 AppSettings.cs:151 AppSettings.cs:154 AppSettings.cs:157
+#: AppSettings.cs:166 AppSettings.cs:175 AppSettings.cs:184 AppSettings.cs:192
+#: AppSettings.cs:194
 msgid "Appearance"
 msgstr "外观"
 
-#: AppSettings.cs:80 AppSettings.cs:85 AppSettings.cs:156
+#: AppSettings.cs:80 AppSettings.cs:85 AppSettings.cs:157
 msgid "Background color"
 msgstr "背景颜色"
 
@@ -91,133 +91,133 @@ msgstr "渐变背景模式"
 msgid "Set the mode of gradient background colors."
 msgstr "设定渐变背景色的模式。"
 
-#: AppSettings.cs:99
+#: AppSettings.cs:100
 msgid "Gradient background color 1"
 msgstr "渐变背景色 1"
 
-#: AppSettings.cs:99 AppSettings.cs:108
+#: AppSettings.cs:100 AppSettings.cs:109
 msgid ""
 "Set the gradient background colors of the window. The main background color "
 "is ignored."
 msgstr "设定窗口的渐变背景色。主背景色将被忽略。"
 
-#: AppSettings.cs:108
+#: AppSettings.cs:109
 msgid "Gradient background color 2"
 msgstr "渐变背景色 2"
 
-#: AppSettings.cs:116
+#: AppSettings.cs:117
 msgid "Gradient background gamma correction"
 msgstr "渐变背景伽玛校正"
 
-#: AppSettings.cs:116
+#: AppSettings.cs:117
 msgid ""
 "Gamma correction is disabled by default. Enabling it may get better or worse "
 "result."
 msgstr "伽玛校正默认为禁用。可按需启用来改善显示效果。"
 
-#: AppSettings.cs:121
+#: AppSettings.cs:122
 msgid "Text label color"
 msgstr "文本颜色"
 
-#: AppSettings.cs:121
+#: AppSettings.cs:122
 msgid "Sets the font color of text labels."
 msgstr "设定文本标签的字体颜色。"
 
-#: AppSettings.cs:131
+#: AppSettings.cs:132
 msgid "Text label background color"
 msgstr "文本背景色"
 
-#: AppSettings.cs:131
+#: AppSettings.cs:132
 msgid ""
 "Sets the background color of text labels. Not visible if the background is "
 "transparent."
 msgstr "设定文本标签的背景色。如果背景透明被启用，则此颜色不可见。"
 
-#: AppSettings.cs:143
+#: AppSettings.cs:144
 msgid "Text label font"
 msgstr "文本字体"
 
-#: AppSettings.cs:143
+#: AppSettings.cs:144
 msgid "Sets the font used in text labels."
 msgstr "设定文本标签中使用的字体。"
 
-#: AppSettings.cs:150
+#: AppSettings.cs:151
 msgid "Transparent text labels"
 msgstr "文本背景透明"
 
-#: AppSettings.cs:150
+#: AppSettings.cs:151
 msgid ""
 "Decides if text labels should have transparent or solid color background."
 msgstr "决定文本标签使用透明还是纯色背景。"
 
-#: AppSettings.cs:153
+#: AppSettings.cs:154
 msgid "Custom menu theme"
 msgstr "自定义菜单主题"
 
-#: AppSettings.cs:153
+#: AppSettings.cs:154
 msgid "Enables a custom menu theme, based on the four colors specified below."
 msgstr "启用菜单主题，基于下面自定义的四种颜色。"
 
-#: AppSettings.cs:156
+#: AppSettings.cs:157
 msgid "Custom menu theme: Background"
 msgstr "自定义菜单主题：背景色"
 
-#: AppSettings.cs:165
+#: AppSettings.cs:166
 msgid "Custom menu theme: Text"
 msgstr "自定义菜单主题：文字"
 
-#: AppSettings.cs:165
+#: AppSettings.cs:166
 msgid "Text color"
 msgstr "文本颜色"
 
-#: AppSettings.cs:174
+#: AppSettings.cs:175
 msgid "Custom menu theme: Border"
 msgstr "自定义菜单主题：边框"
 
-#: AppSettings.cs:174
+#: AppSettings.cs:175
 msgid "Border color"
 msgstr "边框颜色"
 
-#: AppSettings.cs:183
+#: AppSettings.cs:184
 msgid "Custom menu theme: Highlight"
 msgstr "自定义菜单主题：突出"
 
-#: AppSettings.cs:183
+#: AppSettings.cs:184
 msgid "Background color for items under mouse"
 msgstr "鼠标下方项目的背景色"
 
-#: AppSettings.cs:191
+#: AppSettings.cs:192
 msgid "Target path in title bar"
 msgstr "标题栏中显示目标路径"
 
-#: AppSettings.cs:191
+#: AppSettings.cs:192
 msgid ""
 "Display the target path in the title bar while no files are in the queue."
 msgstr "队列中没有文件时，标题栏中显示目标文件夹路径。"
 
-#: AppSettings.cs:193
+#: AppSettings.cs:194
 msgid "UI Language"
 msgstr "界面语言"
 
-#: AppSettings.cs:193
+#: AppSettings.cs:194
 msgid ""
 "Choose the language you want to use. Program restart may be needs for full "
 "effect."
 msgstr "选择界面语言。可能需要重启才能完全生效。"
 
-#: AppSettings.cs:198 AppSettings.cs:200 AppSettings.cs:202 AppSettings.cs:204
-#: AppSettings.cs:207 AppSettings.cs:210 AppSettings.cs:212 AppSettings.cs:215
-#: AppSettings.cs:218 AppSettings.cs:221 AppSettings.cs:224 AppSettings.cs:227
-#: AppSettings.cs:230 AppSettings.cs:233 AppSettings.cs:236 AppSettings.cs:239
-#: AppSettings.cs:241 AppSettings.cs:243
+#: AppSettings.cs:199 AppSettings.cs:201 AppSettings.cs:203 AppSettings.cs:205
+#: AppSettings.cs:208 AppSettings.cs:211 AppSettings.cs:213 AppSettings.cs:216
+#: AppSettings.cs:219 AppSettings.cs:222 AppSettings.cs:225 AppSettings.cs:228
+#: AppSettings.cs:231 AppSettings.cs:234 AppSettings.cs:237 AppSettings.cs:240
+#: AppSettings.cs:242 AppSettings.cs:245
 msgid "Controls"
 msgstr "控制"
 
-#: AppSettings.cs:198
+#: AppSettings.cs:199
 msgid "Repeat interval (ms)"
 msgstr "重复间隔（毫秒）"
 
-#: AppSettings.cs:198
+#: AppSettings.cs:199
 msgid ""
 "Interval (ms) for press and hold a key to repeat actions. The value < 100 ms "
 "will disalbe this feature. The first trigger will double the time."
@@ -225,88 +225,88 @@ msgstr ""
 "按住某个键触发重复操作的间隔（毫秒）。值小于 100 将禁用此功能。首次触发时时间"
 "翻倍。"
 
-#: AppSettings.cs:200
+#: AppSettings.cs:201
 msgid "Rewind on pool end"
 msgstr "从后向前"
 
-#: AppSettings.cs:200
+#: AppSettings.cs:201
 msgid "Try to rewind when the pool end is reached while handle."
 msgstr "抵达队列末尾后尝试反向移动。"
 
-#: AppSettings.cs:202
+#: AppSettings.cs:203
 msgid "Loop in pool"
 msgstr "队列循环"
 
-#: AppSettings.cs:202
+#: AppSettings.cs:203
 msgid "Cycle your pool when you switch images, there is no pool end screen."
 msgstr "向前/后切换时在队列中循环，不显示已到末尾画面。"
 
-#: AppSettings.cs:204
+#: AppSettings.cs:205
 msgid "Medium jump"
 msgstr "大跳"
 
-#: AppSettings.cs:204
+#: AppSettings.cs:205
 msgid ""
 "Number of images to skip when doing a medium jump. Medium jump is invoked by "
 "holding Ctrl and pressing Left/Right arrow key."
 msgstr "中等幅度跳跃时跳过多少项。按住 Ctrl 并按左或右方向键来触发。"
 
-#: AppSettings.cs:207
+#: AppSettings.cs:208
 msgid "Long jump"
 msgstr "超级跳"
 
-#: AppSettings.cs:207
+#: AppSettings.cs:208
 msgid ""
 "Number of images to skip when doing a long jump. Long jump is invoked by "
 "holding Shift and pressing Left/Right arrow key."
 msgstr "大幅跳跃时跳过多少项。按住 Shift 并按左或右方向键来触发。"
 
-#: AppSettings.cs:210
+#: AppSettings.cs:211
 msgid "Confirm to clear Threshold"
 msgstr "超过此值时要求确认清空"
 
-#: AppSettings.cs:210
+#: AppSettings.cs:211
 msgid ""
 "Confirm to clear the images pool if the number of images in the pool exceeds "
 "this value. The warn is disalbed if set as 0."
 msgstr ""
 "如果队列中的文件数量超过此值，要求确认清空队列。如果设为 0，不显示警告。"
 
-#: AppSettings.cs:212
+#: AppSettings.cs:213
 msgid "Escape key to exit"
 msgstr "Esc 键退出"
 
-#: AppSettings.cs:212
+#: AppSettings.cs:213
 msgid ""
 "Allows you to exit the program by pressing the Escape key. In fullscreen, "
 "Escape key always reverts back to window mode."
 msgstr "启用后按下 Esc 键时退出程序。在全屏模式下，按 Esc 会恢复到窗口模式。"
 
-#: AppSettings.cs:215
+#: AppSettings.cs:216
 msgid "On delete show next image"
 msgstr "删除后显示下一项"
 
-#: AppSettings.cs:215
+#: AppSettings.cs:216
 msgid ""
 "When an image is deleted, this determined if the program is to show the "
 "image positioned before or after the deleted image."
 msgstr "删除一个文件项时，显示位于被删除文件之前还是之后的文件。"
 
-#: AppSettings.cs:218
+#: AppSettings.cs:219
 msgid "Auto advance interval"
 msgstr "自动前进间隔"
 
-#: AppSettings.cs:218
+#: AppSettings.cs:219
 msgid ""
 "When the auto advance slideshow is enabled, this number determines how long "
 "to wait in seconds before showing the next images."
 msgstr "“自动前进”幻灯片放映启用时，显示下一项前等待多少秒。"
 
-#: AppSettings.cs:221
+#: AppSettings.cs:222
 msgid "Auto scroll in actual size"
 msgstr "实际尺寸模式下自动滚动"
 
-#: AppSettings.cs:221
+#: AppSettings.cs:222
 msgid ""
 "In actual size mode (1:1) you can scroll the image. Auto scroll means you "
 "only have to move the mouse to scroll. If turned off, you have to click and "
@@ -315,32 +315,32 @@ msgstr ""
 "在实际尺寸模式中，您可以滚动图像。自动滚动启用后，只需移动鼠标即可滚动。如果"
 "禁用，滚动需要按住鼠标左键。"
 
-#: AppSettings.cs:224
+#: AppSettings.cs:225
 msgid "Auto scroll: Sensitivity"
 msgstr "自动滚动：灵敏度"
 
-#: AppSettings.cs:224
+#: AppSettings.cs:225
 msgid ""
 "Determines how far you have to move the mouse (in pixels) to fully scroll "
 "the image from one side to the other."
 msgstr "决定鼠标移动多少像素才能从图像的一侧完全滚动到另一侧。"
 
-#: AppSettings.cs:227
+#: AppSettings.cs:228
 msgid "Auto scroll: Float image"
 msgstr "自动滚动：浮动图像"
 
-#: AppSettings.cs:227
+#: AppSettings.cs:228
 msgid ""
 "Allows the image to freely 'float' around the cursor. Otherwise it will "
 "stick to the window borders, limiting the scrolling."
 msgstr ""
 "允许图像随鼠标移动而“浮动”。否则，它将粘附在窗口边缘，超量滚动不会使其脱离。"
 
-#: AppSettings.cs:230
+#: AppSettings.cs:231
 msgid "Scale mode: Linear mode"
 msgstr "缩放模式：线性模式"
 
-#: AppSettings.cs:230
+#: AppSettings.cs:231
 msgid ""
 "In scale mode (RMB), the mouse position determines the scale factor. If "
 "linear, the picture will snap to the new scaled size. If not linear, the "
@@ -351,11 +351,11 @@ msgstr ""
 "指针所在的水平比例位置切换到新的大小。非线性模式下，图像首先保持其原始比例"
 "（100%），并随着水平移动图标而增减缩放的比例因子。"
 
-#: AppSettings.cs:233
+#: AppSettings.cs:234
 msgid "Scale mode: Snapping"
 msgstr "缩放模式：阶梯"
 
-#: AppSettings.cs:233
+#: AppSettings.cs:234
 msgid ""
 "In scale mode (RMB), the zoom level can be set to snap to an interval, for "
 "example each 10 percent. Default is 0, meaning freely zoom without snapping."
@@ -363,11 +363,11 @@ msgstr ""
 "可以自定义鼠标右键触发的缩放模式中的梯度间隔，例如 10 表示每次改变至少 10%。"
 "默认值为 0，表示平滑的自由缩放。"
 
-#: AppSettings.cs:236
+#: AppSettings.cs:237
 msgid "Keyboard zoom levels"
 msgstr "键盘缩放幅度"
 
-#: AppSettings.cs:236
+#: AppSettings.cs:237
 msgid ""
 "Enter a comma delimited list of zoom levels to use when using keyboard zoom "
 "(+/- keys). Default is: '25,50,75,100,125,150,200'. Enter a single value to "
@@ -376,32 +376,32 @@ msgstr ""
 "输入以逗号分隔的缩放级别列表，用于键盘缩放（按 +/- 键）时的幅度变化。默认值"
 "为：“25,50,75,100,125,150,200”。仅输入单个值则使用该值作为增量幅度。"
 
-#: AppSettings.cs:239
+#: AppSettings.cs:240
 msgid "Limit zoom to window size"
 msgstr "缩放不超过窗口大小"
 
-#: AppSettings.cs:239
+#: AppSettings.cs:240
 msgid ""
 "If enabled, zooming maxes out when the image size is equal to the window "
 "size. In other words, you can not zoom images larger that the current window "
 "size."
 msgstr "如果启用，禁止缩放后的图像大小超过窗口大小。"
 
-#: AppSettings.cs:241
+#: AppSettings.cs:242
 msgid "Player intercept keys"
 msgstr "播放器拦截按键"
 
-#: AppSettings.cs:241
+#: AppSettings.cs:242
 msgid ""
 "If enabled, the video player will intercept some keyboard keys to perform "
 "actions."
 msgstr "启用后，音视频播放器能捕获某些按键以执行操作。"
 
-#: AppSettings.cs:243
+#: AppSettings.cs:245
 msgid "Ignore video beginnings (s)"
 msgstr "视频跳过开头（秒）"
 
-#: AppSettings.cs:243
+#: AppSettings.cs:245
 msgid ""
 "If the value is greater than 0, the videos will be seek to the location (in "
 "seconds) to ignore the beginning. If the video length is less than this "
@@ -411,16 +411,16 @@ msgstr ""
 "如果该值大于 0，视频将自动从该位置（秒）开始播放。如果视频长度小于该值，将从"
 "头开始播放（即忽略此值）。某些视频格式可能不支持播放时间跳转。"
 
-#: AppSettings.cs:247 AppSettings.cs:251 AppSettings.cs:255 AppSettings.cs:257
-#: AppSettings.cs:260 AppSettings.cs:263 AppSettings.cs:267
+#: AppSettings.cs:249 AppSettings.cs:253 AppSettings.cs:257 AppSettings.cs:259
+#: AppSettings.cs:262 AppSettings.cs:265 AppSettings.cs:269
 msgid "Display"
 msgstr "显示"
 
-#: AppSettings.cs:247
+#: AppSettings.cs:249
 msgid "Info label"
 msgstr "信息标签"
 
-#: AppSettings.cs:247
+#: AppSettings.cs:249
 msgid ""
 "Info label is the one in the top left corner. It shows information about the "
 "currently loaded image. In windowed mode, this information is also shown in "
@@ -429,21 +429,21 @@ msgstr ""
 "信息标签出现在左上角，显示当前已加载图像的有关信息。在窗口模式下，一些信息也"
 "出现于窗口的标题栏。"
 
-#: AppSettings.cs:251
+#: AppSettings.cs:253
 msgid "Mode label"
 msgstr "模式标签"
 
-#: AppSettings.cs:251
+#: AppSettings.cs:253
 msgid ""
 "Mode label is the one in the bottom left corner. It shows notifications "
 "about modes changes and similar."
 msgstr "模式标签出现在左下角，显示模式变更等消息的通知。"
 
-#: AppSettings.cs:255
+#: AppSettings.cs:257
 msgid "Info label format"
 msgstr "信息标签格式"
 
-#: AppSettings.cs:255
+#: AppSettings.cs:257
 msgid ""
 "Here you can decide what to show in the info label. Available format tags: "
 "Filename=%f, Parent folder=%d, Full path=%p, Image width=%w, Image height="
@@ -453,11 +453,11 @@ msgstr ""
 "定义信息标签格式。可用标签：文件名=%f, 父文件夹=%d, 完整路径=%p, 图像宽度="
 "%w, 图像高度=%h, 文件大小=%s, 换行=%n, 队列项目总计=%t, 队列中当前位置=%c"
 
-#: AppSettings.cs:257
+#: AppSettings.cs:259
 msgid "Info label format for videos"
 msgstr "视频信息标签格式"
 
-#: AppSettings.cs:257
+#: AppSettings.cs:259
 msgid ""
 "Here you can decide what to show in the info label. Available format tags: "
 "Filename=%f, Parent folder=%d, Full path=%p, width x height=%wb, width=%w, "
@@ -468,29 +468,29 @@ msgstr ""
 "%wb, 宽度=%w, 高度=%h, 文件大小=%s, 换行=%n, 队列项目总计=%t, 队列中当前位置="
 "%c, 当前时间=%curpos, 时长=%duration"
 
-#: AppSettings.cs:260
+#: AppSettings.cs:262
 msgid "Hide cursor in fullscreen"
 msgstr "全屏中隐藏鼠标指针"
 
-#: AppSettings.cs:260
+#: AppSettings.cs:262
 msgid "If enabled, the cursor will automatically be hidden on inactivity."
 msgstr "启用后，鼠标指针在鼠标闲置时会自动隐藏。"
 
-#: AppSettings.cs:263
+#: AppSettings.cs:265
 msgid "Enlarge small images"
 msgstr "小图像放大"
 
-#: AppSettings.cs:263
+#: AppSettings.cs:265
 msgid ""
 "Images smaller that the current view can be enlarged to fill the whole view. "
 "Hotkey: F4"
 msgstr "小于当前界面区域的图像会放大以填满界面。快捷键：F4"
 
-#: AppSettings.cs:267
+#: AppSettings.cs:269
 msgid "Auto move to best suited screen"
 msgstr "自动移动到最佳屏幕"
 
-#: AppSettings.cs:267
+#: AppSettings.cs:269
 msgid ""
 "In a multi-monitor environment, if the application is in fullscreen mode the "
 "windows will automatically moves to the best suited monitor (based on aspect "
@@ -499,39 +499,39 @@ msgstr ""
 "在多显示器环境中，如果应用程序处于全屏模式，图像变化时窗口将基于纵横比自动移"
 "动到最适合的显示器。"
 
-#: AppSettings.cs:272
+#: AppSettings.cs:274
 msgid "System"
 msgstr "系统"
 
-#: AppSettings.cs:272
+#: AppSettings.cs:274
 msgid "Disable screensaver"
 msgstr "禁用屏幕保护程序"
 
-#: AppSettings.cs:272
+#: AppSettings.cs:274
 msgid "Disable any screensaver, sleep mode etc while the programis running."
 msgstr "程序运行期间禁用屏幕保护程序、睡眠模式等。"
 
-#: AppSettings.cs:277 AppSettings.cs:280 AppSettings.cs:283 AppSettings.cs:286
-#: AppSettings.cs:289 AppSettings.cs:292 AppSettings.cs:295 AppSettings.cs:298
-#: AppSettings.cs:301 AppSettings.cs:304 AppSettings.cs:307 AppSettings.cs:310
-#: AppSettings.cs:313 AppSettings.cs:316 AppSettings.cs:319 AppSettings.cs:322
-#: AppSettings.cs:325 AppSettings.cs:328 AppSettings.cs:331 AppSettings.cs:334
-#: AppSettings.cs:337 AppSettings.cs:340 AppSettings.cs:343 AppSettings.cs:346
-#: AppSettings.cs:349 AppSettings.cs:352 AppSettings.cs:355 AppSettings.cs:358
-#: AppSettings.cs:361 AppSettings.cs:364 AppSettings.cs:367 AppSettings.cs:370
-#: AppSettings.cs:373 AppSettings.cs:376 AppSettings.cs:379 AppSettings.cs:382
+#: AppSettings.cs:279 AppSettings.cs:282 AppSettings.cs:285 AppSettings.cs:288
+#: AppSettings.cs:291 AppSettings.cs:294 AppSettings.cs:297 AppSettings.cs:300
+#: AppSettings.cs:303 AppSettings.cs:306 AppSettings.cs:309 AppSettings.cs:312
+#: AppSettings.cs:315 AppSettings.cs:318 AppSettings.cs:321 AppSettings.cs:324
+#: AppSettings.cs:327 AppSettings.cs:330 AppSettings.cs:333 AppSettings.cs:336
+#: AppSettings.cs:339 AppSettings.cs:342 AppSettings.cs:345 AppSettings.cs:348
+#: AppSettings.cs:351 AppSettings.cs:354 AppSettings.cs:357 AppSettings.cs:360
+#: AppSettings.cs:363 AppSettings.cs:366 AppSettings.cs:369 AppSettings.cs:372
+#: AppSettings.cs:375 AppSettings.cs:378 AppSettings.cs:381 AppSettings.cs:384
 msgid "Key Folders"
 msgstr "按键对应文件夹"
 
-#: AppSettings.cs:277 AppSettings.cs:280 AppSettings.cs:283 AppSettings.cs:286
-#: AppSettings.cs:289 AppSettings.cs:292 AppSettings.cs:295 AppSettings.cs:298
-#: AppSettings.cs:301 AppSettings.cs:304 AppSettings.cs:307 AppSettings.cs:310
-#: AppSettings.cs:313 AppSettings.cs:316 AppSettings.cs:319 AppSettings.cs:322
-#: AppSettings.cs:325 AppSettings.cs:328 AppSettings.cs:331 AppSettings.cs:334
-#: AppSettings.cs:337 AppSettings.cs:340 AppSettings.cs:343 AppSettings.cs:346
-#: AppSettings.cs:349 AppSettings.cs:352 AppSettings.cs:355 AppSettings.cs:358
-#: AppSettings.cs:361 AppSettings.cs:364 AppSettings.cs:367 AppSettings.cs:370
-#: AppSettings.cs:373 AppSettings.cs:376 AppSettings.cs:379 AppSettings.cs:382
+#: AppSettings.cs:279 AppSettings.cs:282 AppSettings.cs:285 AppSettings.cs:288
+#: AppSettings.cs:291 AppSettings.cs:294 AppSettings.cs:297 AppSettings.cs:300
+#: AppSettings.cs:303 AppSettings.cs:306 AppSettings.cs:309 AppSettings.cs:312
+#: AppSettings.cs:315 AppSettings.cs:318 AppSettings.cs:321 AppSettings.cs:324
+#: AppSettings.cs:327 AppSettings.cs:330 AppSettings.cs:333 AppSettings.cs:336
+#: AppSettings.cs:339 AppSettings.cs:342 AppSettings.cs:345 AppSettings.cs:348
+#: AppSettings.cs:351 AppSettings.cs:354 AppSettings.cs:357 AppSettings.cs:360
+#: AppSettings.cs:363 AppSettings.cs:366 AppSettings.cs:369 AppSettings.cs:372
+#: AppSettings.cs:375 AppSettings.cs:378 AppSettings.cs:381 AppSettings.cs:384
 msgid ""
 "Sets the destination folder where images go when this key is pressing. This "
 "can be a subfolder relative to the current base target folder, or a complete "
@@ -542,58 +542,58 @@ msgstr ""
 "径，也可以是完整路径。清空则使用默认值（按键本身作文件夹名称）。各选项的更详"
 "细说明见自述文件。"
 
-#: AppSettings.cs:387 AppSettings.cs:389
+#: AppSettings.cs:389 AppSettings.cs:391
 msgid "Cache"
 msgstr "缓存"
 
-#: AppSettings.cs:387
+#: AppSettings.cs:389
 msgid "Cache Ahead (earlier)"
 msgstr "向前缓存"
 
-#: AppSettings.cs:387
+#: AppSettings.cs:389
 msgid "Pre-reading x pictures earlier than the current image in image pool."
 msgstr "预读队列中当前图片左侧的 x 张图片。"
 
-#: AppSettings.cs:389
+#: AppSettings.cs:391
 msgid "Cache Behind (later)"
 msgstr "向后缓存"
 
-#: AppSettings.cs:389
+#: AppSettings.cs:391
 msgid "Pre-reading x pictures later than the current image in image pool."
 msgstr "预读队列中当前图片右侧的 x 张图片。"
 
-#: AppSettings.cs:393 AppSettings.cs:395 AppSettings.cs:397 AppSettings.cs:399
-#: AppSettings.cs:401
+#: AppSettings.cs:395 AppSettings.cs:397 AppSettings.cs:399 AppSettings.cs:402
+#: AppSettings.cs:404
 msgid "File Type"
 msgstr "文件类型"
 
-#: AppSettings.cs:393
+#: AppSettings.cs:395
 msgid "Image exts"
 msgstr "图像扩展名"
 
-#: AppSettings.cs:393 AppSettings.cs:395
+#: AppSettings.cs:395 AppSettings.cs:397
 msgid ""
 "File extensions allowed to be added to the pool. Will be ignored if the "
 "Check MIME is on."
 msgstr "允许加入队列的文件扩展名。“检查 MIME”选项禁用时此设置无效。"
 
-#: AppSettings.cs:395
+#: AppSettings.cs:397
 msgid "Video exts"
 msgstr "视频扩展名"
 
-#: AppSettings.cs:397
+#: AppSettings.cs:399
 msgid "Check MIME"
 msgstr "检查 MIME"
 
-#: AppSettings.cs:397
+#: AppSettings.cs:399
 msgid "Check the MIME type of the file instead of checking the extensions."
 msgstr "检查文件的 MIME 类型代替检查扩展名。"
 
-#: AppSettings.cs:399
+#: AppSettings.cs:402
 msgid "Allowed MIME"
 msgstr "允许的 MIME"
 
-#: AppSettings.cs:399
+#: AppSettings.cs:402
 msgid ""
 "File MIME types allowed to be added to the pool. Work only while the Check "
 "MIME option be turn on. Semicolon separated. Spaces on edge are ignored. "
@@ -602,11 +602,11 @@ msgstr ""
 "允许加入队列的文件 MIME 类型。仅“检查 MIME”选项启用时有效。英文分号间隔，两端"
 "空格将忽略。默认值：'image/;video/;audio/'。"
 
-#: AppSettings.cs:401
+#: AppSettings.cs:404
 msgid "Expand folder shortcuts"
 msgstr "展开文件夹快捷方式"
 
-#: AppSettings.cs:401
+#: AppSettings.cs:404
 msgid ""
 "When adding files, the program will only parse one folder shortcut (if it is "
 "the first) to avoid flooding. If enabled, it attempts to recursively resolve "
@@ -615,125 +615,149 @@ msgstr ""
 "添加文件时，程序默认只解析一层文件夹快捷方式。启用此选项后，将尝试递归解析所"
 "有文件夹快捷方式。"
 
-#: AppSettings.cs:405 AppSettings.cs:407
+#: AppSettings.cs:408 AppSettings.cs:411
 msgid "Misc"
 msgstr "杂项"
 
-#: AppSettings.cs:405
+#: AppSettings.cs:408
 msgid "Copy action"
 msgstr "复制操作"
 
-#: AppSettings.cs:405
+#: AppSettings.cs:408
 msgid ""
 "Sets the action type when you press Ctrl+C or click the \"Copy to clipboard"
 "\" menu in this software."
 msgstr "设定当按 Ctrl+C 或单击“复制到剪贴板”菜单时执行的操作。"
 
-#: AppSettings.cs:407
+#: AppSettings.cs:411
 msgid "Save relative paths"
 msgstr "保存相对路径"
 
-#: AppSettings.cs:407
+#: AppSettings.cs:411
 msgid ""
 "Save the path relative to the location of the program, for paths such as the "
 "target folder."
 msgstr "保存“目标文件夹”等路径时允许相对路径。"
 
-#: AppSettings.cs:577
+#: AppSettings.cs:581
 msgid "Auto"
 msgstr "自动"
 
-#: AppSettings.cs:579
+#: AppSettings.cs:583
 msgid "English"
 msgstr "英语"
 
-#: AppSettings.cs:581
+#: AppSettings.cs:585
 msgid "Chinese (Simplified)"
 msgstr "简体中文"
 
-#: AppSettings.cs:587
+#: AppSettings.cs:591
 msgid "Always Show"
 msgstr "始终显示"
 
-#: AppSettings.cs:589
+#: AppSettings.cs:593
 msgid "Always Hide"
 msgstr "始终隐藏"
 
-#: AppSettings.cs:591
+#: AppSettings.cs:595
 msgid "Fullscreen Only"
 msgstr "仅限全屏"
 
-#: AppSettings.cs:593
+#: AppSettings.cs:597
 msgid "Windowed Only"
 msgstr "仅限窗口"
 
-#: AppSettings.cs:599
+#: AppSettings.cs:603
 msgid "Yes"
 msgstr "是"
 
-#: AppSettings.cs:601
+#: AppSettings.cs:605
 msgid "No"
 msgstr "否"
 
-#: AppSettings.cs:607
+#: AppSettings.cs:611
 msgid "Delete File"
 msgstr "删除文件"
 
-#: AppSettings.cs:609
+#: AppSettings.cs:613
 msgid "Delete to Recycle Bin"
 msgstr "删除到回收站"
 
-#: AppSettings.cs:611
+#: AppSettings.cs:615
 msgid "Only Remove from Image Pool"
 msgstr "仅从队列中移除"
 
-#: AppSettings.cs:617
+#: AppSettings.cs:621
 msgid "Copy"
 msgstr "复制"
 
-#: AppSettings.cs:619
+#: AppSettings.cs:623
 msgid "Move"
 msgstr "移动"
 
-#: AppSettings.cs:625
+#: AppSettings.cs:629
 msgid "Overwrite"
 msgstr "覆盖"
 
-#: AppSettings.cs:627
+#: AppSettings.cs:631
 msgid "Append Number"
 msgstr "追加编号"
 
-#: AppSettings.cs:629
+#: AppSettings.cs:633
 msgid "Skip"
 msgstr "跳过"
 
-#: AppSettings.cs:635
+#: AppSettings.cs:639
 msgid "Bitmap"
 msgstr "位图"
 
-#: AppSettings.cs:637
+#: AppSettings.cs:641
 msgid "File"
 msgstr "文件"
 
-#: AppSettings.cs:639
+#: AppSettings.cs:643
 msgid "File Path"
 msgstr "文件路径"
 
-#: AppSettings.cs:644 AppSettings.cs:654
+#: AppSettings.cs:648 AppSettings.cs:658
 msgid "Disabled"
 msgstr "禁用"
 
-#: AppSettings.cs:646
+#: AppSettings.cs:650
 msgid "Basic"
 msgstr "基础"
 
-#: AppSettings.cs:656
+#: AppSettings.cs:660
 msgid "Enabled"
 msgstr "启用"
 
-#: AppSettings.cs:658
+#: AppSettings.cs:662
 msgid "Unavailable"
 msgstr "不可用"
+
+#: AppSettings.cs:667
+msgid "Off"
+msgstr "关闭"
+
+#. TRANSLATORS: a gradient from left to right.
+#: AppSettings.cs:672
+msgid "Horizontal"
+msgstr "水平"
+
+#. TRANSLATORS: a gradient from top to bottom.
+#: AppSettings.cs:676
+msgid "Vertical"
+msgstr "垂直"
+
+#. TRANSLATORS: a gradient from upper left to lower right.
+#: AppSettings.cs:680
+msgid "Forward Diagonal"
+msgstr "左上到右下"
+
+#. TRANSLATORS:a gradient from upper right to lower left.
+#: AppSettings.cs:684
+msgid "Backward Diagonal"
+msgstr "右上到左下"
 
 #: frmAbout.cs:34
 #, csharp-format

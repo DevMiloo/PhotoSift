@@ -93,6 +93,7 @@ namespace PhotoSift
 #endif
 
 		[Category("Appearance"), LocalizedDisplayName("Gradient background mode"), LocalizedDescription("Set the mode of gradient background colors.")]
+		[TypeConverter(typeof(EnumTypeConverter))]
 		public LineGradientMode ColorGradientBackgroundMode { get; set; }
 	
 		[XmlIgnore]
@@ -239,9 +240,10 @@ namespace PhotoSift
 		[Category( "Controls" ), LocalizedDisplayName( "Limit zoom to window size" ), LocalizedDescription( "If enabled, zooming maxes out when the image size is equal to the window size. In other words, you can not zoom images larger that the current window size." )]
 		public bool ZoomLimitMaxToWindowSize { get; set; }
 		[Category("Controls"), LocalizedDisplayName("Player intercept keys"), LocalizedDescription("If enabled, the video player will intercept some keyboard keys to perform actions.")]
+		[TypeConverter(typeof(EnumTypeConverter))]
 		public VideoPlayerHookKeysOptions VideoPlayerHookKeysControl { get; set; }
 		[Category("Controls"), LocalizedDisplayName("Ignore video beginnings (s)"), LocalizedDescription("If the value is greater than 0, the videos will be seek to the location (in seconds) to ignore the beginning. If the video length is less than this value, it plays from scratch. Seeking is not supported for some video formats.")]
-        public int SkipVideoBeginSeconds { get; set; }
+		public int SkipVideoBeginSeconds { get; set; }
 
 		// Display Group
 		[Category( "Display" ), LocalizedDisplayName( "Info label" ), LocalizedDescription( "Info label is the one in the top left corner. It shows information about the currently loaded image. In windowed mode, this information is also shown in the window title." )]
@@ -395,6 +397,7 @@ namespace PhotoSift
 		[Category("File Type"), LocalizedDisplayName("Video exts"), LocalizedDescription("File extensions allowed to be added to the pool. Will be ignored if the Check MIME is on.")]
 		public string[] allowsVidExts { get; set; }
 		[Category("File Type"), LocalizedDisplayName("Check MIME"), LocalizedDescription("Check the MIME type of the file instead of checking the extensions.")]
+		[TypeConverter(typeof(EnumTypeConverter))]
 		public FeatureSwitch FileMIMEChecker { get; set; }
 		[Category("File Type"), LocalizedDisplayName("Allowed MIME"), LocalizedDescription("File MIME types allowed to be added to the pool. Work only while the Check MIME option be turn on. Semicolon separated. Spaces on edge are ignored. Default: 'image/;video/;audio/'.")]
 		public string allowsMIME { get; set; }
@@ -403,6 +406,7 @@ namespace PhotoSift
 
 		// Misc settings
 		[Category("Misc"), LocalizedDisplayName("Copy action"), LocalizedDescription("Sets the action type when you press Ctrl+C or click the \"Copy to clipboard\" menu in this software.")]
+		[TypeConverter(typeof(EnumTypeConverter))]
 		public CopytoClipboardOptions CopyActionType { get; set; }
 		[Category("Misc"), LocalizedDisplayName("Save relative paths"), LocalizedDescription("Save the path relative to the location of the program, for paths such as the target folder.")]
 		public bool SaveRelativePaths { get; set; }
@@ -660,10 +664,24 @@ namespace PhotoSift
 	}
 	public enum LineGradientMode
 	{
+		[LocalizedDescription("Off")]
 		Off = -1,
+		// https://docs.microsoft.com/dotnet/api/system.drawing.drawing2d.lineargradientmode
+
+		// TRANSLATORS: a gradient from left to right.
+		[LocalizedDescription("Horizontal")]
 		Horizontal = 0,
+
+		// TRANSLATORS: a gradient from top to bottom.
+		[LocalizedDescription("Vertical")]
 		Vertical = 1,
+
+		// TRANSLATORS: a gradient from upper left to lower right.
+		[LocalizedDescription("Forward Diagonal")]
 		ForwardDiagonal = 2,
+
+		// TRANSLATORS: a gradient from upper right to lower left.
+		[LocalizedDescription("Backward Diagonal")]
 		BackwardDiagonal = 3
 	}
 
