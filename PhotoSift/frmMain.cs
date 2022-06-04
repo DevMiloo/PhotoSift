@@ -27,6 +27,7 @@ using System.IO;
 using System.Linq;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
+using static PhotoSift.NGettextShortSyntax;
 
 namespace PhotoSift
 {
@@ -130,6 +131,7 @@ namespace PhotoSift
 		}
 		private void frmMain_Load( object sender, EventArgs e )
 		{
+			MenusLabelL10n(); // earlier than this.WindowState to avoid unlocalized window being displayed
 			fileManagement = new FileManagement( this );
 
 			winApi.HookMouse();
@@ -149,7 +151,7 @@ namespace PhotoSift
 			this.WindowState = settings.WindowState;
 
 			settings.Stats_StartupCount++;
-			
+
 			ApplySettings();
 
 			// Setup GUI
@@ -178,10 +180,38 @@ namespace PhotoSift
 #endif
 		}
 
-		/// <summary>
-		/// Updates the GUI to match the current settings
-		/// </summary>
-		private void ApplySettings()
+		// https://stackoverflow.com/a/39129576
+		private ToolStripItem[] GetAllChildren(ToolStripItem item)
+		{
+			List<ToolStripItem> Items = new List<ToolStripItem> { item };
+			if (item is ToolStripMenuItem)
+				foreach (ToolStripItem i in ((ToolStripMenuItem)item).DropDownItems)
+					Items.AddRange(GetAllChildren(i));
+			else if (item is ToolStripSplitButton)
+				foreach (ToolStripItem i in ((ToolStripSplitButton)item).DropDownItems)
+					Items.AddRange(GetAllChildren(i));
+			else if (item is ToolStripDropDownButton)
+				foreach (ToolStripItem i in ((ToolStripDropDownButton)item).DropDownItems)
+					Items.AddRange(GetAllChildren(i));
+			return Items.ToArray();
+		}
+		private void MenusLabelL10n()
+        {
+			foreach (ToolStripMenuItem mainMenu in menuStripMain.Items)
+			{
+				var subMenus = GetAllChildren(mainMenu);
+                foreach (var subMenu in subMenus)
+                {
+					subMenu.Text = _p("menu", subMenu.Text);
+				}
+			}
+        }
+        
+
+        /// <summary>
+        /// Updates the GUI to match the current settings
+        /// </summary>
+        private void ApplySettings()
 		{
 			timerAutoAdvance.Interval = (int)( settings.AutoAdvanceInterval * 1000 );
 			timerMouseHider.Interval = settings.FullscreenCursorAutoHideTime;
@@ -362,7 +392,7 @@ namespace PhotoSift
 					}
 					catch (Exception ex)
 					{
-						MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // lising dir error, e.g. "C:\".
+						MessageBox.Show(ex.Message, _("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error); // lising dir error, e.g. "C:\".
 						return null;
 					}
 				}
@@ -378,8 +408,8 @@ namespace PhotoSift
 			if( items.Length == 0 ) return 0;
 
 			HaltAutoAdvance();
-			lblHeader.Text = "Loading...";
-			updateTitleStr("Loading...");
+			lblHeader.Text = _("Loading...");
+			updateTitleStr(_("Loading..."));
 			Util.CenterControl( lblHeader, picLogo.Image.Height / 2 + 20 );
 			this.Refresh();
 
@@ -401,7 +431,7 @@ namespace PhotoSift
 			settings.Stats_LoadedPics += newPics.Count;
 
 			// update gui
-			ShowStatusMessage( "Added " + newPics.Count + " images..." );
+			ShowStatusMessage( _("Added ") + newPics.Count + _(" images...") );
 			ResumeAutoAdvance();
 			ShowPicByOffset( 0 );
 			
@@ -476,7 +506,7 @@ namespace PhotoSift
 			if( pics.Count == 0 )
             {
                 updateTitleWithEmptyqueue();
-                showAndUpdateHeader("Add or Drop Images to Start");
+                showAndUpdateHeader(_("Add or Drop Images to Start"));
                 picCurrent.Image = null;
                 picCurrent.Visible = false;
                 HaltWmpPlayer();
@@ -513,14 +543,14 @@ namespace PhotoSift
                     string remainingTipText = "";
 					if (pics.Count > 0)
                     {
-						remainingTipText = string.Format(" (remaining {0} items)", pics.Count);
+						remainingTipText = string.Format(_(" (remaining {0} items)"), pics.Count);
 						if (pics.Count == 1)
-							remainingTipText = remainingTipText.Replace("items", "item"); // todo i18n
+							remainingTipText = remainingTipText.Replace(_("items"), _("item")); // todo i18n
 					}
-					updateTitleStr("End of Image Pool" + remainingTipText);
-					showAndUpdateHeader(string.Format("End of Image Pool{0}\nGo back or add more images", 
+					updateTitleStr(_("End of Image Pool") + remainingTipText);
+					showAndUpdateHeader(string.Format(_("End of Image Pool{0}\nGo back or add more images"), 
 						remainingTipText.Length > 0 ? "\n"+ remainingTipText:""));
-					updateInfoLabel("End of Image Pool");
+					updateInfoLabel(_("End of Image Pool"));
 					picCurrent.Image = null;
 					Util.CenterControl(lblHeader);
 					return;
@@ -533,7 +563,7 @@ namespace PhotoSift
 
 
 			// load image
-			updateTitleStr("Loading...");
+			updateTitleStr(_("Loading..."));
 			updateInfoLabel(this.Text);
 			lblHeader.Visible = false;
 			Application.DoEvents();
@@ -564,7 +594,7 @@ namespace PhotoSift
 					wmpCurrent.URL = URI;
 				}
 
-				updateTitleStr("Video playback");
+				updateTitleStr(_("Video playback"));
 				curMetaInfoCache = getMetaInfo(true, false);
 				updateMetaInfo(true);
 
@@ -581,7 +611,7 @@ namespace PhotoSift
 			try
 			{
 				picCurrent.Image = imageCache.GetImage( pics[iCurrentPic] );
-				if (picCurrent.Image == null) throw new Exception("Loading image fail: " + pics[iCurrentPic]);
+				if (picCurrent.Image == null) throw new Exception(_("Loading image fail: ") + pics[iCurrentPic]);
 
 				CurrentAspectRatio = (float)picCurrent.Image.Size.Height / picCurrent.Image.Size.Width;
 
@@ -598,8 +628,8 @@ namespace PhotoSift
 			{
 				// show error message
 				updateInfoLabel("(" + (iCurrentPic + 1) + "/" + pics.Count + ") " + pics[iCurrentPic]);
-				showAndUpdateHeader("Error loading image:\n" + ex.Message);
-				updateTitleStr("Error loading image: " + pics[iCurrentPic]);
+				showAndUpdateHeader(_("Error loading image:\n") + ex.Message);
+				updateTitleStr(_("Error loading image: ") + pics[iCurrentPic]);
 				picCurrent.Image = null;
 				Util.CenterControl( lblHeader );
 				UpdateMenuEnabledDisabled();
@@ -668,7 +698,7 @@ namespace PhotoSift
         private void updateTitleWithEmptyqueue()
         {
             string titleSuffix = "";
-            if (settings.TargetPathInTitlebar) titleSuffix = string.Format(" - Target dir: {0}", settings.TargetFolder);
+            if (settings.TargetPathInTitlebar) titleSuffix = string.Format(_(" - Target dir: {0}"), settings.TargetFolder);
             updateTitleStr(Util.GetAppName() + titleSuffix);
         }
 
@@ -700,12 +730,12 @@ namespace PhotoSift
 			if (newStatus)
 			{
 				timerAutoAdvance.Start();
-				ShowStatusMessage("Auto Advance: On");
+				ShowStatusMessage(_("Auto Advance: On"));
 			}
 			else
 			{
 				timerAutoAdvance.Stop();
-				ShowStatusMessage("Auto Advance: Off");
+				ShowStatusMessage(_("Auto Advance: Off"));
 			}
 		}
 		private void HaltAutoAdvance()
@@ -1238,27 +1268,27 @@ namespace PhotoSift
 
 			if( CurrentScaleMode == ScaleMode.ZoomWithMouse )
 			{
-				ShowStatusMessage( "Scale: " + ResizeCurrentPercentage + "% (" + picCurrent.Width + "x" + picCurrent.Height + ")" );
+				ShowStatusMessage( _("Scale: ") + ResizeCurrentPercentage + "% (" + picCurrent.Width + "x" + picCurrent.Height + ")" );
 			}
 			else if( CurrentScaleMode == ScaleMode.ActualSize )
 			{
-				ShowStatusMessage( lblStatus.Text = "Scale: Actual Size (" + picCurrent.Width + "x" + picCurrent.Height + ")" );
+				ShowStatusMessage( lblStatus.Text = _("Scale: Actual Size (") + picCurrent.Width + "x" + picCurrent.Height + ")" );
 			}
 			else if( CurrentScaleMode == ScaleMode.ManualZoomWidth )
 			{
-				ShowStatusMessage( "Scale: Locked to Width (" + picCurrent.Width + "x" + picCurrent.Height + ")" );
+				ShowStatusMessage( _("Scale: Locked to Width (") + picCurrent.Width + "x" + picCurrent.Height + ")" );
 			}
 			else if( CurrentScaleMode == ScaleMode.ManualZoomHeight )
 			{
-				ShowStatusMessage( "Scale: Locked to Height (" + picCurrent.Width + "x" + picCurrent.Height + ")" );
+				ShowStatusMessage( _("Scale: Locked to Height (") + picCurrent.Width + "x" + picCurrent.Height + ")" );
 			}
 			else if( CurrentScaleMode == ScaleMode.ManualZoomPercentage )
 			{
-				ShowStatusMessage( "Scale: " + ResizeCurrentPercentage + "% (" + picCurrent.Width + "x" + picCurrent.Height + ")" );
+				ShowStatusMessage( _("Scale: ") + ResizeCurrentPercentage + "% (" + picCurrent.Width + "x" + picCurrent.Height + ")" );
 			}
 			else
 			{
-				ShowStatusMessage( lblStatus.Text = "Scale: Fit Window (" + picCurrent.Width + "x" + picCurrent.Height + ")" );
+				ShowStatusMessage( lblStatus.Text = _("Scale: Fit Window (") + picCurrent.Width + "x" + picCurrent.Height + ")" );
 			}
 		}
 
@@ -1337,19 +1367,19 @@ namespace PhotoSift
 			switch( fileManagement.GetNextUndoType() )
 			{
 				case FileManagement.UndoMode.Rename:
-					mnuUndo.Text = "Undo Rename";
+					mnuUndo.Text = _("Undo Rename");
 					break;
 				case FileManagement.UndoMode.Copy:
-					mnuUndo.Text = "Undo Copy";
+					mnuUndo.Text = _("Undo Copy");
 					break;
 				case FileManagement.UndoMode.Move:
-					mnuUndo.Text = "Undo Move";
+					mnuUndo.Text = _("Undo Move");
 					break;
 				case FileManagement.UndoMode.Delete:
-					mnuUndo.Text = "Undo Delete";
+					mnuUndo.Text = _("Undo Delete");
 					break;
 				default:
-					mnuUndo.Text = "Undo";
+					mnuUndo.Text = _("Undo");
 					bUndo = false;
 					break;
 			}
@@ -1388,7 +1418,7 @@ namespace PhotoSift
 							if( d.undoData.mode == FileManagement.UndoMode.Delete ) settings.Stats_DeletedPics--;
 							break;
 					}
-					ShowStatusMessage( "Undo..." );
+					ShowStatusMessage( _("Undo...") );
 
 				UpdateMenuEnabledDisabled();
 			}

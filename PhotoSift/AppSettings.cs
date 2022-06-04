@@ -21,12 +21,12 @@
 using System;
 using System.ComponentModel;
 using System.Drawing.Design;
-using System.Windows.Forms.Design;
 using System.Drawing;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using static PhotoSift.WinApi;
+using GlobalizedPropertyGrid;
 
 namespace PhotoSift
 {
@@ -34,28 +34,28 @@ namespace PhotoSift
     /// Contains all PhotoSift settings. Most attributes control appearance in the PropertyGrid in frmSettings.
     /// </summary>
     [Serializable]
-	[DefaultPropertyAttribute( "FileMode" )]
-	public class AppSettings
+	[DefaultProperty("FileMode")]
+	public class AppSettings: GlobalizedObject
 	{
 		// -- Settings shown in the property grid --
 
 		// File Operations Group
 		// (space in front of category name is intended; makes it sort first)
-		[Category("\u200B" + "File Operations" ), DisplayName( "File mode" ), DescriptionAttribute( "When pressing an action key, should the file be copied or moved?" )]
+		[Category("File Operations" ), LocalizedDisplayName("File mode"), LocalizedDescription("When pressing an action key, should the file be copied or moved?")]
 		[TypeConverter( typeof( EnumTypeConverter ) )]
 		public FileOperations FileMode { get; set; }
 
-		[Category("\u200B" + "File Operations" ), DisplayName( "Existing files" ), DescriptionAttribute( "When pressing an action key, and the target folder already contains a file with the same name, what action do you want to take? Append number means a (1) will be added to the end of the filename." )]
+		[Category("File Operations" ), LocalizedDisplayName( "Existing files" ), LocalizedDescription( "When pressing an action key, and the target folder already contains a file with the same name, what action do you want to take? Append number means a (1) will be added to the end of the filename." )]
 		[TypeConverter( typeof( EnumTypeConverter ) )]
-		public ExistingFileOptions ExistingFiles { get; set; }
-
-		[Category("\u200B" + "File Operations" ), DisplayName( "Delete mode" ), DescriptionAttribute( "Determines the action to take when pressing the delete key. You can force different modes with Shift+Del (Delete), Alt+Del (Recycle) and Ctrl+Del (Remove from List)" )]
+        public ExistingFileOptions ExistingFiles { get; set; }
+        
+		[Category("File Operations" ), LocalizedDisplayName( "Delete mode" ), LocalizedDescription( "Determines the action to take when pressing the Delete key. You can force different modes with Shift+Del (Delete), Alt+Del (Recycle) and Ctrl+Del (Remove from List)" )]
 		[TypeConverter( typeof( EnumTypeConverter ) )]
 		public DeleteOptions DeleteMode { get; set; }
-		[Category("\u200B" + "File Operations" ), DisplayName("Target base folder"), DescriptionAttribute("Target base folder. %PhotoSift% or relative path (not \\ starting) will be replaced with the location of the software.")]
-		[EditorAttribute(typeof(FolderNameEditor2), typeof(UITypeEditor))]
+		[Category("File Operations" ), LocalizedDisplayName("Target base folder"), LocalizedDescription("Target base folder. %PhotoSift% or relative path (not \\ starting) will be replaced with the location of the software.")]
+		[Editor(typeof(FolderNameEditor2), typeof(UITypeEditor))]
 		public string TargetFolderPath { get; set; } // TargetFolder_Serializable
-		[System.Xml.Serialization.XmlIgnore]
+		[XmlIgnore]
 		[Browsable(false)]
 		public string TargetFolder
 		{
@@ -76,12 +76,12 @@ namespace PhotoSift
 
 		// Appearance Group
 #if RLVISION
-		[Category( "Appearance" ), DisplayName( "Background color" ), DescriptionAttribute( "Sets the window background color." )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Background color" ), LocalizedDescription( "Sets the window background color." )]
 		[TypeConverter( typeof( EnumTypeConverter ) )]
 		public GrayColors ColorBackground { get; set; }
 #else
 		[XmlIgnore]
-		[Category( "Appearance" ), DisplayName( "Background color" ), DescriptionAttribute( "Sets the window background color." )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Background color" ), LocalizedDescription( "Sets the window background color." )]
 		public Color ColorBackground
 		{
 			get { return ColorBackground_Serializable.ToColor(); }
@@ -91,11 +91,11 @@ namespace PhotoSift
 		public SerializableColor ColorBackground_Serializable { get; set; }
 #endif
 
-		[Category("Appearance"), DisplayName("Gradient background mode"), DescriptionAttribute("Set the mode of gradient background colors.")]
+		[Category("Appearance"), LocalizedDisplayName("Gradient background mode"), LocalizedDescription("Set the mode of gradient background colors.")]
 		public LineGradientMode ColorGradientBackgroundMode { get; set; }
 	
 		[XmlIgnore]
-		[Category("Appearance"), DisplayName("Gradient background color 1"), DescriptionAttribute("Set the gradient background colors of the window. The main background color is ignored.")]
+		[Category("Appearance"), LocalizedDisplayName("Gradient background color 1"), LocalizedDescription("Set the gradient background colors of the window. The main background color is ignored.")]
 		public Color ColorGradientBackgroundOne
 		{
 			get { return ColorGradientBackgroundOne_Serializable.ToColor(); }
@@ -104,7 +104,7 @@ namespace PhotoSift
 		[Browsable(false)]
 		public SerializableColor ColorGradientBackgroundOne_Serializable { get; set; }
 		[XmlIgnore]
-		[Category("Appearance"), DisplayName("Gradient background color 2"), DescriptionAttribute("Set the gradient background colors of the window. The main background color is ignored.")]
+		[Category("Appearance"), LocalizedDisplayName("Gradient background color 2"), LocalizedDescription("Set the gradient background colors of the window. The main background color is ignored.")]
 		public Color ColorGradientBackgroundTwo
 		{
 			get { return ColorGradientBackgroundTwo_Serializable.ToColor(); }
@@ -112,12 +112,12 @@ namespace PhotoSift
 		}
 		[Browsable(false)]
 		public SerializableColor ColorGradientBackgroundTwo_Serializable { get; set; }
-		[Category("Appearance"), DisplayName("Gradient background gamma correction"), DescriptionAttribute("Gamma correction is disabled by default. Enabling it may get better or worse result.")]
+		[Category("Appearance"), LocalizedDisplayName("Gradient background gamma correction"), LocalizedDescription("Gamma correction is disabled by default. Enabling it may get better or worse result.")]
 		public bool ColorGradientBackgroundGammaCorrection { get; set; }
 
 
 		[XmlIgnore]
-		[Category( "Appearance" ), DisplayName( "Text label color" ), DescriptionAttribute( "Sets the font color of text labels." )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Text label color" ), LocalizedDescription( "Sets the font color of text labels." )]
 		public Color ColorLabelFront
 		{
 			get { return ColorLabelFront_Serializable.ToColor(); }
@@ -127,7 +127,7 @@ namespace PhotoSift
 		public SerializableColor ColorLabelFront_Serializable { get; set; }
 
 		[XmlIgnore]
-		[Category( "Appearance" ), DisplayName( "Text label background color" ), DescriptionAttribute( "Sets the background color of text labels. Not visible if the background is transparent." )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Text label background color" ), LocalizedDescription( "Sets the background color of text labels. Not visible if the background is transparent." )]
 		public Color ColorLabelBack
 		{
 			get { return ColorLabelBack_Serializable.ToColor(); }
@@ -139,20 +139,20 @@ namespace PhotoSift
 		[Browsable( false )]
 		public SerializableFont LabelFont_Serializable { get; set; }
 		[XmlIgnore]
-		[Category( "Appearance" ), DisplayName( "Text label font" ), DescriptionAttribute( "Sets the font used in text labels." )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Text label font" ), LocalizedDescription( "Sets the font used in text labels." )]
 		public Font LabelFont
 		{
 			get { return LabelFont_Serializable.ToFont(); }
 			set { LabelFont_Serializable = SerializableFont.FromFont( value ); }
 		}
 
-		[Category( "Appearance" ), DisplayName( "Transparent text labels" ), DescriptionAttribute( "Decides if text labels should have transparent or solid color background." )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Transparent text labels" ), LocalizedDescription( "Decides if text labels should have transparent or solid color background." )]
 		public bool ColorTransparentLabels { get; set; }
 
-		[Category( "Appearance" ), DisplayName( "Custom menu theme" ), DescriptionAttribute("Enables a custom menu theme, based on the four colors specified below.")]
+		[Category( "Appearance" ), LocalizedDisplayName( "Custom menu theme" ), LocalizedDescription("Enables a custom menu theme, based on the four colors specified below.")]
 		public bool CustomMenuColors { get; set; }
 		[XmlIgnore]
-		[Category( "Appearance" ), DisplayName( "Custom menu theme: Background" ), DescriptionAttribute( "Background color" )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Custom menu theme: Background" ), LocalizedDescription( "Background color" )]
 		public Color CustomMenuColorBackground
 		{
 			get { return CustomMenuColorBackground_Serializable.ToColor(); }
@@ -161,7 +161,7 @@ namespace PhotoSift
 		[Browsable( false )]
 		public SerializableColor CustomMenuColorBackground_Serializable { get; set; }
 		[XmlIgnore]
-		[Category( "Appearance" ), DisplayName( "Custom menu theme: Text" ), DescriptionAttribute( "Text color" )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Custom menu theme: Text" ), LocalizedDescription( "Text color" )]
 		public Color CustomMenuColorText
 		{
 			get { return CustomMenuColorText_Serializable.ToColor(); }
@@ -170,7 +170,7 @@ namespace PhotoSift
 		[Browsable( false )]
 		public SerializableColor CustomMenuColorText_Serializable { get; set; }
 		[XmlIgnore]
-		[Category( "Appearance" ), DisplayName( "Custom menu theme: Border" ), DescriptionAttribute( "Border color" )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Custom menu theme: Border" ), LocalizedDescription( "Border color" )]
 		public Color CustomMenuColorBorder
 		{
 			get { return CustomMenuColorHighlight_Serializable.ToColor(); }
@@ -179,7 +179,7 @@ namespace PhotoSift
 		[Browsable( false )]
 		public SerializableColor CustomMenuColorHighlight_Serializable { get; set; }
 		[XmlIgnore]
-		[Category( "Appearance" ), DisplayName( "Custom menu theme: Highlight" ), DescriptionAttribute( "Background color for items under mouse" )]
+		[Category( "Appearance" ), LocalizedDisplayName( "Custom menu theme: Highlight" ), LocalizedDescription( "Background color for items under mouse" )]
 		public Color CustomMenuColorHightlight
 		{
 			get { return CustomMenuColorSelected_Serializable.ToColor(); }
@@ -187,220 +187,220 @@ namespace PhotoSift
 		}
 		[Browsable( false )]
 		public SerializableColor CustomMenuColorSelected_Serializable { get; set; }
-		[Category("Appearance"), DisplayName("Target path in title bar"), DescriptionAttribute("Display the target path in the title bar while no files are in the queue.")]
+		[Category("Appearance"), LocalizedDisplayName("Target path in title bar"), LocalizedDescription("Display the target path in the title bar while no files are in the queue.")]
 		public bool TargetPathInTitlebar { get; set; }
 
 		// Controls Group
-		[Category("Controls"), DisplayName("Repeat interval (ms)"), DescriptionAttribute("Interval (ms) for press and hold a key to repeat actions. The value < 100 ms will disalbe this feature. The first trigger will double the time.")]
+		[Category("Controls"), LocalizedDisplayName("Repeat interval (ms)"), LocalizedDescription("Interval (ms) for press and hold a key to repeat actions. The value < 100 ms will disalbe this feature. The first trigger will double the time.")]
 		public int HoldKeyInterval { get; set; }
-		[Category("Controls"), DisplayName("Rewind on pool end"), DescriptionAttribute("Try to rewind when the pool end is reached while handle.")]
+		[Category("Controls"), LocalizedDisplayName("Rewind on pool end"), LocalizedDescription("Try to rewind when the pool end is reached while handle.")]
 		public bool RewindOnEnd { get; set; }
-		[Category("Controls"), DisplayName("Loop in pool"), DescriptionAttribute("Cycle your pool when you switch images, there is no pool end screen.")]
+		[Category("Controls"), LocalizedDisplayName("Loop in pool"), LocalizedDescription("Cycle your pool when you switch images, there is no pool end screen.")]
 		public bool LoopInPool { get; set; }
-		[Category( "Controls" ), DisplayName( "Medium jump" ), DescriptionAttribute( "Number of images to skip when doing a medium jump. Medium jump is invoked by holding Ctrl and pressing Left/Right." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Medium jump" ), LocalizedDescription("Number of images to skip when doing a medium jump. Medium jump is invoked by holding Ctrl and pressing Left/Right arrow key.")]
 		public int MediumJump { get; set; }
 
-		[Category( "Controls" ), DisplayName( "Long jump" ), DescriptionAttribute( "Number of images to skip when doing a long jump. Long jump is invoked by holding Shift and pressing Left/Right." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Long jump" ), LocalizedDescription("Number of images to skip when doing a long jump. Long jump is invoked by holding Shift and pressing Left/Right arrow key.")]
 		public int LargeJump { get; set; }
 
-		[Category("Controls"), DisplayName("Confirm to clear Threshold"), DescriptionAttribute("Confirm to clear the images pool if the number of images in the pool exceeds this value. The warn is disalbed if set as 0. ")]
+		[Category("Controls"), LocalizedDisplayName("Confirm to clear Threshold"), LocalizedDescription("Confirm to clear the images pool if the number of images in the pool exceeds this value. The warn is disalbed if set as 0.")]
 		public long WarnThresholdOnClearQueue { get; set; }
-		[Category( "Controls" ), DisplayName( "Escape to exit" ), DescriptionAttribute( "Allows you to exit the program by pressing the escape key. In fullscreen, escape always reverts back to window mode." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Escape key to exit" ), LocalizedDescription( "Allows you to exit the program by pressing the Escape key. In fullscreen, Escape key always reverts back to window mode." )]
 		public bool CloseOnEscape { get; set; }
 
-		[Category( "Controls" ), DisplayName( "On delete show next image" ), DescriptionAttribute( "When an image is deleted, this determined if the program is to show the image positioned before or after the deleted image." )]
+		[Category( "Controls" ), LocalizedDisplayName( "On delete show next image" ), LocalizedDescription( "When an image is deleted, this determined if the program is to show the image positioned before or after the deleted image." )]
 		public bool OnDeleteStepForward { get; set; }
 
-		[Category( "Controls" ), DisplayName( "Auto advance interval" ), DescriptionAttribute( "When the auto advance slideshow is enabled, this number determines how long to wait in seconds before showing the next images." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Auto advance interval" ), LocalizedDescription( "When the auto advance slideshow is enabled, this number determines how long to wait in seconds before showing the next images." )]
 		public double AutoAdvanceInterval { get; set; }
 
-		[Category( "Controls" ), DisplayName( "Auto scroll in actual size" ), DescriptionAttribute( "In actual size mode (1:1) you can scroll the image. Auto scroll means you only have to move the mouse to scroll. If turned off, you have to click and hold the mouse button to scroll." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Auto scroll in actual size" ), LocalizedDescription( "In actual size mode (1:1) you can scroll the image. Auto scroll means you only have to move the mouse to scroll. If turned off, you have to click and hold the mouse button to scroll." )]
 		public bool ActualSizeAutoScroll { get; set; }
 
-		[Category( "Controls" ), DisplayName( "Auto scroll: Sensitivity" ), DescriptionAttribute( "Determines how far you have to move the mouse (in pixels) to fully scroll the image from one side to the other." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Auto scroll: Sensitivity" ), LocalizedDescription( "Determines how far you have to move the mouse (in pixels) to fully scroll the image from one side to the other." )]
 		public int ActualSizeAutoScrollDistance { get; set; }
 
-		[Category( "Controls" ), DisplayName( "Auto scroll: Float image" ), DescriptionAttribute( "Allows the image to freely 'float' around the cursor. Otherwise it will stick to the window borders, limiting the scrolling." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Auto scroll: Float image" ), LocalizedDescription( "Allows the image to freely 'float' around the cursor. Otherwise it will stick to the window borders, limiting the scrolling." )]
 		public bool ActualSizeAutoScrollNoLimitInsideForm { get; set; }
 
-		[Category( "Controls" ), DisplayName( "Scale mode: Linear mode" ), DescriptionAttribute( "In scale mode (RMB), the mouse position determines the scale factor. If linear, the picture will snap to the new scaled size. If not linear, the image will keep its original scale, but when you move the mouse the scale factor will differ left and right of the original position." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Scale mode: Linear mode" ), LocalizedDescription( "In scale mode (RMB), the mouse position determines the scale factor. If linear, the picture will snap to the new scaled size. If not linear, the image will keep its original scale, but when you move the mouse the scale factor will differ left and right of the original position." )]
 		public bool LinearScale { get; set; }
 
-		[Category( "Controls" ), DisplayName( "Scale mode: Snapping" ), DescriptionAttribute( "In scale mode (RMB), the zoom level can be set to snap to an interval, for example each 10 percent. Default is 0, meaning freely zoom without snapping." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Scale mode: Snapping" ), LocalizedDescription( "In scale mode (RMB), the zoom level can be set to snap to an interval, for example each 10 percent. Default is 0, meaning freely zoom without snapping." )]
 		public int FreeZoomSnap { get; set; }
 
-		[Category( "Controls" ), DisplayName( "Keyboard zoom levels" ), DescriptionAttribute( "Enter a comma delimited list of zoom levels to use when using keyboard zoom (+/- keys). Default is: '25,50,75,100,125,150,200'. Enter a single value to use this value as incremental steps instead." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Keyboard zoom levels" ), LocalizedDescription( "Enter a comma delimited list of zoom levels to use when using keyboard zoom (+/- keys). Default is: '25,50,75,100,125,150,200'. Enter a single value to use this value as incremental steps instead." )]
 		public string ZoomSteps { get; set; }
 
-		[Category( "Controls" ), DisplayName( "Limit zoom to windows size" ), DescriptionAttribute( "If enabled, zooming maxes out when the image size is equal to the window size. In other words, you can not zoom images larger that the current window size." )]
+		[Category( "Controls" ), LocalizedDisplayName( "Limit zoom to window size" ), LocalizedDescription( "If enabled, zooming maxes out when the image size is equal to the window size. In other words, you can not zoom images larger that the current window size." )]
 		public bool ZoomLimitMaxToWindowSize { get; set; }
-		[Category("Controls"), DisplayName("Player intercept keys"), DescriptionAttribute("If enabled, the video player will intercept some keyboard keys to perform actions.")]
+		[Category("Controls"), LocalizedDisplayName("Player intercept keys"), LocalizedDescription("If enabled, the video player will intercept some keyboard keys to perform actions.")]
 		public VideoPlayerHookKeysOptions VideoPlayerHookKeysControl { get; set; }
-		[Category("Controls"), DisplayName("Ignore video beginnings (s)"), DescriptionAttribute("If the value is greater than 0, the videos will be seek to the location (in seconds) to ignore the beginning. If the video length is less than this value, it plays from scratch. Seeking is not supported for some video formats.")]
+		[Category("Controls"), LocalizedDisplayName("Ignore video beginnings (s)"), LocalizedDescription("If the value is greater than 0, the videos will be seek to the location (in seconds) to ignore the beginning. If the video length is less than this value, it plays from scratch. Seeking is not supported for some video formats.")]
         public int SkipVideoBeginSeconds { get; set; }
 
 		// Display Group
-		[Category( "Display" ), DisplayName( "Info label" ), DescriptionAttribute( "Info label is the one in the top left corner. It shows information about the currently loaded image. In windowed mode, this information is also shown in the window title." )]
+		[Category( "Display" ), LocalizedDisplayName( "Info label" ), LocalizedDescription( "Info label is the one in the top left corner. It shows information about the currently loaded image. In windowed mode, this information is also shown in the window title." )]
 		[TypeConverter( typeof( EnumTypeConverter ) )]
 		public ShowModes ShowInfoLabel { get; set; }
 
-		[Category( "Display" ), DisplayName( "Mode label" ), DescriptionAttribute( "Info label is the one in the bottom left corner. It shows notifications about modes changes and similar. " )]
+		[Category( "Display" ), LocalizedDisplayName( "Mode label" ), LocalizedDescription("Mode label is the one in the bottom left corner. It shows notifications about modes changes and similar.")]
 		[TypeConverter( typeof( EnumTypeConverter ) )]
 		public ShowModes ShowModeLabel { get; set; }
 
-		[Category("Display"), DisplayName("Info label format"), DescriptionAttribute("Here you can decide what to show in the info label. Available format tags: Filename=%f, Parent folder=%d, Full path=%p, Image width=%w, Image height=%h, Filesize=%s, New line=%n, Image pool total count=%t, Image pool current number=%c")]
+		[Category("Display"), LocalizedDisplayName("Info label format"), LocalizedDescription("Here you can decide what to show in the info label. Available format tags: Filename=%f, Parent folder=%d, Full path=%p, Image width=%w, Image height=%h, Filesize=%s, New line=%n, Image pool total count=%t, Image pool current number=%c")]
 		public string InfoLabelFormat { get; set; }
-		[Category("Display"), DisplayName("Info label format for videos"), DescriptionAttribute("Here you can decide what to show in the info label. Available format tags: Filename=%f, Parent folder=%d, Full path=%p, width x height=%wb, width=%w, height=%h, Filesize=%s, New line=%n, pool total count=%t, pool current number=%c, current playback position=%curpos, media duration=%duration")]
+		[Category("Display"), LocalizedDisplayName("Info label format for videos"), LocalizedDescription("Here you can decide what to show in the info label. Available format tags: Filename=%f, Parent folder=%d, Full path=%p, width x height=%wb, width=%w, height=%h, Filesize=%s, New line=%n, pool total count=%t, pool current number=%c, current playback position=%curpos, media duration=%duration")]
 		public string InfoLabelFormatVideov2 { get; set; }
 
-		[Category( "Display" ), DisplayName( "Hide cursor in fullscreen" ), DescriptionAttribute( "If enabled, the cursor will automatically be hidden on inactivity." )]
+		[Category( "Display" ), LocalizedDisplayName( "Hide cursor in fullscreen" ), LocalizedDescription( "If enabled, the cursor will automatically be hidden on inactivity." )]
 		public bool FullscreenHideCursor { get; set; }
 
-		[Category( "Display" ), DisplayName( "Enlarge small images" ), DescriptionAttribute( "Images smaller that the current view can be enlarged to fill the whole view. Hotkey: F4" )]
+		[Category( "Display" ), LocalizedDisplayName( "Enlarge small images" ), LocalizedDescription( "Images smaller that the current view can be enlarged to fill the whole view. Hotkey: F4" )]
 		public bool EnlargeSmallImages { get; set; }
 
 #if RLVISION
-		[Category( "Display" ), DisplayName( "Auto move to best suited screen" ), DescriptionAttribute( "In a multi-monitor environment, if the application is in fullscreen mode the windows will automatically moves to the best suited monitor (based on aspect ratio) when changing picture." )]
+		[Category( "Display" ), LocalizedDisplayName( "Auto move to best suited screen" ), LocalizedDescription( "In a multi-monitor environment, if the application is in fullscreen mode the windows will automatically moves to the best suited monitor (based on aspect ratio) when changing picture." )]
 		public bool AutoMoveToScreen { get; set; }
 #endif
 
 		// System Group
-		[Category( "System" ), DisplayName( "Disable screensaver" ), DescriptionAttribute( "Disable any screensaver, sleep mode etc while the programis running." )]
+		[Category( "System" ), LocalizedDisplayName( "Disable screensaver" ), LocalizedDescription( "Disable any screensaver, sleep mode etc while the programis running." )]
 		public bool PreventSleep { get; set; }
 
-
+        
 		// Key Folder group
-		[Category( "Key Folders" ), DisplayName( "A" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "A" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_A { get; set; }
-		[Category( "Key Folders" ), DisplayName( "B" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "B" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_B { get; set; }
-		[Category( "Key Folders" ), DisplayName( "C" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "C" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_C { get; set; }
-		[Category( "Key Folders" ), DisplayName( "D" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "D" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_D { get; set; }
-		[Category( "Key Folders" ), DisplayName( "E" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "E" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_E { get; set; }
-		[Category( "Key Folders" ), DisplayName( "F" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "F" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_F { get; set; }
-		[Category( "Key Folders" ), DisplayName( "G" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "G" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_G { get; set; }
-		[Category( "Key Folders" ), DisplayName( "H" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "H" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_H { get; set; }
-		[Category( "Key Folders" ), DisplayName( "I" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "I" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_I { get; set; }
-		[Category( "Key Folders" ), DisplayName( "J" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "J" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_J { get; set; }
-		[Category( "Key Folders" ), DisplayName( "K" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "K" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_K { get; set; }
-		[Category( "Key Folders" ), DisplayName( "L" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "L" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_L { get; set; }
-		[Category( "Key Folders" ), DisplayName( "M" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "M" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_M { get; set; }
-		[Category( "Key Folders" ), DisplayName( "N" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "N" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_N { get; set; }
-		[Category( "Key Folders" ), DisplayName( "O" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "O" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_O { get; set; }
-		[Category( "Key Folders" ), DisplayName( "P" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "P" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_P { get; set; }
-		[Category( "Key Folders" ), DisplayName( "Q" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "Q" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_Q { get; set; }
-		[Category( "Key Folders" ), DisplayName( "R" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "R" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_R { get; set; }
-		[Category( "Key Folders" ), DisplayName( "S" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "S" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_S { get; set; }
-		[Category( "Key Folders" ), DisplayName( "T" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "T" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_T { get; set; }
-		[Category( "Key Folders" ), DisplayName( "U" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "U" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_U { get; set; }
-		[Category( "Key Folders" ), DisplayName( "V" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "V" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_V { get; set; }
-		[Category( "Key Folders" ), DisplayName( "W" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "W" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_W { get; set; }
-		[Category( "Key Folders" ), DisplayName( "X" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "X" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_X { get; set; }
-		[Category( "Key Folders" ), DisplayName( "Y" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "Y" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_Y { get; set; }
-		[Category( "Key Folders" ), DisplayName( "Z" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "Z" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_Z { get; set; }
-		[Category( "Key Folders" ), DisplayName( "0" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "0" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_0 { get; set; }
-		[Category( "Key Folders" ), DisplayName( "1" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "1" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_1 { get; set; }
-		[Category( "Key Folders" ), DisplayName( "2" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "2" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_2 { get; set; }
-		[Category( "Key Folders" ), DisplayName( "3" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "3" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_3 { get; set; }
-		[Category( "Key Folders" ), DisplayName( "4" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "4" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_4 { get; set; }
-		[Category( "Key Folders" ), DisplayName( "5" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "5" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_5 { get; set; }
-		[Category( "Key Folders" ), DisplayName( "6" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "6" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_6 { get; set; }
-		[Category( "Key Folders" ), DisplayName( "7" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "7" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_7 { get; set; }
-		[Category( "Key Folders" ), DisplayName( "8" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "8" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_8 { get; set; }
-		[Category( "Key Folders" ), DisplayName( "9" ), DescriptionAttribute( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
-		[EditorAttribute( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
+		[Category( "Key Folders" ), DisplayName( "9" ), LocalizedDescription( "Sets the destination folder where images go when this key is pressing. This can be a subfolder relative to the current base target folder, or a complete path. Clear to use default. See readme file for a more detailed explanation of the various options." )]
+		[Editor( typeof( FolderNameEditor2 ), typeof( UITypeEditor ) )]
 		public string KeyFolder_9 { get; set; }
 
 		// Cache settings
-		[Category("Cache"), DisplayName("Cache Ahead (earlier)"), DescriptionAttribute("Pre-reading x pictures earlier than the current image in image pool.")]
+		[Category("Cache"), LocalizedDisplayName("Cache Ahead (earlier)"), LocalizedDescription("Pre-reading x pictures earlier than the current image in image pool.")]
 		public int CacheAhead { get; set; }
-		[Category("Cache"), DisplayName("Cache Behind (later)"), DescriptionAttribute("Pre-reading x pictures later than the current image in image pool.")]
+		[Category("Cache"), LocalizedDisplayName("Cache Behind (later)"), LocalizedDescription("Pre-reading x pictures later than the current image in image pool.")]
 		public int CacheBehind { get; set; }
 
 		// FileType settings
-		[Category("File Type"), DisplayName("Image exts"), DescriptionAttribute("File extensions allowed to be added to the pool. Will be ignored if the Check MIME is on.")]
+		[Category("File Type"), LocalizedDisplayName("Image exts"), LocalizedDescription("File extensions allowed to be added to the pool. Will be ignored if the Check MIME is on.")]
 		public string[] allowsPicExts { get; set; }
-		[Category("File Type"), DisplayName("Video exts"), DescriptionAttribute("File extensions allowed to be added to the pool. Will be ignored if the Check MIME is on.")]
+		[Category("File Type"), LocalizedDisplayName("Video exts"), LocalizedDescription("File extensions allowed to be added to the pool. Will be ignored if the Check MIME is on.")]
 		public string[] allowsVidExts { get; set; }
-		[Category("File Type"), DisplayName("Check MIME"), DescriptionAttribute("Check the actual MIME type of the file instead of checking the extensions. May be slower. Unavailable means that the related function failed to load.")]
+		[Category("File Type"), LocalizedDisplayName("Check MIME"), LocalizedDescription("Check the MIME type of the file instead of checking the extensions.")]
 		public FeatureSwitch FileMIMEChecker { get; set; }
-		[Category("File Type"), DisplayName("Allowed MIME"), DescriptionAttribute("File MIME types allowed to be added to the pool. Work only while the Check MIME option be turn on. Semicolon separated. Spaces on edge are ignored. Default: 'image/;video/;audio/'.")]
+		[Category("File Type"), LocalizedDisplayName("Allowed MIME"), LocalizedDescription("File MIME types allowed to be added to the pool. Work only while the Check MIME option be turn on. Semicolon separated. Spaces on edge are ignored. Default: 'image/;video/;audio/'.")]
 		public string allowsMIME { get; set; }
-		[Category("File Type"), DisplayName("Expand folder shortcuts"), DescriptionAttribute("When adding files, the program will only parse one folder shortcut (if it is the first) to avoid flooding. If enabled, it attempts to recursively resolve all folder shortcuts.")]
+		[Category("File Type"), LocalizedDisplayName("Expand folder shortcuts"), LocalizedDescription("When adding files, the program will only parse one folder shortcut (if it is the first) to avoid flooding. If enabled, it attempts to recursively resolve all folder shortcuts.")]
 		public bool expandFolderLnks { get; set; }
 
 		// Misc settings
-		[Category("Misc"), DisplayName("Copy action"), DescriptionAttribute("Sets the action type when you press Ctrl+C or click the \"Copy to clipboard\" menu in this software.")]
+		[Category("Misc"), LocalizedDisplayName("Copy action"), LocalizedDescription("Sets the action type when you press Ctrl+C or click the \"Copy to clipboard\" menu in this software.")]
 		public CopytoClipboardOptions CopyActionType { get; set; }
-		[Category("Misc"), DisplayName("Save relative paths"), DescriptionAttribute("Save the path relative to the location of the program, for paths such as the target folder.")]
+		[Category("Misc"), LocalizedDisplayName("Save relative paths"), LocalizedDescription("Save the path relative to the location of the program, for paths such as the target folder.")]
 		public bool SaveRelativePaths { get; set; }
 
 		// Settings located on the GUI menus (not visible in the property grid)
@@ -560,78 +560,78 @@ namespace PhotoSift
 
 	public enum ShowModes
 	{
-		[Description( "Always Show" )]
+		[LocalizedDescription( "Always Show" )]
 		AlwaysShow,
-		[Description( "Always Hide" )]
+		[LocalizedDescription( "Always Hide" )]
 		AlwaysHide,
-		[Description( "Fullscreen Only" )]
+		[LocalizedDescription( "Fullscreen Only" )]
 		FullscreenOnly,
-		[Description( "Windowed Only" )]
+		[LocalizedDescription( "Windowed Only" )]
 		WindowedOnly,
 	}
 
 	public enum YesNo
 	{
-		[Description( "Yes" )]
-		Yes,
-		[Description( "No" )]
-		No,
+		[LocalizedDescription( "Yes" )]
+		Yes = 1,
+		[LocalizedDescription( "No" )]
+		No = 0,
 	}
 
 	public enum DeleteOptions
 	{
-		[Description( "Delete File" )]
+		[LocalizedDescription( "Delete File" )]
 		Delete,
-		[Description( "Delete to Recycle Bin" )]
+		[LocalizedDescription( "Delete to Recycle Bin" )]
 		RecycleBin,
-		[Description( "Only Remove from Image Pool" )]
+		[LocalizedDescription( "Only Remove from Image Pool" )]
 		RemoveFromList,
 	}
 
-	public enum FileOperations
+	public enum FileOperations 
 	{
-		[Description( "Copy" )]
+		[LocalizedDescription( "Copy" )]
 		Copy,
-		[Description( "Move" )]
+		[LocalizedDescription( "Move" )]
 		Move,
 	}
 
 	public enum ExistingFileOptions
 	{
-		[Description( "Overwrite" )]
+		[LocalizedDescription( "Overwrite" )]
 		Overwrite,
-		[Description( "Append Number" )]
+		[LocalizedDescription( "Append Number" )]
 		AppendNumber,
-		[Description( "Skip" )]
+		[LocalizedDescription( "Skip" )]
 		Skip,
 	}
 
 	public enum CopytoClipboardOptions
 	{
-		[Description("Bitmap")]
+		[LocalizedDescription("Bitmap")]
 		Bitmap,
-		[Description("File")]
+		[LocalizedDescription("File")]
 		File,
-		[Description("File Path")]
+		[LocalizedDescription("File Path")]
 		FilePath,
 	}
 	public enum VideoPlayerHookKeysOptions
 	{
-		[Description("Disabled")]
+		[LocalizedDescription("Disabled")]
 		Disabled = 0,
-		[Description("Basic")]
+		[LocalizedDescription("Basic")]
 		Basic = 1,
-		//[Description("Enhance")]
+		//[LocalizedDescription("Enhance")]
 		//Enhance = 2,
 	}
 	
 	public enum FeatureSwitch
 	{
-		[Description("Disabled")]
+		[LocalizedDescription("Disabled")]
 		Disabled = 0,
-		[Description("Enabled")]
+		[LocalizedDescription("Enabled")]
 		Enabled = 1,
-		[Description("Unavailable")] // Deprecated
+		[LocalizedDescription("Unavailable")] // Deprecated
 		Unavailable = -1,
 	}
 	public enum LineGradientMode

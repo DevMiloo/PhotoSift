@@ -1,0 +1,1407 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-06-04 10:30+0800\n"
+"PO-Revision-Date: 2022-06-04 11:37+0800\n"
+"Last-Translator: YFdyh000 <yfdyh000@gmail.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _;Category;LocalizedDescription;LocalizedDisplayName;"
+"_n:1,2;_p:1c,2;_pn:1c,2,3\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: AppSettings.cs:44 AppSettings.cs:48 AppSettings.cs:52 AppSettings.cs:55
+msgid "File Operations"
+msgstr "文件操作"
+
+#: AppSettings.cs:44
+msgid "File mode"
+msgstr "文件类型"
+
+#: AppSettings.cs:44
+msgid "When pressing an action key, should the file be copied or moved?"
+msgstr "按下按键时，当前展示的文件应被复制还是移动？"
+
+#: AppSettings.cs:48
+msgid "Existing files"
+msgstr "现有文件"
+
+#: AppSettings.cs:48
+msgid ""
+"When pressing an action key, and the target folder already contains a file "
+"with the same name, what action do you want to take? Append number means a "
+"(1) will be added to the end of the filename."
+msgstr ""
+"按下按键时，如果目标文件夹已存在同名文件，采取什么动作？追加编号会将 (1) 添加"
+"到文件名的末尾。"
+
+#: AppSettings.cs:52
+msgid "Delete mode"
+msgstr "删除模式"
+
+#: AppSettings.cs:52
+msgid ""
+"Determines the action to take when pressing the Delete key. You can force "
+"different modes with Shift+Del (Delete), Alt+Del (Recycle) and Ctrl+Del "
+"(Remove from List)"
+msgstr ""
+"按下 Delete 键（删除）时执行的操作。忽视此设置的快捷键：Shift+Del (删除)；Alt"
+"+Del (移入回收站)；Ctrl+Del（队列中移除）"
+
+#: AppSettings.cs:55
+msgid "Target base folder"
+msgstr "目标文件夹"
+
+#: AppSettings.cs:55
+msgid ""
+"Target base folder. %PhotoSift% or relative path (not \\ starting) will be "
+"replaced with the location of the software."
+msgstr ""
+"目标文件夹（基础）。框中的 %PhotoSift% 或相对路径（无需 \\ 作前缀）将自动替换"
+"为软件所在路径。"
+
+#: AppSettings.cs:79 AppSettings.cs:84 AppSettings.cs:94 AppSettings.cs:98
+#: AppSettings.cs:107 AppSettings.cs:115 AppSettings.cs:120 AppSettings.cs:130
+#: AppSettings.cs:142 AppSettings.cs:149 AppSettings.cs:152 AppSettings.cs:155
+#: AppSettings.cs:164 AppSettings.cs:173 AppSettings.cs:182 AppSettings.cs:190
+msgid "Appearance"
+msgstr "外观"
+
+#: AppSettings.cs:79 AppSettings.cs:84 AppSettings.cs:155
+msgid "Background color"
+msgstr "背景颜色"
+
+#: AppSettings.cs:79 AppSettings.cs:84
+msgid "Sets the window background color."
+msgstr "设定窗口背景色。"
+
+#: AppSettings.cs:94
+msgid "Gradient background mode"
+msgstr "渐变背景模式"
+
+#: AppSettings.cs:94
+msgid "Set the mode of gradient background colors."
+msgstr "设定渐变背景色的模式。"
+
+#: AppSettings.cs:98
+msgid "Gradient background color 1"
+msgstr "渐变背景色 1"
+
+#: AppSettings.cs:98 AppSettings.cs:107
+msgid ""
+"Set the gradient background colors of the window. The main background color "
+"is ignored."
+msgstr "设定窗口的渐变背景色。主背景色将被忽略。"
+
+#: AppSettings.cs:107
+msgid "Gradient background color 2"
+msgstr "渐变背景色 2"
+
+#: AppSettings.cs:115
+msgid "Gradient background gamma correction"
+msgstr "渐变背景伽玛校正"
+
+#: AppSettings.cs:115
+msgid ""
+"Gamma correction is disabled by default. Enabling it may get better or worse "
+"result."
+msgstr "伽玛校正默认为禁用。可按需启用来改善显示效果。"
+
+#: AppSettings.cs:120
+msgid "Text label color"
+msgstr "文本颜色"
+
+#: AppSettings.cs:120
+msgid "Sets the font color of text labels."
+msgstr "设定文本标签的字体颜色。"
+
+#: AppSettings.cs:130
+msgid "Text label background color"
+msgstr "文本背景色"
+
+#: AppSettings.cs:130
+msgid ""
+"Sets the background color of text labels. Not visible if the background is "
+"transparent."
+msgstr "设定文本标签的背景色。如果背景透明被启用，则此颜色不可见。"
+
+#: AppSettings.cs:142
+msgid "Text label font"
+msgstr "文本字体"
+
+#: AppSettings.cs:142
+msgid "Sets the font used in text labels."
+msgstr "设定文本标签中使用的字体。"
+
+#: AppSettings.cs:149
+msgid "Transparent text labels"
+msgstr "文本背景透明"
+
+#: AppSettings.cs:149
+msgid ""
+"Decides if text labels should have transparent or solid color background."
+msgstr "决定文本标签使用透明还是纯色背景。"
+
+#: AppSettings.cs:152
+msgid "Custom menu theme"
+msgstr "自定义菜单主题"
+
+#: AppSettings.cs:152
+msgid "Enables a custom menu theme, based on the four colors specified below."
+msgstr "启用菜单主题，基于下面自定义的四种颜色。"
+
+#: AppSettings.cs:155
+msgid "Custom menu theme: Background"
+msgstr "自定义菜单主题：背景色"
+
+#: AppSettings.cs:164
+msgid "Custom menu theme: Text"
+msgstr "自定义菜单主题：文字"
+
+#: AppSettings.cs:164
+msgid "Text color"
+msgstr "文本颜色"
+
+#: AppSettings.cs:173
+msgid "Custom menu theme: Border"
+msgstr "自定义菜单主题：边框"
+
+#: AppSettings.cs:173
+msgid "Border color"
+msgstr "边框颜色"
+
+#: AppSettings.cs:182
+msgid "Custom menu theme: Highlight"
+msgstr "自定义菜单主题：突出"
+
+#: AppSettings.cs:182
+msgid "Background color for items under mouse"
+msgstr "鼠标下方项目的背景色"
+
+#: AppSettings.cs:190
+msgid "Target path in title bar"
+msgstr "标题栏中显示目标路径"
+
+#: AppSettings.cs:190
+msgid ""
+"Display the target path in the title bar while no files are in the queue."
+msgstr "队列中没有文件时，标题栏中显示目标文件夹路径。"
+
+#: AppSettings.cs:194 AppSettings.cs:196 AppSettings.cs:198 AppSettings.cs:200
+#: AppSettings.cs:203 AppSettings.cs:206 AppSettings.cs:208 AppSettings.cs:211
+#: AppSettings.cs:214 AppSettings.cs:217 AppSettings.cs:220 AppSettings.cs:223
+#: AppSettings.cs:226 AppSettings.cs:229 AppSettings.cs:232 AppSettings.cs:235
+#: AppSettings.cs:237 AppSettings.cs:239
+msgid "Controls"
+msgstr "控制"
+
+#: AppSettings.cs:194
+msgid "Repeat interval (ms)"
+msgstr "重复间隔（毫秒）"
+
+#: AppSettings.cs:194
+msgid ""
+"Interval (ms) for press and hold a key to repeat actions. The value < 100 ms "
+"will disalbe this feature. The first trigger will double the time."
+msgstr ""
+"按住某个键触发重复操作的间隔（毫秒）。值小于 100 将禁用此功能。首次触发时时间"
+"翻倍。"
+
+#: AppSettings.cs:196
+msgid "Rewind on pool end"
+msgstr "从后向前"
+
+#: AppSettings.cs:196
+msgid "Try to rewind when the pool end is reached while handle."
+msgstr "抵达队列末尾后尝试反向移动。"
+
+#: AppSettings.cs:198
+msgid "Loop in pool"
+msgstr "队列循环"
+
+#: AppSettings.cs:198
+msgid "Cycle your pool when you switch images, there is no pool end screen."
+msgstr "向前/后切换时在队列中循环，不显示已到末尾画面。"
+
+#: AppSettings.cs:200
+msgid "Medium jump"
+msgstr "大跳"
+
+#: AppSettings.cs:200
+msgid ""
+"Number of images to skip when doing a medium jump. Medium jump is invoked by "
+"holding Ctrl and pressing Left/Right arrow key."
+msgstr "中等幅度跳跃时跳过多少项。按住 Ctrl 并按左或右方向键来触发。"
+
+#: AppSettings.cs:203
+msgid "Long jump"
+msgstr "超级跳"
+
+#: AppSettings.cs:203
+msgid ""
+"Number of images to skip when doing a long jump. Long jump is invoked by "
+"holding Shift and pressing Left/Right arrow key."
+msgstr "大幅跳跃时跳过多少项。按住 Shift 并按左或右方向键来触发。"
+
+#: AppSettings.cs:206
+msgid "Confirm to clear Threshold"
+msgstr "超过此值时要求确认清空"
+
+#: AppSettings.cs:206
+msgid ""
+"Confirm to clear the images pool if the number of images in the pool exceeds "
+"this value. The warn is disalbed if set as 0."
+msgstr ""
+"如果队列中的文件数量超过此值，要求确认清空队列。如果设为 0，不显示警告。"
+
+#: AppSettings.cs:208
+msgid "Escape key to exit"
+msgstr "Esc 键退出"
+
+#: AppSettings.cs:208
+msgid ""
+"Allows you to exit the program by pressing the Escape key. In fullscreen, "
+"Escape key always reverts back to window mode."
+msgstr "启用后按下 Esc 键时退出程序。在全屏模式下，按 Esc 会恢复到窗口模式。"
+
+#: AppSettings.cs:211
+msgid "On delete show next image"
+msgstr "删除后显示下一项"
+
+#: AppSettings.cs:211
+msgid ""
+"When an image is deleted, this determined if the program is to show the "
+"image positioned before or after the deleted image."
+msgstr "删除一个文件项时，显示位于被删除文件之前还是之后的文件。"
+
+#: AppSettings.cs:214
+msgid "Auto advance interval"
+msgstr "自动前进间隔"
+
+#: AppSettings.cs:214
+msgid ""
+"When the auto advance slideshow is enabled, this number determines how long "
+"to wait in seconds before showing the next images."
+msgstr "“自动前进”幻灯片放映启用时，显示下一项前等待多少秒。"
+
+#: AppSettings.cs:217
+msgid "Auto scroll in actual size"
+msgstr "实际尺寸模式下自动滚动"
+
+#: AppSettings.cs:217
+msgid ""
+"In actual size mode (1:1) you can scroll the image. Auto scroll means you "
+"only have to move the mouse to scroll. If turned off, you have to click and "
+"hold the mouse button to scroll."
+msgstr ""
+"在实际尺寸模式中，您可以滚动图像。自动滚动启用后，只需移动鼠标即可滚动。如果"
+"禁用，滚动需要按住鼠标左键。"
+
+#: AppSettings.cs:220
+msgid "Auto scroll: Sensitivity"
+msgstr "自动滚动：灵敏度"
+
+#: AppSettings.cs:220
+msgid ""
+"Determines how far you have to move the mouse (in pixels) to fully scroll "
+"the image from one side to the other."
+msgstr "决定鼠标移动多少像素才能从图像的一侧完全滚动到另一侧。"
+
+#: AppSettings.cs:223
+msgid "Auto scroll: Float image"
+msgstr "自动滚动：浮动图像"
+
+#: AppSettings.cs:223
+msgid ""
+"Allows the image to freely 'float' around the cursor. Otherwise it will "
+"stick to the window borders, limiting the scrolling."
+msgstr ""
+"允许图像随鼠标移动而“浮动”。否则，它将粘附在窗口边缘，超量滚动不会使其脱离。"
+
+#: AppSettings.cs:226
+msgid "Scale mode: Linear mode"
+msgstr "缩放模式：线性模式"
+
+#: AppSettings.cs:226
+msgid ""
+"In scale mode (RMB), the mouse position determines the scale factor. If "
+"linear, the picture will snap to the new scaled size. If not linear, the "
+"image will keep its original scale, but when you move the mouse the scale "
+"factor will differ left and right of the original position."
+msgstr ""
+"在鼠标右键触发的缩放模式中，鼠标位置决定缩放因子。线性模式下，图片将根据鼠标"
+"指针所在的水平比例位置切换到新的大小。非线性模式下，图像首先保持其原始比例"
+"（100%），并随着水平移动图标而增减缩放的比例因子。"
+
+#: AppSettings.cs:229
+msgid "Scale mode: Snapping"
+msgstr "缩放模式：阶梯"
+
+#: AppSettings.cs:229
+msgid ""
+"In scale mode (RMB), the zoom level can be set to snap to an interval, for "
+"example each 10 percent. Default is 0, meaning freely zoom without snapping."
+msgstr ""
+"可以自定义鼠标右键触发的缩放模式中的梯度间隔，例如 10 表示每次改变至少 10%。"
+"默认值为 0，表示平滑的自由缩放。"
+
+#: AppSettings.cs:232
+msgid "Keyboard zoom levels"
+msgstr "键盘缩放幅度"
+
+#: AppSettings.cs:232
+msgid ""
+"Enter a comma delimited list of zoom levels to use when using keyboard zoom "
+"(+/- keys). Default is: '25,50,75,100,125,150,200'. Enter a single value to "
+"use this value as incremental steps instead."
+msgstr ""
+"输入以逗号分隔的缩放级别列表，用于键盘缩放（按 +/- 键）时的幅度变化。默认值"
+"为：“25,50,75,100,125,150,200”。仅输入单个值则使用该值作为增量幅度。"
+
+#: AppSettings.cs:235
+msgid "Limit zoom to window size"
+msgstr "缩放不超过窗口大小"
+
+#: AppSettings.cs:235
+msgid ""
+"If enabled, zooming maxes out when the image size is equal to the window "
+"size. In other words, you can not zoom images larger that the current window "
+"size."
+msgstr "如果启用，禁止缩放后的图像大小超过窗口大小。"
+
+#: AppSettings.cs:237
+msgid "Player intercept keys"
+msgstr "播放器拦截按键"
+
+#: AppSettings.cs:237
+msgid ""
+"If enabled, the video player will intercept some keyboard keys to perform "
+"actions."
+msgstr "启用后，音视频播放器能捕获某些按键以执行操作。"
+
+#: AppSettings.cs:239
+msgid "Ignore video beginnings (s)"
+msgstr "视频跳过开头（秒）"
+
+#: AppSettings.cs:239
+msgid ""
+"If the value is greater than 0, the videos will be seek to the location (in "
+"seconds) to ignore the beginning. If the video length is less than this "
+"value, it plays from scratch. Seeking is not supported for some video "
+"formats."
+msgstr ""
+"如果该值大于 0，视频将自动从该位置（秒）开始播放。如果视频长度小于该值，将从"
+"头开始播放（即忽略此值）。某些视频格式可能不支持播放时间跳转。"
+
+#: AppSettings.cs:243 AppSettings.cs:247 AppSettings.cs:251 AppSettings.cs:253
+#: AppSettings.cs:256 AppSettings.cs:259 AppSettings.cs:263
+msgid "Display"
+msgstr "显示"
+
+#: AppSettings.cs:243
+msgid "Info label"
+msgstr "信息标签"
+
+#: AppSettings.cs:243
+msgid ""
+"Info label is the one in the top left corner. It shows information about the "
+"currently loaded image. In windowed mode, this information is also shown in "
+"the window title."
+msgstr ""
+"信息标签出现在左上角，显示当前已加载图像的有关信息。在窗口模式下，一些信息也"
+"出现于窗口的标题栏。"
+
+#: AppSettings.cs:247
+msgid "Mode label"
+msgstr "模式标签"
+
+#: AppSettings.cs:247
+msgid ""
+"Mode label is the one in the bottom left corner. It shows notifications "
+"about modes changes and similar."
+msgstr "模式标签出现在左下角，显示模式变更等消息的通知。"
+
+#: AppSettings.cs:251
+msgid "Info label format"
+msgstr "信息标签格式"
+
+#: AppSettings.cs:251
+msgid ""
+"Here you can decide what to show in the info label. Available format tags: "
+"Filename=%f, Parent folder=%d, Full path=%p, Image width=%w, Image height="
+"%h, Filesize=%s, New line=%n, Image pool total count=%t, Image pool current "
+"number=%c"
+msgstr ""
+"定义信息标签格式。可用标签：文件名=%f, 父文件夹=%d, 完整路径=%p, 图像宽度="
+"%w, 图像高度=%h, 文件大小=%s, 换行=%n, 队列项目总计=%t, 队列中当前位置=%c"
+
+#: AppSettings.cs:253
+msgid "Info label format for videos"
+msgstr "视频信息标签格式"
+
+#: AppSettings.cs:253
+msgid ""
+"Here you can decide what to show in the info label. Available format tags: "
+"Filename=%f, Parent folder=%d, Full path=%p, width x height=%wb, width=%w, "
+"height=%h, Filesize=%s, New line=%n, pool total count=%t, pool current "
+"number=%c, current playback position=%curpos, media duration=%duration"
+msgstr ""
+"定义信息标签格式。可用标签：文件名=%f, 父文件夹=%d, 完整路径=%p, 宽度 x 高度="
+"%wb, 宽度=%w, 高度=%h, 文件大小=%s, 换行=%n, 队列项目总计=%t, 队列中当前位置="
+"%c, 当前时间=%curpos, 时长=%duration"
+
+#: AppSettings.cs:256
+msgid "Hide cursor in fullscreen"
+msgstr "全屏中隐藏鼠标指针"
+
+#: AppSettings.cs:256
+msgid "If enabled, the cursor will automatically be hidden on inactivity."
+msgstr "启用后，鼠标指针在鼠标闲置时会自动隐藏。"
+
+#: AppSettings.cs:259
+msgid "Enlarge small images"
+msgstr "小图像放大"
+
+#: AppSettings.cs:259
+msgid ""
+"Images smaller that the current view can be enlarged to fill the whole view. "
+"Hotkey: F4"
+msgstr "小于当前界面区域的图像会放大以填满界面。快捷键：F4"
+
+#: AppSettings.cs:263
+msgid "Auto move to best suited screen"
+msgstr "自动移动到最佳屏幕"
+
+#: AppSettings.cs:263
+msgid ""
+"In a multi-monitor environment, if the application is in fullscreen mode the "
+"windows will automatically moves to the best suited monitor (based on aspect "
+"ratio) when changing picture."
+msgstr ""
+"在多显示器环境中，如果应用程序处于全屏模式，图像变化时窗口将基于纵横比自动移"
+"动到最适合的显示器。"
+
+#: AppSettings.cs:268
+msgid "System"
+msgstr "系统"
+
+#: AppSettings.cs:268
+msgid "Disable screensaver"
+msgstr "禁用屏幕保护程序"
+
+#: AppSettings.cs:268
+msgid "Disable any screensaver, sleep mode etc while the programis running."
+msgstr "程序运行期间禁用屏幕保护程序、睡眠模式等。"
+
+#: AppSettings.cs:273 AppSettings.cs:276 AppSettings.cs:279 AppSettings.cs:282
+#: AppSettings.cs:285 AppSettings.cs:288 AppSettings.cs:291 AppSettings.cs:294
+#: AppSettings.cs:297 AppSettings.cs:300 AppSettings.cs:303 AppSettings.cs:306
+#: AppSettings.cs:309 AppSettings.cs:312 AppSettings.cs:315 AppSettings.cs:318
+#: AppSettings.cs:321 AppSettings.cs:324 AppSettings.cs:327 AppSettings.cs:330
+#: AppSettings.cs:333 AppSettings.cs:336 AppSettings.cs:339 AppSettings.cs:342
+#: AppSettings.cs:345 AppSettings.cs:348 AppSettings.cs:351 AppSettings.cs:354
+#: AppSettings.cs:357 AppSettings.cs:360 AppSettings.cs:363 AppSettings.cs:366
+#: AppSettings.cs:369 AppSettings.cs:372 AppSettings.cs:375 AppSettings.cs:378
+msgid "Key Folders"
+msgstr "按键对应文件夹"
+
+#: AppSettings.cs:273 AppSettings.cs:276 AppSettings.cs:279 AppSettings.cs:282
+#: AppSettings.cs:285 AppSettings.cs:288 AppSettings.cs:291 AppSettings.cs:294
+#: AppSettings.cs:297 AppSettings.cs:300 AppSettings.cs:303 AppSettings.cs:306
+#: AppSettings.cs:309 AppSettings.cs:312 AppSettings.cs:315 AppSettings.cs:318
+#: AppSettings.cs:321 AppSettings.cs:324 AppSettings.cs:327 AppSettings.cs:330
+#: AppSettings.cs:333 AppSettings.cs:336 AppSettings.cs:339 AppSettings.cs:342
+#: AppSettings.cs:345 AppSettings.cs:348 AppSettings.cs:351 AppSettings.cs:354
+#: AppSettings.cs:357 AppSettings.cs:360 AppSettings.cs:363 AppSettings.cs:366
+#: AppSettings.cs:369 AppSettings.cs:372 AppSettings.cs:375 AppSettings.cs:378
+msgid ""
+"Sets the destination folder where images go when this key is pressing. This "
+"can be a subfolder relative to the current base target folder, or a complete "
+"path. Clear to use default. See readme file for a more detailed explanation "
+"of the various options."
+msgstr ""
+"设定按下此按键时图像要放入的文件夹名称。可以是相对于目标文件夹的子文件夹路"
+"径，也可以是完整路径。清空则使用默认值（按键本身作文件夹名称）。各选项的更详"
+"细说明见自述文件。"
+
+#: AppSettings.cs:383 AppSettings.cs:385
+msgid "Cache"
+msgstr "缓存"
+
+#: AppSettings.cs:383
+msgid "Cache Ahead (earlier)"
+msgstr "向前缓存"
+
+#: AppSettings.cs:383
+msgid "Pre-reading x pictures earlier than the current image in image pool."
+msgstr "预读队列中当前图片左侧的 x 张图片。"
+
+#: AppSettings.cs:385
+msgid "Cache Behind (later)"
+msgstr "向后缓存"
+
+#: AppSettings.cs:385
+msgid "Pre-reading x pictures later than the current image in image pool."
+msgstr "预读队列中当前图片右侧的 x 张图片。"
+
+#: AppSettings.cs:389 AppSettings.cs:391 AppSettings.cs:393 AppSettings.cs:395
+#: AppSettings.cs:397
+msgid "File Type"
+msgstr "文件类型"
+
+#: AppSettings.cs:389
+msgid "Image exts"
+msgstr "图像扩展名"
+
+#: AppSettings.cs:389 AppSettings.cs:391
+msgid ""
+"File extensions allowed to be added to the pool. Will be ignored if the "
+"Check MIME is on."
+msgstr "允许加入队列的文件扩展名。“检查 MIME”选项禁用时此设置无效。"
+
+#: AppSettings.cs:391
+msgid "Video exts"
+msgstr "视频扩展名"
+
+#: AppSettings.cs:393
+msgid "Check MIME"
+msgstr "检查 MIME"
+
+#: AppSettings.cs:393
+msgid "Check the MIME type of the file instead of checking the extensions."
+msgstr "检查文件的 MIME 类型代替检查扩展名。"
+
+#: AppSettings.cs:395
+msgid "Allowed MIME"
+msgstr "允许的 MIME"
+
+#: AppSettings.cs:395
+msgid ""
+"File MIME types allowed to be added to the pool. Work only while the Check "
+"MIME option be turn on. Semicolon separated. Spaces on edge are ignored. "
+"Default: 'image/;video/;audio/'."
+msgstr ""
+"允许加入队列的文件 MIME 类型。仅“检查 MIME”选项启用时有效。英文分号间隔，两端"
+"空格将忽略。默认值：'image/;video/;audio/'。"
+
+#: AppSettings.cs:397
+msgid "Expand folder shortcuts"
+msgstr "展开文件夹快捷方式"
+
+#: AppSettings.cs:397
+msgid ""
+"When adding files, the program will only parse one folder shortcut (if it is "
+"the first) to avoid flooding. If enabled, it attempts to recursively resolve "
+"all folder shortcuts."
+msgstr ""
+"添加文件时，程序默认只解析一层文件夹快捷方式。启用此选项后，将尝试递归解析所"
+"有文件夹快捷方式。"
+
+#: AppSettings.cs:401 AppSettings.cs:403
+msgid "Misc"
+msgstr "杂项"
+
+#: AppSettings.cs:401
+msgid "Copy action"
+msgstr "复制操作"
+
+#: AppSettings.cs:401
+msgid ""
+"Sets the action type when you press Ctrl+C or click the \"Copy to clipboard"
+"\" menu in this software."
+msgstr "设定当按 Ctrl+C 或单击“复制到剪贴板”菜单时执行的操作。"
+
+#: AppSettings.cs:403
+msgid "Save relative paths"
+msgstr "保存相对路径"
+
+#: AppSettings.cs:403
+msgid ""
+"Save the path relative to the location of the program, for paths such as the "
+"target folder."
+msgstr "保存“目标文件夹”等路径时允许相对路径。"
+
+#: AppSettings.cs:563
+msgid "Always Show"
+msgstr "始终显示"
+
+#: AppSettings.cs:565
+msgid "Always Hide"
+msgstr "始终隐藏"
+
+#: AppSettings.cs:567
+msgid "Fullscreen Only"
+msgstr "仅限全屏"
+
+#: AppSettings.cs:569
+msgid "Windowed Only"
+msgstr "仅限窗口"
+
+#: AppSettings.cs:575
+msgid "Yes"
+msgstr "是"
+
+#: AppSettings.cs:577
+msgid "No"
+msgstr "否"
+
+#: AppSettings.cs:583
+msgid "Delete File"
+msgstr "删除文件"
+
+#: AppSettings.cs:585
+msgid "Delete to Recycle Bin"
+msgstr "删除到回收站"
+
+#: AppSettings.cs:587
+msgid "Only Remove from Image Pool"
+msgstr "仅从队列中移除"
+
+#: AppSettings.cs:593
+msgid "Copy"
+msgstr "复制"
+
+#: AppSettings.cs:595
+msgid "Move"
+msgstr "移动"
+
+#: AppSettings.cs:601
+msgid "Overwrite"
+msgstr "覆盖"
+
+#: AppSettings.cs:603
+msgid "Append Number"
+msgstr "追加编号"
+
+#: AppSettings.cs:605
+msgid "Skip"
+msgstr "跳过"
+
+#: AppSettings.cs:611
+msgid "Bitmap"
+msgstr "位图"
+
+#: AppSettings.cs:613
+msgid "File"
+msgstr "文件"
+
+#: AppSettings.cs:615
+msgid "File Path"
+msgstr "文件路径"
+
+#: AppSettings.cs:620 AppSettings.cs:630
+msgid "Disabled"
+msgstr "禁用"
+
+#: AppSettings.cs:622
+msgid "Basic"
+msgstr "基础"
+
+#: AppSettings.cs:632
+msgid "Enabled"
+msgstr "启用"
+
+#: AppSettings.cs:634
+msgid "Unavailable"
+msgstr "不可用"
+
+#: frmAbout.cs:34
+#, csharp-format
+msgid "About {0}"
+msgstr "关于 {0}"
+
+#: frmAbout.cs:37
+msgid "Free, open source software (GPLv3)"
+msgstr "开源软件 (GPLv3)"
+
+#: frmAbout.cs:38 frmAbout.cs:39
+msgid "Loaded: "
+msgstr "已加载："
+
+#: frmAbout.cs:38
+msgid ""
+"\n"
+"Copied/Moved: "
+msgstr ""
+"\n"
+"复制/移动："
+
+#: frmAbout.cs:38
+msgid ""
+"\n"
+"Renamed: "
+msgstr ""
+"\n"
+"更名："
+
+#: frmAbout.cs:38
+msgid ""
+"\n"
+"Deleted: "
+msgstr ""
+"\n"
+"删除："
+
+#: frmAbout.cs:40
+msgid "Ok"
+msgstr "确定"
+
+#: frmKeyFolders.cs:57
+msgid "Top"
+msgstr "置顶"
+
+#: frmKeyFolders.cs:66
+msgid "Settings..."
+msgstr "设置..."
+
+#: frmMain.Designer_mnuLabel.cs:1
+msgctxt "menu"
+msgid "&File"
+msgstr "文件(&F)"
+
+#: frmMain.Designer_mnuLabel.cs:2
+msgctxt "menu"
+msgid "&Edit"
+msgstr "编辑(&E)"
+
+#: frmMain.Designer_mnuLabel.cs:3
+msgctxt "menu"
+msgid "&View"
+msgstr "视图(&V)"
+
+#: frmMain.Designer_mnuLabel.cs:4
+msgctxt "menu"
+msgid "&Image Pool"
+msgstr "队列(&I)"
+
+#: frmMain.Designer_mnuLabel.cs:5
+msgctxt "menu"
+msgid "&Help"
+msgstr "帮助(&H)"
+
+#: frmMain.Designer_mnuLabel.cs:6
+msgctxt "menu"
+msgid "Set Target Base Folder..."
+msgstr "设定目标文件夹..."
+
+#: frmMain.Designer_mnuLabel.cs:7
+msgctxt "menu"
+msgid "Open Target Base Folder"
+msgstr "打开目标文件夹"
+
+#: frmMain.Designer_mnuLabel.cs:8
+msgctxt "menu"
+msgid "Rename File..."
+msgstr "重命名文件..."
+
+#: frmMain.Designer_mnuLabel.cs:9
+msgctxt "menu"
+msgid "Open Containing Folder"
+msgstr "打开所在文件夹"
+
+#: frmMain.Designer_mnuLabel.cs:10
+msgctxt "menu"
+msgid "Exit"
+msgstr "退出"
+
+#: frmMain.Designer_mnuLabel.cs:11
+msgctxt "menu"
+msgid "Undo"
+msgstr "撤销"
+
+#: frmMain.Designer_mnuLabel.cs:12
+msgctxt "menu"
+msgid "Copy to Clipboard"
+msgstr "复制到剪贴板"
+
+#: frmMain.Designer_mnuLabel.cs:13
+msgctxt "menu"
+msgid "Settings..."
+msgstr "设置..."
+
+#: frmMain.Designer_mnuLabel.cs:14
+msgctxt "menu"
+msgid "Auto Advance"
+msgstr "自动前进"
+
+#: frmMain.Designer_mnuLabel.cs:15
+msgctxt "menu"
+msgid "Reset Scale Mode Each Pic"
+msgstr "切换时重置缩放模式"
+
+#: frmMain.Designer_mnuLabel.cs:16
+msgctxt "menu"
+msgid "Enable Auto Repeat"
+msgstr "启用循环播放"
+
+#: frmMain.Designer_mnuLabel.cs:17
+msgctxt "menu"
+msgid "Transform"
+msgstr "旋转"
+
+#: frmMain.Designer_mnuLabel.cs:18
+msgctxt "menu"
+msgid "Flip X"
+msgstr "水平翻转"
+
+#: frmMain.Designer_mnuLabel.cs:19
+msgctxt "menu"
+msgid "Flip Y"
+msgstr "垂直翻转"
+
+#: frmMain.Designer_mnuLabel.cs:20
+msgctxt "menu"
+msgid "Rotate Left"
+msgstr "向左旋转"
+
+#: frmMain.Designer_mnuLabel.cs:21
+msgctxt "menu"
+msgid "Rotate Right"
+msgstr "向右旋转"
+
+#: frmMain.Designer_mnuLabel.cs:22
+msgctxt "menu"
+msgid "Zoom"
+msgstr "缩放"
+
+#: frmMain.Designer_mnuLabel.cs:23
+msgctxt "menu"
+msgid "Zoom In"
+msgstr "放大"
+
+#: frmMain.Designer_mnuLabel.cs:24
+msgctxt "menu"
+msgid "Zoom Out"
+msgstr "缩小"
+
+#: frmMain.Designer_mnuLabel.cs:25
+msgctxt "menu"
+msgid "Zoom to Width..."
+msgstr "缩放到宽度..."
+
+#: frmMain.Designer_mnuLabel.cs:26
+msgctxt "menu"
+msgid "Zoom to Height..."
+msgstr "缩放到高度..."
+
+#: frmMain.Designer_mnuLabel.cs:27
+msgctxt "menu"
+msgid "Reset"
+msgstr "重置"
+
+#: frmMain.Designer_mnuLabel.cs:28
+msgctxt "menu"
+msgid "Hide Menubar"
+msgstr "隐藏菜单栏"
+
+#: frmMain.Designer_mnuLabel.cs:29
+msgctxt "menu"
+msgid "Fullscreen"
+msgstr "全屏"
+
+#: frmMain.Designer_mnuLabel.cs:30
+msgctxt "menu"
+msgid "View KeyFolders table"
+msgstr "查看按键-文件夹表格"
+
+#: frmMain.Designer_mnuLabel.cs:31
+msgctxt "menu"
+msgid "Navigate"
+msgstr "导航"
+
+#: frmMain.Designer_mnuLabel.cs:32
+msgctxt "menu"
+msgid "Next Image"
+msgstr "下一项"
+
+#: frmMain.Designer_mnuLabel.cs:33
+msgctxt "menu"
+msgid "Previous Image"
+msgstr "上一项"
+
+#: frmMain.Designer_mnuLabel.cs:34
+msgctxt "menu"
+msgid "Go to First"
+msgstr "第一项"
+
+#: frmMain.Designer_mnuLabel.cs:35
+msgctxt "menu"
+msgid "Go to Last"
+msgstr "最后一项"
+
+#: frmMain.Designer_mnuLabel.cs:36
+msgctxt "menu"
+msgid "Forward Jump (Medium)"
+msgstr "向前大跳"
+
+#: frmMain.Designer_mnuLabel.cs:37
+msgctxt "menu"
+msgid "Backward Jump (Medium)"
+msgstr "向后大跳"
+
+#: frmMain.Designer_mnuLabel.cs:38
+msgctxt "menu"
+msgid "Forward Jump (Large)"
+msgstr "向前超级跳"
+
+#: frmMain.Designer_mnuLabel.cs:39
+msgctxt "menu"
+msgid "Backward Jump (Large)"
+msgstr "向后超级跳"
+
+#: frmMain.Designer_mnuLabel.cs:40
+msgctxt "menu"
+msgid "Moves"
+msgstr "移动"
+
+#: frmMain.Designer_mnuLabel.cs:41
+msgctxt "menu"
+msgid "Left items..."
+msgstr "左侧全部..."
+
+#: frmMain.Designer_mnuLabel.cs:42
+msgctxt "menu"
+msgid "Right items..."
+msgstr "右侧全部..."
+
+#: frmMain.Designer_mnuLabel.cs:43
+msgctxt "menu"
+msgid "Including current item"
+msgstr "包括当前项"
+
+#: frmMain.Designer_mnuLabel.cs:44
+msgctxt "menu"
+msgid "Add Images..."
+msgstr "添加图像..."
+
+#: frmMain.Designer_mnuLabel.cs:45
+msgctxt "menu"
+msgid "Add from Folder..."
+msgstr "从文件夹添加..."
+
+#: frmMain.Designer_mnuLabel.cs:46
+msgctxt "menu"
+msgid "Clear"
+msgstr "清空"
+
+#: frmMain.Designer_mnuLabel.cs:47
+msgctxt "menu"
+msgid "Learn the Clear hotkeys..."
+msgstr "清空快捷键的高级用法..."
+
+#: frmMain.Designer_mnuLabel.cs:48
+msgctxt "menu"
+msgid "Add in Random Order"
+msgstr "添加时按随机顺序"
+
+#: frmMain.Designer_mnuLabel.cs:49
+msgctxt "menu"
+msgid "Randomize Order Now"
+msgstr "随机化队列顺序"
+
+#: frmMain.Designer_mnuLabel.cs:50
+msgctxt "menu"
+msgid "Reverse Order Now"
+msgstr "反转队列顺序"
+
+#: frmMain.Designer_mnuLabel.cs:51
+msgctxt "menu"
+msgid "Go to..."
+msgstr "跳转到..."
+
+#: frmMain.Designer_mnuLabel.cs:52
+msgctxt "menu"
+msgid "View Help"
+msgstr "查看帮助"
+
+#: frmMain.Designer_mnuLabel.cs:53
+msgctxt "menu"
+msgid "View project..."
+msgstr "查看项目页面..."
+
+#: frmMain.Designer_mnuLabel.cs:54
+msgctxt "menu"
+msgid "About PhotoSift Ex"
+msgstr "关于 PhotoSift Ex"
+
+#: frmMain.cs:395 frmMain_Input.cs:386 frmMain_Input.cs:410
+msgid "Error"
+msgstr "错误"
+
+#: frmMain.cs:411 frmMain.cs:412 frmMain.cs:566
+msgid "Loading..."
+msgstr "载入中..."
+
+#: frmMain.cs:434
+msgid "Added "
+msgstr "已添加 "
+
+#: frmMain.cs:434
+msgid " images..."
+msgstr " 图像..."
+
+#: frmMain.cs:509
+msgid "Add or Drop Images to Start"
+msgstr "添加或拖拽图像以开始"
+
+#: frmMain.cs:546
+#, csharp-format
+msgid " (remaining {0} items)"
+msgstr " (剩余 {0} 项)"
+
+#: frmMain.cs:548
+msgid "items"
+msgstr "项"
+
+#: frmMain.cs:548
+msgid "item"
+msgstr "项"
+
+#: frmMain.cs:550 frmMain.cs:553
+msgid "End of Image Pool"
+msgstr "已到末尾"
+
+#: frmMain.cs:551
+#, csharp-format
+msgid ""
+"End of Image Pool{0}\n"
+"Go back or add more images"
+msgstr ""
+"已到末尾{0}\n"
+"请返回或添加更多图像"
+
+#: frmMain.cs:597
+msgid "Video playback"
+msgstr "播放视频"
+
+#: frmMain.cs:614
+msgid "Loading image fail: "
+msgstr "加载图像失败："
+
+#: frmMain.cs:631
+msgid "Error loading image:\n"
+msgstr "加载图像出错：\n"
+
+#: frmMain.cs:632
+msgid "Error loading image: "
+msgstr "加载图像出错："
+
+#: frmMain.cs:701
+#, csharp-format
+msgid " - Target dir: {0}"
+msgstr " - 目标文件夹：{0}"
+
+#: frmMain.cs:733
+msgid "Auto Advance: On"
+msgstr "自动前进：开启"
+
+#: frmMain.cs:738
+msgid "Auto Advance: Off"
+msgstr "自动前进：关闭"
+
+#: frmMain.cs:1271 frmMain.cs:1287
+msgid "Scale: "
+msgstr "缩放："
+
+#: frmMain.cs:1275
+msgid "Scale: Actual Size ("
+msgstr "缩放：实际大小 ("
+
+#: frmMain.cs:1279
+msgid "Scale: Locked to Width ("
+msgstr "缩放：宽度锁定 ("
+
+#: frmMain.cs:1283
+msgid "Scale: Locked to Height ("
+msgstr "缩放：高度锁定 ("
+
+#: frmMain.cs:1291
+msgid "Scale: Fit Window ("
+msgstr "缩放：适合窗口 ("
+
+#: frmMain.cs:1370
+msgid "Undo Rename"
+msgstr "撤销重命名"
+
+#: frmMain.cs:1373
+msgid "Undo Copy"
+msgstr "撤销复制"
+
+#: frmMain.cs:1376
+msgid "Undo Move"
+msgstr "撤销移动"
+
+#: frmMain.cs:1379
+msgid "Undo Delete"
+msgstr "撤销删除"
+
+#: frmMain.cs:1382
+msgid "Undo"
+msgstr "撤销"
+
+#: frmMain.cs:1421
+msgid "Undo..."
+msgstr "撤销..."
+
+#: frmMain_Input.cs:75
+#, csharp-format
+msgid "Confirm to clear the queue with {0} image(s)?"
+msgstr "确认清空含有 {0} 个图像的队列？"
+
+#: frmMain_Input.cs:76
+msgid "Clear images queue"
+msgstr "清空图像队列"
+
+#: frmMain_Input.cs:81
+#, csharp-format
+msgid "Cleared {0} items"
+msgstr "已清除 {0} 项"
+
+#: frmMain_Input.cs:90 frmMain_Input.cs:98
+#, csharp-format
+msgid "Cleared {0} item(s)"
+msgstr "已清除 {0} 项"
+
+#: frmMain_Input.cs:148
+msgid "Images|"
+msgstr "图像|"
+
+#: frmMain_Input.cs:151
+msgid "|Videos|"
+msgstr "|视频|"
+
+#: frmMain_Input.cs:154
+msgid "|All files (*.*)|*.*"
+msgstr "|所有文件 (*.*)|*.*"
+
+#: frmMain_Input.cs:159
+msgid "Select images to add..."
+msgstr "选择要添加的图像..."
+
+#: frmMain_Input.cs:182
+msgid "Select a folder with images to add:"
+msgstr "请选择包含要添加的图像的文件夹："
+
+#: frmMain_Input.cs:271
+msgid "Select a folder:"
+msgstr "选择一个文件夹："
+
+#: frmMain_Input.cs:293
+msgid "Enter a new name:"
+msgstr "请输入新名称："
+
+#: frmMain_Input.cs:294
+msgid "Rename File"
+msgstr "重命名文件"
+
+#: frmMain_Input.cs:372
+msgid "New width in pixels:"
+msgstr "新的宽度（像素）："
+
+#: frmMain_Input.cs:373
+msgid "Zoom to Width"
+msgstr "缩放到适合宽度"
+
+#: frmMain_Input.cs:386 frmMain_Input.cs:410
+msgid "Not a valid size..."
+msgstr "不是有效的大小..."
+
+#: frmMain_Input.cs:395
+msgid "New height in pixels:"
+msgstr "新的高度（像素）："
+
+#: frmMain_Input.cs:396
+msgid "Zoom to Height"
+msgstr "缩放到适合高度"
+
+#: frmMain_Input.cs:436
+msgid "Scale mode: RESET when changing picture"
+msgstr "缩放模式：更换图像时重置"
+
+#: frmMain_Input.cs:438
+msgid "Scale mode: KEEP when changing picture"
+msgstr "缩放模式：更换图像时保持"
+
+#: frmMain_Input.cs:458
+msgid "Randomized image order..."
+msgstr "随机化队列顺序..."
+
+#: frmMain_Input.cs:467
+msgid "Reversed image order..."
+msgstr "反转队列顺序..."
+
+#: frmMain_Input.cs:485
+#, csharp-format
+msgid ""
+"Are you sure you want to delete {0} files permanently? This operation cannot "
+"be undone."
+msgstr "确定要永久删除 {0} 个文件？此操作不可撤销。"
+
+#: frmMain_Input.cs:486
+msgid "Delete files"
+msgstr "删除文件"
+
+#: frmMain_Input.cs:502 frmMain_Input.cs:525
+#, csharp-format
+msgid ""
+"Move the {0} images to which folder?\n"
+"\n"
+"Supports relative path to the target base folder or an absolute path."
+msgstr ""
+"移动 {0} 个媒体文件到哪个文件夹？\n"
+"\n"
+"支持相对于目标文件夹的相对路径，或者绝对路径。"
+
+#: frmMain_Input.cs:503
+msgid "Moves the left images in pool"
+msgstr "移动队列中左侧的文件"
+
+#: frmMain_Input.cs:526
+msgid "Moves the right images in pool"
+msgstr "移动队列中右侧的文件"
+
+#: frmMain_Input.cs:815
+msgid "Small images: Enlarge to window"
+msgstr "小图像：放大到适合窗口"
+
+#: frmMain_Input.cs:817
+msgid "Small images: Actual size"
+msgstr "小图像：实际尺寸"
+
+#: frmMain_Input.cs:877
+msgid ""
+"The target folder for this key is not valid:\n"
+"\n"
+msgstr ""
+"此按键的目标文件夹设置无效：\n"
+"\n"
+
+#: frmMain_Input.cs:877
+msgid "Path Error"
+msgstr "路径错误"
+
+#: frmMain_Input.cs:941
+msgid ""
+"Error deleting file: \n"
+"\n"
+msgstr ""
+"删除文件出错：\n"
+"\n"
+
+#: frmMain_Input.cs:941
+msgid "Delete Error"
+msgstr "删除出错"
+
+#: frmMain_Input.cs:946
+msgid ""
+"Error copying/moving file(s): \n"
+"\n"
+msgstr ""
+"复制/移动文件出错：\n"
+"\n"
+
+#: frmMain_Input.cs:946
+msgid "File(s) Error"
+msgstr "文件错误"
+
+#: frmMain_Input.cs:949
+#, csharp-format
+msgid "Processed {0} files"
+msgstr "已处理 {0} 个文件"
+
+#: frmMain_Input.cs:1052
+msgid ""
+"The current hotkeys (quirks):\n"
+"\n"
+"Click on the menu: Clear all items in the pool.\n"
+msgstr ""
+"目前提供的特殊快捷键：\n"
+"\n"
+"单击“清空”菜单：清空队列中的项目。\n"
+
+#: frmMain_Input.cs:1053
+msgid "Shift + Click on the menu: Clear the left items in the pool.\n"
+msgstr "Shift + 单击菜单：清空队列中左侧的所有项目。\n"
+
+#: frmMain_Input.cs:1054
+msgid "Ctrl + Click on the menu: Clear the right items in the pool.\n"
+msgstr "Ctrl + 单击菜单：清空队列中右侧的所有项目。\n"
+
+#: frmMain_Input.cs:1056
+msgid ""
+"\n"
+"Ctrl + 0 hotkey: Clear all items in the pool."
+msgstr ""
+"\n"
+"Ctrl + 0 快捷键：清空队列中的项目。"
+
+#: frmMain_Input.cs:1057
+msgid ""
+"\n"
+"Alt + 0 hotkey: Remove the current item in the pool."
+msgstr ""
+"\n"
+"Alt + 0 快捷键：队列中移除当前项目。"
+
+#: frmMain_Input.cs:1058
+msgid ""
+"\n"
+"\n"
+"No files will be moved, deleted, renamed or changed."
+msgstr ""
+"\n"
+"\n"
+"以上快捷键不会移动、删除、重命名或更改任何文件。"
+
+#: frmMain_Input.cs:1059
+msgid "Clear Items Hotkeys"
+msgstr "清空菜单的特殊按键"
+
+#: frmMain_Input.cs:1087
+#, csharp-format
+msgid ""
+"Enter the target page: ?/{0}\n"
+"\n"
+"Note: Numbers beyond the range will be leveled automatically."
+msgstr ""
+"请输入目标页：?/{0}\n"
+"\n"
+"超范围的数字会自动缩减。"
+
+#: frmMain_Input.cs:1088
+msgid "Go to..."
+msgstr "跳转到..."
+
+#: frmMain_Input.cs:1121
+msgid "You haven't configured a custom key to a specific directory."
+msgstr "尚未配置按键对应不同于本身的指定目录。"
+
+#: frmMain_Input.cs:1122
+msgid "No configured"
+msgstr "未配置"
+
+#: frmSettings.cs:50
+msgid "Settings"
+msgstr "设置"
+
+#: frmSettings.cs:63
+msgid "Reset"
+msgstr "重置"
+
+#. TRANSLATORS: {0} is propertyGrid.SelectedGridItem.GridItems.Count
+#: frmSettings.cs:116
+#, csharp-format
+msgid ""
+"Are you sure you want to reset {0} preferences of this group to defaults?"
+msgstr "确认重置此组的 {0} 个设置为默认值？"
+
+#: frmSettings.cs:117
+msgid "Reset to defaults"
+msgstr "重置到默认值"

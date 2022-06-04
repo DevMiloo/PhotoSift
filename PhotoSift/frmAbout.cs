@@ -19,8 +19,10 @@
  * */
 
 using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
+using static PhotoSift.NGettextShortSyntax;
 
 namespace PhotoSift
 {
@@ -29,11 +31,13 @@ namespace PhotoSift
 		public frmAbout( AppSettings settings )
 		{
 			InitializeComponent();
-			this.Text = String.Format( "About {0}", Util.GetAppName() );
+			this.Text = String.Format( _("About {0}"), Util.GetAppName() );
 			this.labelProductName.Text = Util.GetAppName() + " " + Assembly.GetExecutingAssembly().GetName().Version.Major + "." + Assembly.GetExecutingAssembly().GetName().Version.Minor;
 			this.labelCopyright.Text = AssemblyCopyright;
-			this.labelLicense.Text = "Free, open source software (GPLv3)";
-			this.labelStats.Text = "Loaded: " + settings.Stats_LoadedPics + "\nCopied/Moved: " + ( settings.Stats_CopiedPics + settings.Stats_MovedPics ) + "\nRenamed: " + settings.Stats_RenamedPics + "\nDeleted: " + settings.Stats_DeletedPics;
+			this.labelLicense.Text = _("Free, open source software (GPLv3)");
+			this.labelStats.Text = _("Loaded: ") + settings.Stats_LoadedPics + _("\nCopied/Moved: ") + ( settings.Stats_CopiedPics + settings.Stats_MovedPics ) + _("\nRenamed: ") + settings.Stats_RenamedPics + _("\nDeleted: ") + settings.Stats_DeletedPics;
+			Debug.WriteLine(_(_("Loaded: ")));
+			btnClose.Text = _("Ok");
 		}
 
 		#region Assembly Attribute Accessors

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
+using static PhotoSift.NGettextShortSyntax;
 
 namespace PhotoSift
 {
@@ -55,7 +54,7 @@ namespace PhotoSift
 			var topchk = new CheckBox
 			{
 				Name = "chkTop",
-				Text = "Top",
+				Text = _("Top"),
 				Checked = false,
 				AutoSize = true,
 				Location = new Point(8, (this.Controls.Count / 2) * 22 + 9)
@@ -64,7 +63,7 @@ namespace PhotoSift
 			this.Controls.Add(topchk);
 			var openSettings = new Button
 			{
-				Text = "Settings...",
+				Text = _("Settings..."),
 				AutoSize = true,
 				Location = new Point(10 + topchk.Size.Width, (this.Controls.Count / 2) * 22 + 6)
 			};
@@ -104,7 +103,7 @@ namespace PhotoSift
 				foreach (object attr in attrs)
 				{
 					if (attr is CategoryAttribute)
-						if ((attr as CategoryAttribute).Category == "Key Folders")
+						if ((attr as CategoryAttribute).Category == "Key Folders") // Todo: test
 						{
 							string value = prp.GetValue(atype, new object[] { }).ToString();
 							if (value != string.Empty)

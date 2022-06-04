@@ -24,6 +24,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Globalization;
+using static PhotoSift.NGettextShortSyntax;
 
 namespace PhotoSift
 {
@@ -40,6 +41,8 @@ namespace PhotoSift
 
 			InitializeComponent();
 			propertyGrid.SelectedObject = settings;
+
+			this.Text = _("Settings");
 			propertyGrid.Focus();
 		}
 
@@ -52,6 +55,7 @@ namespace PhotoSift
 				this.Width = settings.FormRect_Settings.Width;
 				this.Height = settings.FormRect_Settings.Height;
 			}
+			resetToolStripMenuItem.Text = _("Reset");
 		}
 
 		private void frmSettings_FormClosing( object sender, FormClosingEventArgs e )
@@ -95,16 +99,17 @@ namespace PhotoSift
 				}
 			}
 
-			string SelectedGridItem = propertyGrid.SelectedGridItem.GridItemType.ToString();
-			if (SelectedGridItem == "Property")
+            GridItemType SelectedGridItem = propertyGrid.SelectedGridItem.GridItemType;
+			if (SelectedGridItem == GridItemType.Property)
 			{
 				_PropItemResetToDefault(propertyGrid.SelectedGridItem);
 			}
-			else if (SelectedGridItem == "Category")
+			else if (SelectedGridItem == GridItemType.Category)
 			{
 				DialogResult confirm = MessageBox.Show(
-					string.Format("Are you sure you want to reset {0} preferences of this group to defaults?", propertyGrid.SelectedGridItem.GridItems.Count),
-					"Reset to defaults", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+					// TRANSLATORS: {0} is propertyGrid.SelectedGridItem.GridItems.Count
+					string.Format(_("Are you sure you want to reset {0} preferences of this group to defaults?"), propertyGrid.SelectedGridItem.GridItems.Count),
+					_("Reset to defaults"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 				if (confirm == DialogResult.No) return;
 
 				foreach (GridItem item in propertyGrid.SelectedGridItem.GridItems)

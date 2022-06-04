@@ -136,6 +136,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="i18n\Attributes.cs" />
+    <Compile Include="i18n\Descriptors.cs" />
     <Compile Include="FolderSelectDialog.cs" />
     <Compile Include="FileManagement.cs" />
     <Compile Include="frmAbout.cs">
@@ -163,6 +165,7 @@
     <Compile Include="frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="i18n\NGettextShortSyntax.cs" />
     <Compile Include="ImageCache.cs" />
     <Compile Include="MimeTypeMap.cs" />
     <Compile Include="WebPWrapper.cs" />
@@ -195,6 +198,10 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="app.config" />
+    <AdditionalFiles Include="locale\zh-CN\LC_MESSAGES\PhotoSift.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <None Include="locale\zh-CN\LC_MESSAGES\PhotoSift.po" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -258,12 +265,18 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NGettext">
+      <Version>0.6.7</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>del $(TargetDir)Microsoft.WindowsAPICodePack*.xml
-mkdir $(TargetDir)\Lib
-move $(TargetDir)\*.dll $(TargetDir)\Lib
-</PostBuildEvent>
+    <PostBuildEvent>mkdir $(TargetDir)\Lib
+move $(TargetDir)\*.dll $(TargetDir)\Lib</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>$(ProjectDir)i18n\buildMO.bat "$(TargetDir)"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

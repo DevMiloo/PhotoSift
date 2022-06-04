@@ -27,6 +27,7 @@ using System.Reflection;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using static PhotoSift.NGettextShortSyntax;
 
 namespace PhotoSift
 {
@@ -71,13 +72,13 @@ namespace PhotoSift
 
 			if (settings.WarnThresholdOnClearQueue > 0 && count > settings.WarnThresholdOnClearQueue)
 			{
-				if (MessageBox.Show(string.Format("Confirm to clear the queue with {0} image(s)?", count),
-								"Clear images queue", MessageBoxButtons.YesNo) != DialogResult.Yes)
+				if (MessageBox.Show(string.Format(_("Confirm to clear the queue with {0} image(s)?"), count),
+								_("Clear images queue"), MessageBoxButtons.YesNo) != DialogResult.Yes)
 					return;
 			}
 			if (mode == ClearMode.All)
 			{
-				ShowStatusMessage(string.Format("Cleared {0} items", pics.Count));
+				ShowStatusMessage(string.Format(_("Cleared {0} items"), pics.Count));
 				pics.Clear();
 				PicGoto(0);
 			}
@@ -86,7 +87,7 @@ namespace PhotoSift
 				int oldCount = pics.Count;
 				pics.RemoveRange(0, keepCur > 0 ? iCurrentPic : iCurrentPic + 1);
 				PicGoto(0);
-				ShowStatusMessage(string.Format("Cleared {0} item(s)", oldCount - pics.Count));
+				ShowStatusMessage(string.Format(_("Cleared {0} item(s)"), oldCount - pics.Count));
 			}
 			else if (mode == ClearMode.Right && (pics.Count - (iCurrentPic + 1)) > 0)
 			{
@@ -94,7 +95,7 @@ namespace PhotoSift
 				// todo: keepCur support.
 				pics.RemoveRange(iCurrentPic + 1, pics.Count - (iCurrentPic + 1));
 				PicGoto(iCurrentPic - 1); // for refresh the title
-				ShowStatusMessage(string.Format("Cleared {0} item(s)", oldCount - pics.Count));
+				ShowStatusMessage(string.Format(_("Cleared {0} item(s)"), oldCount - pics.Count));
 			}
 			else if (mode == ClearMode.Current)
 			{
@@ -144,19 +145,19 @@ namespace PhotoSift
 		{
 			ForceShowFullscreenCursor();
 
-			var FilterStr = "Images|";
+			var FilterStr = _("Images|");
 			Util.Def_allowsPicExts.ToList().ForEach(i => FilterStr += "*" + i + ";");
 			FilterStr = FilterStr.Substring(0, FilterStr.Length - 1); // strip ";"
-			FilterStr += "|Videos|";
+			FilterStr += _("|Videos|");
 			Util.Def_allowsVideoExts.ToList().ForEach(i => FilterStr += "*" + i + ";");
 			FilterStr = FilterStr.Substring(0, FilterStr.Length - 1);
-			FilterStr += "|All files (*.*)|*.*";
+			FilterStr += _("|All files (*.*)|*.*");
 
 			OpenFileDialog ofd = new OpenFileDialog
 			{
 				Multiselect = true,
-				Title = "Select images to add...",
-				//Filter = "Images|*.jpg;*.jpeg;*.tif;*.tiff;*.png;*.bmp;*.gif;*.ico;*.wmf;*.emf;*.webp|All files (*.*)|*.*",
+				Title = _("Select images to add..."),
+				//Filter = _("Images|*.jpg;*.jpeg;*.tif;*.tiff;*.png;*.bmp;*.gif;*.ico;*.wmf;*.emf;*.webp|All files (*.*)|*.*"),
 				Filter = FilterStr,
 				InitialDirectory = settings.LastFolder_AddFiles
 			};
@@ -178,7 +179,7 @@ namespace PhotoSift
 			var dialog = new Ris.Shuriken.FolderSelectDialog
 			{
 				InitialDirectory = settings.LastFolder_AddFolder,
-				Title = "Select a folder with images to add:",
+				Title = _("Select a folder with images to add:"),
 				multiSelect = true
 			};
 			if (dialog.Show(Handle))
@@ -267,7 +268,7 @@ namespace PhotoSift
 			var dialog = new Ris.Shuriken.FolderSelectDialog
 			{
 				InitialDirectory = settings.TargetFolder,
-				Title = "Select a folder:"
+				Title = _("Select a folder:")
 			};
 			if (dialog.Show(Handle))
 			{
@@ -289,8 +290,8 @@ namespace PhotoSift
 			string ext = Path.GetExtension( pics[iCurrentPic] );
 			string path = Path.GetDirectoryName( pics[iCurrentPic] );
 
-			string new_name = Microsoft.VisualBasic.Interaction.InputBox("Enter a new name:",
-				"Rename File",
+			string new_name = Microsoft.VisualBasic.Interaction.InputBox(_("Enter a new name:"),
+				_("Rename File"),
 				old_name);
 			if (new_name != "")
 			{
@@ -368,8 +369,8 @@ namespace PhotoSift
 		{
 			string sNewWidth = GetPictureDisplaySize().Width.ToString();
 
-			string newValue = Microsoft.VisualBasic.Interaction.InputBox("New width in pixels:",
-				"Zoom to Width",
+			string newValue = Microsoft.VisualBasic.Interaction.InputBox(_("New width in pixels:"),
+				_("Zoom to Width"),
 				sNewWidth);
 			if (newValue != "")
 			{
@@ -382,7 +383,7 @@ namespace PhotoSift
 				}
 				catch
 				{
-					MessageBox.Show( "Not a valid size...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+					MessageBox.Show( _("Not a valid size..."), _("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error );
 					return;
 				}
 			}
@@ -391,8 +392,8 @@ namespace PhotoSift
 		private void mnuZoomToHeight_Click( object sender, EventArgs e )
 		{
 			string sNewHeight = GetPictureDisplaySize().Height.ToString();
-			string newValue = Microsoft.VisualBasic.Interaction.InputBox("New height in pixels:",
-				"Zoom to Height",
+			string newValue = Microsoft.VisualBasic.Interaction.InputBox(_("New height in pixels:"),
+				_("Zoom to Height"),
 				sNewHeight);
 
 			if (newValue != "")
@@ -406,7 +407,7 @@ namespace PhotoSift
 				}
 				catch
 				{
-					MessageBox.Show( "Not a valid size...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+					MessageBox.Show( _("Not a valid size..."), _("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error );
 					return;
 				}
 			}
@@ -432,9 +433,9 @@ namespace PhotoSift
 			settings.ResetViewModeOnPictureChange = !settings.ResetViewModeOnPictureChange;
 			mnuResetViewMode.Checked = settings.ResetViewModeOnPictureChange;
 			if( settings.ResetViewModeOnPictureChange )
-				ShowStatusMessage( "Scale mode: RESET when changing picture" );
+				ShowStatusMessage( _("Scale mode: RESET when changing picture") );
 			else
-				ShowStatusMessage( "Scale mode: KEEP when changing picture" );
+				ShowStatusMessage( _("Scale mode: KEEP when changing picture") );
 		}
 
 		private void menuStripMain_MenuActivate( object sender, EventArgs e )
@@ -454,7 +455,7 @@ namespace PhotoSift
 			panelMain.Cursor = Cursors.WaitCursor;
 			Util.Shuffle( pics );
 			ShowPicByOffset( 0 );
-			ShowStatusMessage( "Randomized image order..." );
+			ShowStatusMessage( _("Randomized image order...") );
 			panelMain.Cursor = Cursors.Arrow;
 		}
 		private void mnuReverseOrder_Click(object sender, EventArgs e)
@@ -463,7 +464,7 @@ namespace PhotoSift
 			pics.Reverse();
 			int newPos = pics.Count() - iCurrentPic - 1;
 			PicGoto(newPos);
-			ShowStatusMessage("Reversed image order...");
+			ShowStatusMessage(_("Reversed image order..."));
 		}
 
 		/// <summary>
@@ -481,8 +482,8 @@ namespace PhotoSift
 			}
 			else if (t == "<DEL>")
 			{
-				var c = MessageBox.Show(string.Format("Are you sure you want to delete {0} files permanently? This operation cannot be undone.", items.Count()),
-										"Delete files", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+				var c = MessageBox.Show(string.Format(_("Are you sure you want to delete {0} files permanently? This operation cannot be undone."), items.Count()),
+										_("Delete files"), MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 				if (c != DialogResult.OK) return true;
 			}
 			return false;
@@ -498,8 +499,8 @@ namespace PhotoSift
 			//List<string> newPics = pics.GetRange(0, iCurrentPic - shift);
 			int shift = mnuMovesCurChecked.Checked ? 1 : 0;
 			string newDir = Microsoft.VisualBasic.Interaction.InputBox(
-				string.Format("Move the {0} images to which folder?\n\nSupports relative path to the target base folder or an absolute path.", iCurrentPic),
-				"Moves the left images in pool");
+				string.Format(_("Move the {0} images to which folder?\n\nSupports relative path to the target base folder or an absolute path."), iCurrentPic),
+				_("Moves the left images in pool"));
 			if (newDir.Trim().Length == 0) return;
 			var items = Enumerable.Range(0, iCurrentPic - shift);
 			if (MovesMagicWordsConfirm(newDir, items)) return;
@@ -521,8 +522,8 @@ namespace PhotoSift
 			int startIndex = iCurrentPic + 1 + -shift; // + 1 == not including current.
 			int picNum = pics.Count - startIndex;
 			string newDir = Microsoft.VisualBasic.Interaction.InputBox(
-				string.Format("Move the {0} images to which folder?\n\nSupports relative path to the target base folder or an absolute path.", picNum),
-				"Moves the right images in pool");
+				string.Format(_("Move the {0} images to which folder?\n\nSupports relative path to the target base folder or an absolute path."), picNum),
+				_("Moves the right images in pool"));
 			if (newDir.Trim().Length == 0) return;
 			var items = Enumerable.Range(startIndex, picNum);
 			if (MovesMagicWordsConfirm(newDir, items)) return;
@@ -811,9 +812,9 @@ namespace PhotoSift
 				SetScaleMode( ScaleMode.NormalFitWindow );
 
 				if( settings.EnlargeSmallImages )
-					ShowStatusMessage( "Small images: Enlarge to window" );
+					ShowStatusMessage( _("Small images: Enlarge to window") );
 				else
-					ShowStatusMessage( "Small images: Actual size" );
+					ShowStatusMessage( _("Small images: Actual size") );
 				e.Handled = true;
 			}
 			else	// Copy/Move image
@@ -873,7 +874,7 @@ namespace PhotoSift
 			}
 			catch
 			{
-				MessageBox.Show("The target folder for this key is not valid:\n\n" + folder, "Path Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(_("The target folder for this key is not valid:\n\n") + folder, _("Path Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 
 			List<int> droppedIndex = new List<int>{ };
@@ -937,15 +938,15 @@ namespace PhotoSift
 
 			if (errors != "" && (targetDir.Trim().ToUpper() == "<REC>" || targetDir.Trim().ToUpper() == "<DEL>"))
 			{
-				MessageBox.Show("Error deleting file: \n\n" + errors, "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(_("Error deleting file: \n\n") + errors, _("Delete Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			else if (errors != "")
 			{
 				// todo, test the ui, check and cut too many lines.
-				MessageBox.Show("Error copying/moving file(s): \n\n" + errors, "File(s) Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(_("Error copying/moving file(s): \n\n") + errors, _("File(s) Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			if (droppedIndex.Count > 1)
-				ShowStatusMessage(string.Format("Processed {0} files", droppedIndex.Count));
+				ShowStatusMessage(string.Format(_("Processed {0} files"), droppedIndex.Count));
 		}
 
 		private void frmMain_KeyDown( object sender, KeyEventArgs e )
@@ -1048,14 +1049,14 @@ namespace PhotoSift
 
 		private void mnuClearImagesShowHotkeys_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("The current hotkeys (quirks):\n\nClick on the menu: Clear all items in the pool.\n" +
-				"Shift + Click on the menu: Clear the left items in the pool.\n" +
-				"Ctrl + Click on the menu: Clear the right items in the pool.\n" +
-				//"Alt + Click on the menu: not support.\n" +
-				"\nCtrl + 0 hotkey: Clear all items in the pool." +
-				"\nAlt + 0 hotkey: Remove the current item in the pool." +
-				"\n\nNo files will be moved, deleted, renamed or changed.",
-				"Clear Items Hotkeys",
+			MessageBox.Show(_("The current hotkeys (quirks):\n\nClick on the menu: Clear all items in the pool.\n") +
+				_("Shift + Click on the menu: Clear the left items in the pool.\n") +
+				_("Ctrl + Click on the menu: Clear the right items in the pool.\n") +
+				//_("Alt + Click on the menu: not support.\n") +
+				_("\nCtrl + 0 hotkey: Clear all items in the pool.") +
+				_("\nAlt + 0 hotkey: Remove the current item in the pool.") +
+				_("\n\nNo files will be moved, deleted, renamed or changed."),
+				_("Clear Items Hotkeys"),
 				MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
@@ -1071,7 +1072,7 @@ namespace PhotoSift
 				System.Diagnostics.Process.Start("explorer.exe", $"/e,/select,{path}");
 			else
 			{
-				//MessageBox.Show("The file does not exist!", "Open Containing Folder", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				//MessageBox.Show(_("The file does not exist!"), _("Open Containing Folder"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
 				path = Path.GetDirectoryName(path);
 				while (!Directory.Exists(path))
@@ -1083,8 +1084,8 @@ namespace PhotoSift
 		}
 		private void mnuGoToIndex_Click(object sender, EventArgs e)
 		{
-			string newNumStr = Microsoft.VisualBasic.Interaction.InputBox(string.Format("Enter the target page: ?/{0}\n\nNote: Numbers beyond the range will be leveled automatically.", pics.Count()),
-				"Go to...",	(iCurrentPic + 1).ToString());
+			string newNumStr = Microsoft.VisualBasic.Interaction.InputBox(string.Format(_("Enter the target page: ?/{0}\n\nNote: Numbers beyond the range will be leveled automatically."), pics.Count()),
+				_("Go to..."),	(iCurrentPic + 1).ToString());
 
             if (!int.TryParse(newNumStr, out int newNum))
 				newNum = iCurrentPic + 1; // can also be return, warn.
@@ -1117,8 +1118,8 @@ namespace PhotoSift
 			}
 			else if (sender == mnuKeyFolders)
 			{
-				MessageBox.Show("You haven't configured a custom key to a specific directory.",
-					"No configured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(_("You haven't configured a custom key to a specific directory."),
+					_("No configured"), MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 
 		}
