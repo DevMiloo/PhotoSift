@@ -265,7 +265,7 @@ namespace PhotoSift
 #endif
 
 		// System Group
-		[Category( "System" ), DisplayName( "Disable screensaver" ), DescriptionAttribute( "Disable any screensaver, sleep mode etc while the programis running. Restart is required if changed." )]
+		[Category( "System" ), DisplayName( "Disable screensaver" ), DescriptionAttribute( "Disable any screensaver, sleep mode etc while the programis running." )]
 		public bool PreventSleep { get; set; }
 
 

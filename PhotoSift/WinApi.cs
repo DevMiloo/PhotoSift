@@ -158,8 +158,14 @@ namespace PhotoSift
 		[DllImport( "kernel32.dll", CharSet = CharSet.Auto, SetLastError = true )]
 		private static extern EXECUTION_STATE SetThreadExecutionState( EXECUTION_STATE esFlags );
 
-		public void PreventSleep()
+		// check it with "powercfg /REQUESTS" command with administrator user
+		public void PreventSleep(bool turnOn)
 		{
+            if (!turnOn)
+            {
+				SetThreadExecutionState(EXECUTION_STATE.ES_CONTINUOUS);
+				return;
+			}
 			if( SetThreadExecutionState( EXECUTION_STATE.ES_CONTINUOUS
 				| EXECUTION_STATE.ES_DISPLAY_REQUIRED
 				| EXECUTION_STATE.ES_SYSTEM_REQUIRED

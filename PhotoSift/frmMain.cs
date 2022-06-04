@@ -56,6 +56,7 @@ namespace PhotoSift
 		private string curMetaInfoCache = "";
 
 		private string[] allowsMIME;
+		private bool bPreventSleep = false; // reduce system API calls
 
 		// Variables managing the scale modes
 		private enum ScaleMode
@@ -150,7 +151,6 @@ namespace PhotoSift
 			settings.Stats_StartupCount++;
 			
 			ApplySettings();
-			if( settings.PreventSleep ) winApi.PreventSleep();
 
 			// Setup GUI
 			Util.CenterControl( lblHeader, picLogo.Image.Height / 2 + 20 );
@@ -199,6 +199,12 @@ namespace PhotoSift
 			mnuAddInRandomOrder.Checked = settings.AddInRandomOrder;
 			mnuResetViewMode.Checked = settings.ResetViewModeOnPictureChange;
 			mnuMovesCurChecked.Checked = settings.MoveIncludingCurrent;
+
+			if (settings.PreventSleep != bPreventSleep)
+            {
+				winApi.PreventSleep(settings.PreventSleep);
+                bPreventSleep = settings.PreventSleep;
+            }
 
 			ShowHideLabels();
 			ApplyColorSettings();
