@@ -19,7 +19,7 @@ I have a big roadmap (list of ideas, not written in English), but probably don't
 2. Execute the "Extract from source" for cloned repo. (optional)
 3. Change necessary properties like target language. Clear all and make your translation.
 4. Move to the correct language code directory, and update the UILanguages definition. (optional)
-5. If needed, generate the mo file and place it in <this software>\locale\en-US\LC_MESSAGES\PhotoSift.po directory to testing your translation.
+5. If needed, generate the mo file and place it in \<this software\>\locale\en-US\LC_MESSAGES\PhotoSift.po directory to testing your translation.
 
 # PhotoSift
 
