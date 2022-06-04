@@ -3,17 +3,25 @@
 [![GitHub release (latest by date) https://github.com/yfdyh000/PhotoSift/releases](https://img.shields.io/github/v/release/yfdyh000/PhotoSift)](https://github.com/yfdyh000/PhotoSift/releases)
 [![GitHub All Releases https://github.com/yfdyh000/PhotoSift/releases](https://img.shields.io/github/downloads/yfdyh000/PhotoSift/total)](https://github.com/yfdyh000/PhotoSift/releases)
 
-PhotoSift Ex
-=========
+# PhotoSift Ex
 
-This a fork with video playback, batch operations, and other optimizations.
+This a fork with audio/video playback, batch operations, more options and other optimizations. It also provides localized interface.
 
 View the release notes and downloads at https://github.com/yfdyh000/PhotoSift/releases.
 
 This program requires .NET Framework 4.8, the Windows Media Player Library, etc. Available on Microsoft Windows.
 
-PhotoSift
-=========
+## Development
+I have a big roadmap (list of ideas, not written in English), but probably don't have enough energy to complete all. If you are interested in the development of this project, open an issue or contact me.
+
+## Localization
+1. Open the [PhotoSift.po](https://github.com/yfdyh000/PhotoSift/blob/master/PhotoSift/locale/zh-CN/LC_MESSAGES/PhotoSift.po) file with [Poedit](https://poedit.net/).
+2. Execute the "Extract from source" for cloned repo. (optional)
+3. Change necessary properties like target language. Clear all and make your translation.
+4. Move to the correct language code directory, and update the UILanguages definition. (optional)
+5. If needed, generate the mo file and place it in <this software>\locale\en-US\LC_MESSAGES\PhotoSift.po directory to testing your translation.
+
+# PhotoSift
 
 The original: https://github.com/rlv-dan/PhotoSift, http://rlvision.com/photosift.
 
