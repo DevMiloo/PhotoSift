@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-06-04 19:40+0800\n"
-"PO-Revision-Date: 2022-06-04 19:40+0800\n"
+"POT-Creation-Date: 2022-06-05 17:00+0800\n"
+"PO-Revision-Date: 2022-06-05 17:01+0800\n"
 "Last-Translator: YFdyh000 <yfdyh000@gmail.com>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -639,125 +639,165 @@ msgid ""
 "target folder."
 msgstr "保存“目标文件夹”等路径时允许相对路径。"
 
-#: AppSettings.cs:581
+#: AppSettings.cs:598
 msgid "Auto"
 msgstr "自动"
 
-#: AppSettings.cs:583
+#: AppSettings.cs:600
 msgid "English"
 msgstr "英语"
 
-#: AppSettings.cs:585
+#: AppSettings.cs:602
 msgid "Chinese (Simplified)"
 msgstr "简体中文"
 
-#: AppSettings.cs:591
+#: AppSettings.cs:608
 msgid "Always Show"
 msgstr "始终显示"
 
-#: AppSettings.cs:593
+#: AppSettings.cs:610
 msgid "Always Hide"
 msgstr "始终隐藏"
 
-#: AppSettings.cs:595
+#: AppSettings.cs:612
 msgid "Fullscreen Only"
 msgstr "仅限全屏"
 
-#: AppSettings.cs:597
+#: AppSettings.cs:614
 msgid "Windowed Only"
 msgstr "仅限窗口"
 
-#: AppSettings.cs:603
+#: AppSettings.cs:620
 msgid "Yes"
 msgstr "是"
 
-#: AppSettings.cs:605
+#: AppSettings.cs:622
 msgid "No"
 msgstr "否"
 
-#: AppSettings.cs:611
+#: AppSettings.cs:628
 msgid "Delete File"
 msgstr "删除文件"
 
-#: AppSettings.cs:613
+#: AppSettings.cs:630
 msgid "Delete to Recycle Bin"
 msgstr "删除到回收站"
 
-#: AppSettings.cs:615
+#: AppSettings.cs:632
 msgid "Only Remove from Image Pool"
 msgstr "仅从队列中移除"
 
-#: AppSettings.cs:621
+#: AppSettings.cs:638
 msgid "Copy"
 msgstr "复制"
 
-#: AppSettings.cs:623
+#: AppSettings.cs:640
 msgid "Move"
 msgstr "移动"
 
-#: AppSettings.cs:629
+#: AppSettings.cs:646
 msgid "Overwrite"
 msgstr "覆盖"
 
-#: AppSettings.cs:631
+#: AppSettings.cs:648
 msgid "Append Number"
 msgstr "追加编号"
 
-#: AppSettings.cs:633
+#: AppSettings.cs:650
 msgid "Skip"
 msgstr "跳过"
 
-#: AppSettings.cs:639
+#: AppSettings.cs:656
 msgid "Bitmap"
 msgstr "位图"
 
-#: AppSettings.cs:641
+#: AppSettings.cs:658
 msgid "File"
 msgstr "文件"
 
-#: AppSettings.cs:643
+#: AppSettings.cs:660
 msgid "File Path"
 msgstr "文件路径"
 
-#: AppSettings.cs:648 AppSettings.cs:658
+#: AppSettings.cs:665 AppSettings.cs:675
 msgid "Disabled"
 msgstr "禁用"
 
-#: AppSettings.cs:650
+#: AppSettings.cs:667
 msgid "Basic"
 msgstr "基础"
 
-#: AppSettings.cs:660
+#: AppSettings.cs:677
 msgid "Enabled"
 msgstr "启用"
 
-#: AppSettings.cs:662
+#: AppSettings.cs:679
 msgid "Unavailable"
 msgstr "不可用"
 
-#: AppSettings.cs:667
+#: AppSettings.cs:684
 msgid "Off"
 msgstr "关闭"
 
 #. TRANSLATORS: a gradient from left to right.
-#: AppSettings.cs:672
+#: AppSettings.cs:689
 msgid "Horizontal"
 msgstr "水平"
 
 #. TRANSLATORS: a gradient from top to bottom.
-#: AppSettings.cs:676
+#: AppSettings.cs:693
 msgid "Vertical"
 msgstr "垂直"
 
 #. TRANSLATORS: a gradient from upper left to lower right.
-#: AppSettings.cs:680
+#: AppSettings.cs:697
 msgid "Forward Diagonal"
 msgstr "左上到右下"
 
-#. TRANSLATORS:a gradient from upper right to lower left.
-#: AppSettings.cs:684
+#. TRANSLATORS: a gradient from upper right to lower left.
+#: AppSettings.cs:701
 msgid "Backward Diagonal"
 msgstr "右上到左下"
+
+#: FileManagement.cs:104
+msgid "Nothing to undo..."
+msgstr "没有可撤销的内容..."
+
+#: FileManagement.cs:104
+msgid "Oops"
+msgstr "糟糕"
+
+#: FileManagement.cs:241
+msgid ""
+"Could not rename file: \n"
+"\n"
+msgstr ""
+"重命名文件失败：\n"
+"\n"
+
+#: FileManagement.cs:241
+msgid "File Error"
+msgstr "文件错误"
+
+#: FileManagement.cs:271 frmMain_Input.cs:935
+msgid ""
+"Error deleting file: \n"
+"\n"
+msgstr ""
+"删除文件出错：\n"
+"\n"
+
+#: FileManagement.cs:271 frmMain_Input.cs:935
+msgid "Delete Error"
+msgstr "删除出错"
+
+#: FileManagement.cs:312
+msgid "Could not restore "
+msgstr "未能还原 "
+
+#: FileManagement.cs:312
+msgid "Undelete Error"
+msgstr "找回出错"
 
 #: frmAbout.cs:34
 #, csharp-format
@@ -799,6 +839,18 @@ msgstr ""
 #: frmAbout.cs:40
 msgid "Ok"
 msgstr "确定"
+
+#: frmAbout.cs:41
+msgid "The project on GitHub"
+msgstr "GitHub 上的项目主页"
+
+#: frmAbout.cs:42
+msgid "Statistics:"
+msgstr "统计："
+
+#: frmAbout.cs:43
+msgid "Donate:"
+msgstr "捐赠："
 
 #: frmKeyFolders.cs:57
 msgid "Top"
@@ -1078,44 +1130,44 @@ msgctxt "menu"
 msgid "About PhotoSift Ex"
 msgstr "关于 PhotoSift Ex"
 
-#: frmMain.cs:415 frmMain_Input.cs:386 frmMain_Input.cs:410
+#: frmMain.cs:413 frmMain_Input.cs:386 frmMain_Input.cs:410
 msgid "Error"
 msgstr "错误"
 
-#: frmMain.cs:431 frmMain.cs:432 frmMain.cs:586
+#: frmMain.cs:429 frmMain.cs:430 frmMain.cs:584
 msgid "Loading..."
 msgstr "载入中..."
 
-#: frmMain.cs:454
+#: frmMain.cs:452
 msgid "Added "
 msgstr "已添加 "
 
-#: frmMain.cs:454
+#: frmMain.cs:452
 msgid " images..."
 msgstr " 图像..."
 
-#: frmMain.cs:529
+#: frmMain.cs:527
 msgid "Add or Drop Images to Start"
 msgstr "添加或拖拽图像以开始"
 
-#: frmMain.cs:566
+#: frmMain.cs:564
 #, csharp-format
 msgid " (remaining {0} items)"
 msgstr " (剩余 {0} 项)"
 
-#: frmMain.cs:568
+#: frmMain.cs:566
 msgid "items"
 msgstr "项"
 
-#: frmMain.cs:568
+#: frmMain.cs:566
 msgid "item"
 msgstr "项"
 
-#: frmMain.cs:570 frmMain.cs:573
+#: frmMain.cs:568 frmMain.cs:571
 msgid "End of Image Pool"
 msgstr "已到末尾"
 
-#: frmMain.cs:571
+#: frmMain.cs:569
 #, csharp-format
 msgid ""
 "End of Image Pool{0}\n"
@@ -1124,76 +1176,76 @@ msgstr ""
 "已到末尾{0}\n"
 "请返回或添加更多图像"
 
-#: frmMain.cs:617
+#: frmMain.cs:615
 msgid "Video playback"
 msgstr "播放视频"
 
-#: frmMain.cs:634
+#: frmMain.cs:632
 msgid "Loading image fail: "
 msgstr "加载图像失败："
 
-#: frmMain.cs:651
+#: frmMain.cs:649
 msgid "Error loading image:\n"
 msgstr "加载图像出错：\n"
 
-#: frmMain.cs:652
+#: frmMain.cs:650
 msgid "Error loading image: "
 msgstr "加载图像出错："
 
-#: frmMain.cs:721
+#: frmMain.cs:719
 #, csharp-format
 msgid " - Target dir: {0}"
 msgstr " - 目标文件夹：{0}"
 
-#: frmMain.cs:753
+#: frmMain.cs:751
 msgid "Auto Advance: On"
 msgstr "自动前进：开启"
 
-#: frmMain.cs:758
+#: frmMain.cs:756
 msgid "Auto Advance: Off"
 msgstr "自动前进：关闭"
 
-#: frmMain.cs:1291 frmMain.cs:1307
+#: frmMain.cs:1289 frmMain.cs:1305
 msgid "Scale: "
 msgstr "缩放："
 
-#: frmMain.cs:1295
+#: frmMain.cs:1293
 msgid "Scale: Actual Size ("
 msgstr "缩放：实际大小 ("
 
-#: frmMain.cs:1299
+#: frmMain.cs:1297
 msgid "Scale: Locked to Width ("
 msgstr "缩放：宽度锁定 ("
 
-#: frmMain.cs:1303
+#: frmMain.cs:1301
 msgid "Scale: Locked to Height ("
 msgstr "缩放：高度锁定 ("
 
-#: frmMain.cs:1311
+#: frmMain.cs:1309
 msgid "Scale: Fit Window ("
 msgstr "缩放：适合窗口 ("
 
-#: frmMain.cs:1390
+#: frmMain.cs:1388
 msgid "Undo Rename"
 msgstr "撤销重命名"
 
-#: frmMain.cs:1393
+#: frmMain.cs:1391
 msgid "Undo Copy"
 msgstr "撤销复制"
 
-#: frmMain.cs:1396
+#: frmMain.cs:1394
 msgid "Undo Move"
 msgstr "撤销移动"
 
-#: frmMain.cs:1399
+#: frmMain.cs:1397
 msgid "Undo Delete"
 msgstr "撤销删除"
 
-#: frmMain.cs:1402
+#: frmMain.cs:1400
 msgid "Undo"
 msgstr "撤销"
 
-#: frmMain.cs:1441
+#: frmMain.cs:1439
 msgid "Undo..."
 msgstr "撤销..."
 
@@ -1314,15 +1366,15 @@ msgstr "移动队列中左侧的文件"
 msgid "Moves the right images in pool"
 msgstr "移动队列中右侧的文件"
 
-#: frmMain_Input.cs:815
+#: frmMain_Input.cs:809
 msgid "Small images: Enlarge to window"
 msgstr "小图像：放大到适合窗口"
 
-#: frmMain_Input.cs:817
+#: frmMain_Input.cs:811
 msgid "Small images: Actual size"
 msgstr "小图像：实际尺寸"
 
-#: frmMain_Input.cs:877
+#: frmMain_Input.cs:871
 msgid ""
 "The target folder for this key is not valid:\n"
 "\n"
@@ -1330,23 +1382,11 @@ msgstr ""
 "此按键的目标文件夹设置无效：\n"
 "\n"
 
-#: frmMain_Input.cs:877
+#: frmMain_Input.cs:871
 msgid "Path Error"
 msgstr "路径错误"
 
-#: frmMain_Input.cs:941
-msgid ""
-"Error deleting file: \n"
-"\n"
-msgstr ""
-"删除文件出错：\n"
-"\n"
-
-#: frmMain_Input.cs:941
-msgid "Delete Error"
-msgstr "删除出错"
-
-#: frmMain_Input.cs:946
+#: frmMain_Input.cs:940
 msgid ""
 "Error copying/moving file(s): \n"
 "\n"
@@ -1354,16 +1394,16 @@ msgstr ""
 "复制/移动文件出错：\n"
 "\n"
 
-#: frmMain_Input.cs:946
+#: frmMain_Input.cs:940
 msgid "File(s) Error"
 msgstr "文件错误"
 
-#: frmMain_Input.cs:949
+#: frmMain_Input.cs:943
 #, csharp-format
 msgid "Processed {0} files"
 msgstr "已处理 {0} 个文件"
 
-#: frmMain_Input.cs:1052
+#: frmMain_Input.cs:1046
 msgid ""
 "The current hotkeys (quirks):\n"
 "\n"
@@ -1373,15 +1413,15 @@ msgstr ""
 "\n"
 "单击“清空”菜单：清空队列中的项目。\n"
 
-#: frmMain_Input.cs:1053
+#: frmMain_Input.cs:1047
 msgid "Shift + Click on the menu: Clear the left items in the pool.\n"
 msgstr "Shift + 单击菜单：清空队列中左侧的所有项目。\n"
 
-#: frmMain_Input.cs:1054
+#: frmMain_Input.cs:1048
 msgid "Ctrl + Click on the menu: Clear the right items in the pool.\n"
 msgstr "Ctrl + 单击菜单：清空队列中右侧的所有项目。\n"
 
-#: frmMain_Input.cs:1056
+#: frmMain_Input.cs:1050
 msgid ""
 "\n"
 "Ctrl + 0 hotkey: Clear all items in the pool."
@@ -1389,7 +1429,7 @@ msgstr ""
 "\n"
 "Ctrl + 0 快捷键：清空队列中的项目。"
 
-#: frmMain_Input.cs:1057
+#: frmMain_Input.cs:1051
 msgid ""
 "\n"
 "Alt + 0 hotkey: Remove the current item in the pool."
@@ -1397,7 +1437,7 @@ msgstr ""
 "\n"
 "Alt + 0 快捷键：队列中移除当前项目。"
 
-#: frmMain_Input.cs:1058
+#: frmMain_Input.cs:1052
 msgid ""
 "\n"
 "\n"
@@ -1407,11 +1447,11 @@ msgstr ""
 "\n"
 "以上快捷键不会移动、删除、重命名或更改任何文件。"
 
-#: frmMain_Input.cs:1059
+#: frmMain_Input.cs:1053
 msgid "Clear Items Hotkeys"
 msgstr "清空菜单的特殊按键"
 
-#: frmMain_Input.cs:1087
+#: frmMain_Input.cs:1081
 #, csharp-format
 msgid ""
 "Enter the target page: ?/{0}\n"
@@ -1422,15 +1462,15 @@ msgstr ""
 "\n"
 "超范围的数字会自动缩减。"
 
-#: frmMain_Input.cs:1088
+#: frmMain_Input.cs:1082
 msgid "Go to..."
 msgstr "跳转到..."
 
-#: frmMain_Input.cs:1121
+#: frmMain_Input.cs:1115
 msgid "You haven't configured a custom key to a specific directory."
 msgstr "尚未配置按键对应不同于本身的指定目录。"
 
-#: frmMain_Input.cs:1122
+#: frmMain_Input.cs:1116
 msgid "No configured"
 msgstr "未配置"
 
