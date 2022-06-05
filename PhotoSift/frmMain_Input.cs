@@ -621,18 +621,12 @@ namespace PhotoSift
 		}
 
 
-		// -- Handle keys (except for shortcut keys handled by menu items) ------------------------------------------
-		private bool IsKeyDown(System.Windows.Input.Key key)
-		{
-			return System.Windows.Input.Keyboard.IsKeyDown(key);
-		}
-		private bool IsWindowsKeyPressed()
-		{
-			return IsKeyDown(System.Windows.Input.Key.LWin) || IsKeyDown(System.Windows.Input.Key.RWin);
-		}
+        // -- Handle keys (except for shortcut keys handled by menu items) ------------------------------------------
+        private static bool IsKeyDown(System.Windows.Input.Key key) => System.Windows.Input.Keyboard.IsKeyDown(key);
+        private static bool IsWindowsKeyPressed() => IsKeyDown(System.Windows.Input.Key.LWin) || IsKeyDown(System.Windows.Input.Key.RWin);
 
-		private KeyEventArgs curHoldKey = null;
-		private bool timerHoldKeyTriggered = false;
+        private static KeyEventArgs curHoldKey = null;
+		private static bool timerHoldKeyTriggered = false;
 
 		private void frmMain_KeyPress(object sender, KeyPressEventArgs e)
 		{
@@ -1104,8 +1098,8 @@ namespace PhotoSift
 			mnuVideoLoop.Checked = !cur;
 		}
 
-		private Dictionary<string, string> KeyFolders = null;
-		private Form KeyFoldersWindow = null;
+		private static Dictionary<string, string> KeyFolders = null;
+		private static Form KeyFoldersWindow = null;
 		private void mnuKeyFolders_Click(object sender, EventArgs e)
 		{
 			if (KeyFolders == null)

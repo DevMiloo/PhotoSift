@@ -34,7 +34,7 @@ namespace PhotoSift
     /// </summary>
     class ImageCache
 	{
-		private Dictionary<string, CachedImage> cache;
+		private readonly Dictionary<string, CachedImage> cache;
 		
 		// Constructor
 		public ImageCache()

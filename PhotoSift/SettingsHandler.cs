@@ -105,17 +105,9 @@ namespace PhotoSift
 			Style = f.Style;
 		}
 
-		public static SerializableFont FromFont( Font f )
-		{
-			return new SerializableFont( f );
-		}
-
-		public Font ToFont()
-		{
-			return new Font( FontFamily, Size, Style,
-				GraphicsUnit );
-		}
-	}
+        public static SerializableFont FromFont(Font f) => new SerializableFont(f);
+        public Font ToFont() => new Font(FontFamily, Size, Style, GraphicsUnit);
+    }
 
 
 	/// <summary>
@@ -137,15 +129,8 @@ namespace PhotoSift
 			this.B = color.B;
 		}
 
-		public static SerializableColor FromColor( Color color )
-		{
-			return new SerializableColor( color );
-		}
-
-		public Color ToColor()
-		{
-			return Color.FromArgb( A, R, G, B );
-		}
-	}
+        public SerializableColor FromColor(Color color) => new SerializableColor(color);
+        public Color ToColor() => Color.FromArgb(A, R, G, B);
+    }
 
 }

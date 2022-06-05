@@ -32,17 +32,15 @@ namespace PhotoSift
 	/// </summary>
 	public class FileManagement
 	{
-		private WinApi winApi;
-		private frmMain mainForm;
+		private readonly frmMain mainForm;
 		public FileManagement( frmMain f )
 		{
 			mainForm = f;
-			winApi = new WinApi();
 		}
 
-		// -- Undo --
+        // -- Undo --
 
-		Stack<UndoData> undo = new Stack<UndoData>();
+        private readonly Stack<UndoData> undo = new Stack<UndoData>();
 
 		public enum UndoCallbackEvent
 		{
@@ -306,16 +304,16 @@ namespace PhotoSift
 			Task.WaitAll(tasks.ToArray());
 			return taskResults;
 		}
-		private void Undelete(string filePath)
+		private static void Undelete(string filePath)
 		{
-			if( !winApi.Restore(filePath) )
+            if ( !WinApi.Restore(filePath) )
 			{
 				MessageBox.Show( "Could not restore " + filePath + "...", "Undelete Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
 			}
 			
 		}
 
-		private void MoveToRecycle(string filePath)
+		private static void MoveToRecycle(string filePath)
 		{
 			FileSystem.DeleteFile(filePath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
 		}

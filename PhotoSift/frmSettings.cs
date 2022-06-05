@@ -30,7 +30,7 @@ namespace PhotoSift
 {
     public partial class frmSettings : Form
 	{
-		AppSettings settings;
+        private readonly AppSettings settings;
 
 		public delegate void ApplyColorSettings();
 		public ApplyColorSettings applyColorSettings;
@@ -132,16 +132,13 @@ namespace PhotoSift
 
 		private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
 		{
-			if (propertyGrid.SelectedGridItem != null)
-				contextMenuStrip1.Items[0].Enabled = true;
-			else
-				contextMenuStrip1.Items[0].Enabled = false;
-		}
+			contextMenuStrip1.Items[0].Enabled = propertyGrid.SelectedGridItem != null;
+        }
 	}
 
 	public class EnumTypeConverter : EnumConverter
 	{
-		private Type m_EnumType;
+		private readonly Type m_EnumType;
 		public EnumTypeConverter( Type type )
 			: base( type )
 		{

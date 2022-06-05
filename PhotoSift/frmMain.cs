@@ -28,20 +28,18 @@ using System.Linq;
 using System.Drawing.Drawing2D;
 using System.Diagnostics;
 using static PhotoSift.NGettextShortSyntax;
-using System.Globalization;
-using System.Threading;
 
 namespace PhotoSift
 {
     public partial class frmMain : Form
 	{
 		// Local variables
-		private ImageCache imageCache = new ImageCache();
-		private List<string> pics = new List<string>();
+		private static readonly ImageCache imageCache = new ImageCache();
+		private static readonly List<string> pics = new List<string>();
 		private WinApi winApi = new WinApi();
-		private AppSettings settings;
-		private FileManagement fileManagement;
-		private Image TransformedImage = null;	// a copy of the original image when rotating/flipping
+		private static AppSettings settings;
+		private static FileManagement fileManagement;
+		private static Image TransformedImage = null;	// a copy of the original image when rotating/flipping
 
 		private int iCurrentPic = 0; // its base is 0
 		private bool bAutoAdvanceEnabled = false;
@@ -248,7 +246,7 @@ namespace PhotoSift
 
 			if (settings.PreventSleep != bPreventSleep)
             {
-				winApi.PreventSleep(settings.PreventSleep);
+				WinApi.PreventSleep(settings.PreventSleep);
                 bPreventSleep = settings.PreventSleep;
             }
 
@@ -1547,7 +1545,7 @@ namespace PhotoSift
 
 		private class CustomMenuRenderer : ToolStripProfessionalRenderer
 		{
-			private AppSettings settings;
+			private readonly AppSettings settings;
 			public CustomMenuRenderer( AppSettings s )
 				: base(s.CustomMenuColors ? new CustomMenuColorTable( s ) : new ProfessionalColorTable())
 			{
@@ -1585,7 +1583,7 @@ namespace PhotoSift
 		}
 		private class CustomMenuColorTable : ProfessionalColorTable
 		{
-			private AppSettings settings;
+			private readonly AppSettings settings;
 			public CustomMenuColorTable( AppSettings s )
 			{
 				settings = s;

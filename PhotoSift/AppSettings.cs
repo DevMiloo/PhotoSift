@@ -454,120 +454,137 @@ namespace PhotoSift
 		[Browsable( false )]
 		public int Stats_DeletedPics { get; set; }
 
-		[XmlIgnore]
-		public Dictionary<string, object> defaultSettings = new Dictionary<string, object>();
+		public static Dictionary<string, object> getStaticDefaultSettings() {
+            Dictionary<string, object> defaultSettings = new Dictionary<string, object>
+            {
+                // File Operations Group
+                { "FileMode", FileOperations.Move },
+                { "ExistingFiles", ExistingFileOptions.AppendNumber },
+                { "DeleteMode", DeleteOptions.RecycleBin },
+                { "TargetFolderPath", "%PhotoSift%" },
+
+                // Appearance Group
+#if RLVISION
+				{"ColorBackground", GrayColors.Col7},
+#else
+                { "ColorBackground", Color.Black },
+#endif
+                { "ColorGradientBackgroundMode", LineGradientMode.Off },
+                { "ColorGradientBackgroundOne", Color.Gray },
+                { "ColorGradientBackgroundTwo", Color.Black },
+                { "ColorGradientBackgroundGammaCorrection", false },
+                { "ColorLabelFront", Color.FromArgb(192, 64, 0) },
+                { "ColorLabelBack", Color.Black },
+                { "ColorTransparentLabels", true },
+                { "LabelFont", new Font("Arial", 10, FontStyle.Regular) },
+                { "CustomMenuColors", true },
+                { "CustomMenuColorBackground", Color.FromArgb(255, 45, 45, 45) },
+                { "CustomMenuColorText", Color.FromArgb(255, 255, 255, 255) },
+                { "CustomMenuColorBorder", Color.FromArgb(255, 128, 128, 128) },
+                { "CustomMenuColorHightlight", Color.FromArgb(255, 65, 65, 65) },
+                { "TargetPathInTitlebar", true },
+
+                // Controls Group
+                { "HoldKeyInterval", 300 },
+                { "RewindOnEnd", false },
+                { "LoopInPool", false },
+                { "MediumJump", 10 },
+                { "LargeJump", 25 },
+                { "WarnThresholdOnClearQueue", 0 },
+                { "CloseOnEscape", false },
+                { "OnDeleteStepForward", true },
+                { "AutoAdvanceInterval", 4.5 },
+                { "ActualSizeAutoScroll", true },
+                { "ActualSizeAutoScrollDistance", 100 },
+                { "ActualSizeAutoScrollNoLimitInsideForm", false },
+                { "LinearScale", false },
+                { "FreeZoomSnap", 0 },
+                { "ZoomSteps", "5,10,25,50,75,100,125,150,175,200" },
+                { "ZoomLimitMaxToWindowSize", false },
+                { "VideoPlayerHookKeysControl", VideoPlayerHookKeysOptions.Basic },
+                { "SkipVideoBeginSeconds", 0 },
+
+                // Display Group
+                { "ShowInfoLabel", ShowModes.FullscreenOnly },
+                { "ShowModeLabel", ShowModes.AlwaysShow },
+                { "InfoLabelFormat", "(%c / %t) %f" },
+                { "InfoLabelFormatVideov2", "(%c / %t) %f  %curpos / %duration  %wh" },
+
+                { "FullscreenHideCursor", true },
+                { "EnlargeSmallImages", false },
+#if RLVISION
+				{"AutoMoveToScreen", false},
+#endif
+                // System Group
+                { "PreventSleep", false },
+
+                // Cache settings
+                { "CacheAhead", 2 },
+                { "CacheBehind", 1 },
+
+                // File Type
+                { "allowsPicExts", Util.Def_allowsPicExts },
+                { "allowsVidExts", Util.Def_allowsVideoExts },
+                { "FileMIMEChecker", FeatureSwitch.Disabled },
+                { "allowsMIME", "image/);video/);audio/" },
+                { "expandFolderLnks", false },
+
+                // Misc
+                { "SaveRelativePaths", true },
+                { "CopyActionType", CopytoClipboardOptions.Bitmap },
+
+                // GUI settings
+                { "AddInRandomOrder", false },
+                { "ResetViewModeOnPictureChange", true },
+                { "MoveIncludingCurrent", false },
+
+                // Hidden settings
+                { "FormRect_Main", new Rectangle() },
+                { "FormRect_Settings", new Rectangle() },
+                { "FirstTimeUsing", true },
+                { "FullscreenCursorAutoHideTime", 3000 },
+                { "Stats_FirstLaunchDate", DateTime.Now },
+                { "Stats_StartupCount", 0 },
+                { "Stats_LoadedPics", 0 },
+                { "Stats_RenamedPics", 0 },
+                { "Stats_MovedPics", 0 },
+                { "Stats_CopiedPics", 0 },
+                { "Stats_DeletedPics", 0 },
+
+                { "UILanguage", UILanguages.Auto }
+            };
+
+            return defaultSettings;
+		}
+
+        [XmlIgnore, Browsable(false)]
+		public Dictionary<string, object> defaultSettings
+        {
+			get 
+			{
+				Dictionary<string, object> defaultSettings = getStaticDefaultSettings();
+				foreach (System.Reflection.PropertyInfo Prop in typeof(AppSettings).GetProperties())
+				{
+					if (Prop.Name.StartsWith("KeyFolder_"))
+						defaultSettings.Add(Prop.Name, "");
+				}
+				return defaultSettings;
+			}
+		}
 		public AppSettings()
 		{
-			// File Operations Group
-			defaultSettings.Add("FileMode", FileOperations.Move);
-			defaultSettings.Add("ExistingFiles", ExistingFileOptions.AppendNumber);
-			defaultSettings.Add("DeleteMode", DeleteOptions.RecycleBin);
-			defaultSettings.Add("TargetFolderPath", "%PhotoSift%");
-
-			// Appearance Group
-#if RLVISION
-			defaultSettings.Add("ColorBackground", GrayColors.Col7);
-#else
-			defaultSettings.Add("ColorBackground", Color.Black);
-#endif
-			defaultSettings.Add("ColorGradientBackgroundMode", LineGradientMode.Off);
-			defaultSettings.Add("ColorGradientBackgroundOne", Color.Gray);
-			defaultSettings.Add("ColorGradientBackgroundTwo", Color.Black);
-			defaultSettings.Add("ColorGradientBackgroundGammaCorrection", false);
-			defaultSettings.Add("ColorLabelFront", Color.FromArgb(192, 64, 0));
-			defaultSettings.Add("ColorLabelBack", Color.Black);
-			defaultSettings.Add("ColorTransparentLabels", true);
-			defaultSettings.Add("LabelFont", new Font("Arial", 10, FontStyle.Regular));
-			defaultSettings.Add("CustomMenuColors", true);
-			defaultSettings.Add("CustomMenuColorBackground", Color.FromArgb(255, 45, 45, 45));
-			defaultSettings.Add("CustomMenuColorText", Color.FromArgb(255, 255, 255, 255));
-			defaultSettings.Add("CustomMenuColorBorder", Color.FromArgb(255, 128, 128, 128));
-			defaultSettings.Add("CustomMenuColorHightlight", Color.FromArgb(255, 65, 65, 65));
-			defaultSettings.Add("TargetPathInTitlebar", true);
-
-			// Controls Group
-			defaultSettings.Add("HoldKeyInterval", 300);
-			defaultSettings.Add("RewindOnEnd", false);
-			defaultSettings.Add("LoopInPool", false);
-			defaultSettings.Add("MediumJump", 10);
-			defaultSettings.Add("LargeJump", 25);
-			defaultSettings.Add("WarnThresholdOnClearQueue", 0);
-			defaultSettings.Add("CloseOnEscape", false);
-			defaultSettings.Add("OnDeleteStepForward", true);
-			defaultSettings.Add("AutoAdvanceInterval", 4.5);
-			defaultSettings.Add("ActualSizeAutoScroll", true);
-			defaultSettings.Add("ActualSizeAutoScrollDistance", 100);
-			defaultSettings.Add("ActualSizeAutoScrollNoLimitInsideForm", false);
-			defaultSettings.Add("LinearScale", false);
-			defaultSettings.Add("FreeZoomSnap", 0);
-			defaultSettings.Add("ZoomSteps", "5,10,25,50,75,100,125,150,175,200");
-			defaultSettings.Add("ZoomLimitMaxToWindowSize", false);
-			defaultSettings.Add("VideoPlayerHookKeysControl", VideoPlayerHookKeysOptions.Basic);
-			defaultSettings.Add("SkipVideoBeginSeconds", 0);
-
-			// Display Group
-			defaultSettings.Add("ShowInfoLabel", ShowModes.FullscreenOnly);
-			defaultSettings.Add("ShowModeLabel", ShowModes.AlwaysShow);
-			defaultSettings.Add("InfoLabelFormat", "(%c / %t) %f");
-			defaultSettings.Add("InfoLabelFormatVideov2", "(%c / %t) %f  %curpos / %duration  %wh");
-			
-			defaultSettings.Add("FullscreenHideCursor", true);
-			defaultSettings.Add("EnlargeSmallImages", false);
-#if RLVISION
-			defaultSettings.Add("AutoMoveToScreen", false);
-#endif
-			// System Group
-			defaultSettings.Add("PreventSleep", false);
-
-			// Cache settings
-			defaultSettings.Add("CacheAhead", 2);
-			defaultSettings.Add("CacheBehind", 1);
-
-			// File Type
-			defaultSettings.Add("allowsPicExts", Util.Def_allowsPicExts);
-			defaultSettings.Add("allowsVidExts", Util.Def_allowsVideoExts);
-			defaultSettings.Add("FileMIMEChecker", FeatureSwitch.Disabled);
-			defaultSettings.Add("allowsMIME", "image/);video/);audio/");
-			defaultSettings.Add("expandFolderLnks", false);
-			
-			// Misc
-			defaultSettings.Add("SaveRelativePaths", true);
-			defaultSettings.Add("CopyActionType", CopytoClipboardOptions.Bitmap);
-
-			// GUI settings
-			defaultSettings.Add("AddInRandomOrder", false);
-			defaultSettings.Add("ResetViewModeOnPictureChange", true);
-			defaultSettings.Add("MoveIncludingCurrent", false);
-
-			// Hidden settings
-			defaultSettings.Add("FormRect_Main", new Rectangle());
-			defaultSettings.Add("FormRect_Settings", new Rectangle());
-			defaultSettings.Add("FirstTimeUsing", true);
-			defaultSettings.Add("FullscreenCursorAutoHideTime", 3000);
-			defaultSettings.Add("Stats_FirstLaunchDate", DateTime.Now);
-			defaultSettings.Add("Stats_StartupCount", 0);
-			defaultSettings.Add("Stats_LoadedPics", 0);
-			defaultSettings.Add("Stats_RenamedPics", 0);
-			defaultSettings.Add("Stats_MovedPics", 0);
-			defaultSettings.Add("Stats_CopiedPics", 0);
-			defaultSettings.Add("Stats_DeletedPics", 0);
-
 			/*var LanguageFiles = new List<string>();
-            foreach (var file in Directory.GetFiles(Application.StartupPath, @"PhotoSift.mo", SearchOption.AllDirectories))
-            {
-                var match = Regex.Match(file, @"locale\\([^\\]+?)\\LC_MESSAGES\\PhotoSift.mo");
-                if (match.Success)
-                    LanguageFiles.Add(match.Groups[1].Value);
-            }*/
+			foreach (var file in Directory.GetFiles(Application.StartupPath, @"PhotoSift.mo", SearchOption.AllDirectories))
+			{
+				var match = Regex.Match(file, @"locale\\([^\\]+?)\\LC_MESSAGES\\PhotoSift.mo");
+				if (match.Success)
+					LanguageFiles.Add(match.Groups[1].Value);
+			}*/
 
-			defaultSettings.Add("UILanguage", 0);
-
+			var defs = defaultSettings;
 			foreach ( System.Reflection.PropertyInfo Prop in typeof( AppSettings ).GetProperties() )
 			{
-				if (Prop.Name.StartsWith("KeyFolder_"))
-					defaultSettings.Add(Prop.Name, "");
-
-				if (defaultSettings.TryGetValue(Prop.Name, out object value))
+				if (defs.TryGetValue(Prop.Name, out object value))
 					Prop.SetValue(this, value); // apply default settings
 			}
 		}

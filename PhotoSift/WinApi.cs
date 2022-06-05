@@ -159,7 +159,7 @@ namespace PhotoSift
 		private static extern EXECUTION_STATE SetThreadExecutionState( EXECUTION_STATE esFlags );
 
 		// check it with "powercfg /REQUESTS" command with administrator user
-		public void PreventSleep(bool turnOn)
+		public static void PreventSleep(bool turnOn)
 		{
             if (!turnOn)
             {
@@ -217,12 +217,11 @@ namespace PhotoSift
 		[DllImport( "shell32.dll", CharSet = CharSet.Auto )]
 		static extern int SHFileOperation( ref SHFILEOPSTRUCT FileOp );
 
-		private Shell Shl;
 		private const long ssfBITBUCKET = 10;
 		private const int recycleNAME = 0;
 		private const int recyclePATH = 1;
 
-		public void Recycle( string filePath )
+		public static void Recycle( string filePath )
 		{
 			SHFILEOPSTRUCT fileop = new SHFILEOPSTRUCT();
 			fileop.wFunc = FO_DELETE;
@@ -236,13 +235,13 @@ namespace PhotoSift
 		// -- Undelete from Recycle bin -----------------------------------------------------------------------------
 		// Based on: http://stackoverflow.com/questions/6025311/how-to-restore-files-from-recycle-bin?lq=1
 
-		public bool Restore( string Item )
+		public static bool Restore( string Item )
 		{
 			bool success = false;
+			var Shl = new Shell();
 			try
 			{
 				Item = Item.Replace( @"\\", @"\" );	// restore is sensitive to double backslashes
-				Shl = new Shell();
 				Folder Recycler = Shl.NameSpace( 10 );
 				foreach( FolderItem FI in Recycler.Items() )
 				{
@@ -269,7 +268,7 @@ namespace PhotoSift
 			}
 			return success;
 		}
-		private bool DoVerb( FolderItem Item, string Verb )
+		private static bool DoVerb( FolderItem Item, string Verb )
 		{
 			foreach( FolderItemVerb FIVerb in Item.Verbs() )
 			{
@@ -284,7 +283,7 @@ namespace PhotoSift
 
 		// ----------------------------------------------------------------------------------------------------------
 
-		public string FolderBrowserDialogAPI(string title = "Select a folder:")
+		public static string FolderBrowserDialogAPI(string title = "Select a folder:")
 		{
 			const int BIF_NEWDIALOGSTYLE = 0x40;
 			const int BIF_VALIDATE = 0x20;
