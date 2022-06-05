@@ -266,26 +266,12 @@ namespace PhotoSift
 			panelMain.BackColor = settings.ColorBackground;
 #endif
 			picCurrent.BackColor = Color.Transparent;
-			lblInfoLabel.ForeColor = settings.ColorLabelFront;
-			lblStatus.ForeColor = settings.ColorLabelFront;
-			lblHeader.ForeColor = settings.ColorLabelFront;
-			if( settings.ColorTransparentLabels )
-			{
-				lblInfoLabel.BackColor = Color.Transparent;
-				lblStatus.BackColor = Color.Transparent;
-				lblHeader.BackColor = Color.Transparent;
-			}
-			else
-			{
-				lblInfoLabel.BackColor = settings.ColorLabelBack;
-				lblStatus.BackColor = settings.ColorLabelBack;
-				lblHeader.BackColor = settings.ColorLabelBack;
-			}
+			lblInfoLabel.ForeColor = lblStatus.ForeColor = lblHeader.ForeColor = settings.ColorLabelFront;
+			lblInfoLabel.BackColor = lblStatus.BackColor = lblHeader.BackColor = 
+				settings.ColorTransparentLabels ? Color.Transparent : settings.ColorLabelBack;
 
 			// fonts
-			lblInfoLabel.Font = settings.LabelFont;
-			lblStatus.Font = settings.LabelFont;
-			lblHeader.Font = settings.LabelFont;
+			lblInfoLabel.Font = lblStatus.Font = lblHeader.Font = settings.LabelFont;
 
 			lblStatus.Top = panelMain.ClientSize.Height - lblStatus.Height - 2;
 
