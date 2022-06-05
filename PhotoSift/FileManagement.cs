@@ -24,6 +24,7 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
+using static PhotoSift.NGettextShortSyntax;
 
 namespace PhotoSift
 {
@@ -100,7 +101,7 @@ namespace PhotoSift
 
 			if (undo.Count == 0)
 			{
-				MessageBox.Show("Nothing to undo...", "Oops", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(_("Nothing to undo..."), _("Oops"), MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
 			bool stopGoto = false;
@@ -237,7 +238,7 @@ namespace PhotoSift
 			}
 			catch( Exception ex )
 			{
-				MessageBox.Show( "Could not rename file: \n\n" + ex.Message, "File Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+				MessageBox.Show( _("Could not rename file: \n\n") + ex.Message, _("File Error"), MessageBoxButtons.OK, MessageBoxIcon.Error );
 				return false;
 			}
 		}
@@ -267,7 +268,7 @@ namespace PhotoSift
 				}
 				catch( Exception ex )
 				{
-					MessageBox.Show( "Error deleting file: \n\n" + ex.Message, "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+					MessageBox.Show( _("Error deleting file: \n\n") + ex.Message, _("Delete Error"), MessageBoxButtons.OK, MessageBoxIcon.Error );
 				}
 			});
 		}
@@ -308,7 +309,7 @@ namespace PhotoSift
 		{
             if ( !WinApi.Restore(filePath) )
 			{
-				MessageBox.Show( "Could not restore " + filePath + "...", "Undelete Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+				MessageBox.Show( _("Could not restore ") + filePath + "...", _("Undelete Error"), MessageBoxButtons.OK, MessageBoxIcon.Error );
 			}
 			
 		}
