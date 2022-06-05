@@ -31,13 +31,16 @@ namespace PhotoSift
 		public frmAbout( AppSettings settings )
 		{
 			InitializeComponent();
-			this.Text = String.Format( _("About {0}"), Util.GetAppName() );
+			this.Text = string.Format( _("About {0}"), Util.GetAppName() );
 			this.labelProductName.Text = Util.GetAppName() + " " + Assembly.GetExecutingAssembly().GetName().Version.Major + "." + Assembly.GetExecutingAssembly().GetName().Version.Minor;
 			this.labelCopyright.Text = AssemblyCopyright;
 			this.labelLicense.Text = _("Free, open source software (GPLv3)");
 			this.labelStats.Text = _("Loaded: ") + settings.Stats_LoadedPics + _("\nCopied/Moved: ") + ( settings.Stats_CopiedPics + settings.Stats_MovedPics ) + _("\nRenamed: ") + settings.Stats_RenamedPics + _("\nDeleted: ") + settings.Stats_DeletedPics;
 			Debug.WriteLine(_(_("Loaded: ")));
 			btnClose.Text = _("Ok");
+			linkLabel1.Text = _("The project on GitHub");
+			label1.Text = _("Statistics:");
+			label3.Text = _("Donate:");
 		}
 
 		#region Assembly Attribute Accessors
@@ -125,9 +128,11 @@ namespace PhotoSift
 			this.Close();
 		}
 
-		private void linkLabel1_LinkClicked( object sender, LinkLabelLinkClickedEventArgs e )
-		{
-			System.Diagnostics.Process.Start("https://github.com/yfdyh000/PhotoSift");
-		}
-	}
+		private static void openUrl(string url) {
+            Process.Start(url);
+        }
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => openUrl("https://github.com/yfdyh000/PhotoSift");
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => openUrl("https://liberapay.com/yfdyh000");
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => openUrl("https://afdian.net/@yfdyh000");
+    }
 }

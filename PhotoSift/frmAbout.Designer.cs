@@ -37,6 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelStats = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +60,7 @@
             this.labelProductName.Location = new System.Drawing.Point(149, 11);
             this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(106, 16);
+            this.labelProductName.Size = new System.Drawing.Size(105, 16);
             this.labelProductName.TabIndex = 25;
             this.labelProductName.Text = "Product Name";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -69,7 +72,7 @@
             this.labelCopyright.Location = new System.Drawing.Point(149, 33);
             this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Size = new System.Drawing.Size(65, 16);
+            this.labelCopyright.Size = new System.Drawing.Size(64, 16);
             this.labelCopyright.TabIndex = 26;
             this.labelCopyright.Text = "Copyright";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -81,7 +84,7 @@
             this.labelLicense.Location = new System.Drawing.Point(149, 97);
             this.labelLicense.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelLicense.Name = "labelLicense";
-            this.labelLicense.Size = new System.Drawing.Size(55, 16);
+            this.labelLicense.Size = new System.Drawing.Size(54, 16);
             this.labelLicense.TabIndex = 28;
             this.labelLicense.Text = "License";
             this.labelLicense.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -104,7 +107,7 @@
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.Location = new System.Drawing.Point(149, 68);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(138, 16);
+            this.linkLabel1.Size = new System.Drawing.Size(137, 16);
             this.linkLabel1.TabIndex = 30;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "The project on GitHub";
@@ -117,9 +120,9 @@
             this.label1.Location = new System.Drawing.Point(149, 123);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 16);
+            this.label1.Size = new System.Drawing.Size(63, 16);
             this.label1.TabIndex = 31;
-            this.label1.Text = "Image Stats:";
+            this.label1.Text = "Statistics:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelStats
@@ -129,7 +132,7 @@
             this.labelStats.Location = new System.Drawing.Point(232, 123);
             this.labelStats.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelStats.Name = "labelStats";
-            this.labelStats.Size = new System.Drawing.Size(38, 16);
+            this.labelStats.Size = new System.Drawing.Size(37, 16);
             this.labelStats.TabIndex = 32;
             this.labelStats.Text = "Stats";
             this.labelStats.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -143,12 +146,48 @@
             this.label2.TabIndex = 33;
             this.label2.Text = "label2";
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(69, 198);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(59, 12);
+            this.linkLabel2.TabIndex = 34;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Liberapay";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(134, 198);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(41, 12);
+            this.linkLabel3.TabIndex = 35;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "爱发电";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(9, 195);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 16);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "Donate:";
+            // 
             // frmAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(418, 229);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.linkLabel3);
+            this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelStats);
             this.Controls.Add(this.label1);
@@ -184,7 +223,8 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label labelStats;
 		private System.Windows.Forms.Label label2;
-
-
-	}
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.Label label3;
+    }
 }
