@@ -1589,23 +1589,23 @@ namespace PhotoSift
 				settings = s;
 			}
 
-			public override Color MenuStripGradientBegin { get { return settings.CustomMenuColorBackground; } }
-			public override Color MenuStripGradientEnd { get { return settings.CustomMenuColorBackground; } }
-			public override Color MenuItemPressedGradientBegin { get { return settings.CustomMenuColorBackground; } }
-			public override Color MenuItemPressedGradientMiddle { get { return settings.CustomMenuColorBackground; } }
-			public override Color MenuItemPressedGradientEnd { get { return settings.CustomMenuColorBackground; } }
-			public override Color ToolStripDropDownBackground { get { return settings.CustomMenuColorBackground; } }
-			public override Color ImageMarginGradientBegin { get { return settings.CustomMenuColorBackground; } }
-			public override Color ImageMarginGradientMiddle { get { return settings.CustomMenuColorBackground; } }
-			public override Color ImageMarginGradientEnd { get { return settings.CustomMenuColorBackground; } }
-			public override Color SeparatorDark { get { return settings.CustomMenuColorBorder; } }
-			public override Color MenuBorder { get { return settings.CustomMenuColorBorder; } }
-			public override Color ButtonSelectedHighlight { get { return settings.CustomMenuColorHightlight; } }
-			public override Color ButtonSelectedGradientMiddle { get { return settings.CustomMenuColorHightlight; } }
-			public override Color MenuItemSelected { get { return settings.CustomMenuColorHightlight; } }
-			public override Color MenuItemSelectedGradientBegin { get { return settings.CustomMenuColorHightlight; } }
-			public override Color MenuItemSelectedGradientEnd { get { return settings.CustomMenuColorHightlight; } }
-		}
+            public override Color MenuStripGradientBegin => settings.CustomMenuColorBackground;
+            public override Color MenuStripGradientEnd => settings.CustomMenuColorBackground;
+            public override Color MenuItemPressedGradientBegin => settings.CustomMenuColorBackground;
+            public override Color MenuItemPressedGradientMiddle => settings.CustomMenuColorBackground;
+            public override Color MenuItemPressedGradientEnd => settings.CustomMenuColorBackground;
+            public override Color ToolStripDropDownBackground => settings.CustomMenuColorBackground;
+            public override Color ImageMarginGradientBegin => settings.CustomMenuColorBackground;
+            public override Color ImageMarginGradientMiddle => settings.CustomMenuColorBackground;
+            public override Color ImageMarginGradientEnd => settings.CustomMenuColorBackground;
+            public override Color SeparatorDark => settings.CustomMenuColorBorder;
+            public override Color MenuBorder => settings.CustomMenuColorBorder;
+            public override Color ButtonSelectedHighlight => settings.CustomMenuColorHightlight;
+            public override Color ButtonSelectedGradientMiddle => settings.CustomMenuColorHightlight;
+            public override Color MenuItemSelected => settings.CustomMenuColorHightlight;
+            public override Color MenuItemSelectedGradientBegin => settings.CustomMenuColorHightlight;
+            public override Color MenuItemSelectedGradientEnd => settings.CustomMenuColorHightlight;
+        }
 
 		private void wmpCurrent_GotFocusEvent(object sender, EventArgs e)
 		{
