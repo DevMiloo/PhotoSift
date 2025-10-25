@@ -43,6 +43,33 @@ namespace PhotoSift
 		}
 
 		/// <summary>
+		/// Returns an image with specified quality level, either by loading it from disk or from memory if already cached
+		/// </summary>
+		/// <param name="sFilename">Filename of image to load</param>
+		/// <param name="maxSize">Maximum dimension for the image (0 = no limit)</param>
+		/// <param name="quickPreview">If true, prioritize speed over quality</param>
+		/// <returns>Requested image</returns>
+		public Image GetImage( string sFilename, int maxSize = 0, bool quickPreview = false )
+		{
+			// For non-HEIC files or when requesting full quality, use the standard method
+			if (!HeicWrapper.IsHeicFile(sFilename) || (!quickPreview && maxSize == 0))
+			{
+				return GetImage(sFilename);
+			}
+
+			// For HEIC files with specific requirements, load directly
+			try
+			{
+				return HeicWrapper.LoadHeic(sFilename, maxSize, quickPreview);
+			}
+			catch
+			{
+				// Fall back to cached version
+				return GetImage(sFilename);
+			}
+		}
+
+		/// <summary>
 		/// Returns an image, either by loading it from disk or from memory if already cached
 		/// </summary>
 		/// <param name="sFilename">Filename of image to load</param>
@@ -60,6 +87,34 @@ namespace PhotoSift
 			}
 
 			return null;
+		}
+
+		/// <summary>
+		/// Instruct system to cache an image with specific quality settings
+		/// </summary>
+		/// <param name="sFilename">Filename of image to cache</param>
+		/// <param name="maxSize">Maximum dimension for cached image</param>
+		/// <param name="quickPreview">If true, cache a quick preview version</param>
+		public void CacheImageWithQuality( string sFilename, int maxSize = 0, bool quickPreview = false )
+		{
+			// For HEIC files, we might want to cache different versions
+			if (HeicWrapper.IsHeicFile(sFilename) && (maxSize > 0 || quickPreview))
+			{
+				string cacheKey = $"{sFilename}_{maxSize}_{quickPreview}";
+				if( !cache.ContainsKey( cacheKey ) )
+				{
+					CachedImage ci = new CachedImage( sFilename );
+					cache.Add( cacheKey, ci );
+
+					// Start loading in a separate thread with specific quality
+					ci.LoadingTask = Task.Run(() => LoadImageWithQuality(ci, maxSize, quickPreview));
+				}
+			}
+			else
+			{
+				// Use standard caching for other files
+				CacheImage(sFilename);
+			}
 		}
 
 		/// <summary>
@@ -92,6 +147,67 @@ namespace PhotoSift
 		}
 
 		/// <summary>
+		/// Loads an image from disk into the supplied CachedImage object with specific quality settings
+		/// </summary>
+		/// <param name="data">CachedImage object containing the filename to load</param>
+		/// <param name="maxSize">Maximum dimension for the image</param>
+		/// <param name="quickPreview">If true, prioritize speed over quality</param>
+		private static void LoadImageWithQuality( object data, int maxSize, bool quickPreview )
+		{
+            bool done = false;
+            int retry = 0;
+
+            do
+            {
+                try
+                {
+					CachedImage ci = (CachedImage)data;
+					string fileExtension = Path.GetExtension(ci.sFilename).ToLowerInvariant();
+
+					if (fileExtension == ".webp")
+					{
+						using (WebP webp = new WebP())
+							ci.img = webp.Load(ci.sFilename);
+					}
+					else if (HeicWrapper.IsHeicFile(ci.sFilename))
+					{
+						ci.img = HeicWrapper.LoadHeic(ci.sFilename, maxSize, quickPreview);
+					}
+					else
+						ci.img = Image.FromFile(ci.sFilename);
+
+                    done = true;
+                }
+                catch (Exception ex)
+                {
+                    System.Console.WriteLine("ImageCache ERROR: " + ex.ToString());
+                    System.Console.WriteLine("ImageCache exception HResult: " + ex.HResult);
+
+                    // only attempt retries if the reason for the failure was a sharing violation
+                    // [or a file not found] error; otherwise assume the error is permanent
+                    if (ex.HResult == unchecked((int)0x80070020) // ERROR_SHARING_VIOLATION
+						// || ex.HResult == unchecked((int)0x80070002) // ERROR_FILE_NOT_FOUND
+						)
+                    {
+                        System.Console.WriteLine(" ==> ERROR_SHARING_VIOLATION.");
+                    }
+                    else
+                    {
+                        done = true;
+                    }
+                }
+                if (!done)
+                {
+                    retry++;
+                    System.Console.WriteLine(" failed to load image, attempting retry #" + retry);
+                    // minor delay as workaround for moved files being occasionally still locked by the AV
+                    System.Threading.Thread.Sleep(150);
+                    
+                }
+            } while ((retry < 3) && (done == false));
+        }
+
+		/// <summary>
 		/// Loads an image from disk into the supplied CachedImage object
 		/// </summary>
 		/// <param name="data">CachedImage object containg the filename to load</param>
@@ -105,11 +221,17 @@ namespace PhotoSift
                 try
                 {
 					CachedImage ci = (CachedImage)data;
+					string fileExtension = Path.GetExtension(ci.sFilename).ToLowerInvariant();
 
-					if (Path.GetExtension(ci.sFilename) == ".webp")
+					if (fileExtension == ".webp")
 					{
 						using (WebP webp = new WebP())
 							ci.img = webp.Load(ci.sFilename);
+					}
+					else if (HeicWrapper.IsHeicFile(ci.sFilename))
+					{
+						// Use smaller size and quick preview for better scrolling performance
+						ci.img = HeicWrapper.LoadHeic(ci.sFilename, 800, true);
 					}
 					else
 						ci.img = Image.FromFile(ci.sFilename);

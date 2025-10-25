@@ -162,7 +162,9 @@ namespace PhotoSift
 			".ico",
 			".wmf",
 			".emf",
-			".webp"
+			".webp",
+			".heic",
+			".heif"
 		};
 		public static readonly string[] Def_allowsVideoExts = new string[]
 		{ // https://support.microsoft.com/en-us/help/316992/file-types-supported-by-windows-media-player
