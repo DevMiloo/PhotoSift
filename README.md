@@ -1,9 +1,5 @@
-[![AppVeyor](https://img.shields.io/appveyor/build/yfdyh000/PhotoSift)](https://ci.appveyor.com/project/yfdyh000/photosift)
-[![GitHub code size in bytes https://github.com/yfdyh000/PhotoSift](https://img.shields.io/github/languages/code-size/yfdyh000/PhotoSift)](https://github.com/yfdyh000/PhotoSift)
-[![GitHub release (latest by date) https://github.com/yfdyh000/PhotoSift/releases](https://img.shields.io/github/v/release/yfdyh000/PhotoSift)](https://github.com/yfdyh000/PhotoSift/releases)
-[![GitHub All Releases https://github.com/yfdyh000/PhotoSift/releases](https://img.shields.io/github/downloads/yfdyh000/PhotoSift/total)](https://github.com/yfdyh000/PhotoSift/releases)
-
 # PhotoSift Ex
+This is a fork of a fork of Photosift, with this fork adding HEIC support through WIC/Openize.
 
 This a fork with audio/video playback, batch operations, more options and other optimizations. It also provides localized interface.
 
